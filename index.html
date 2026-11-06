@@ -966,7 +966,17 @@ function productView(p){
     if(!/^(\+?212|00212|0)[5-7]\d{8}$/.test(phone)){err.textContent="كتب رقم هاتف مغربي صحيح، مثال: 0612345678";$("f-phone").focus();return}
     if(city.length<2){err.textContent="كتب المدينة ديالك.";$("f-city").focus();return}
     err.textContent="";
-    const msg=`السلام عليكم، بغيت نطلب من أطلس:\n\n🛒 المنتج: ${p.name}\n🔢 الكمية: ${qty}\n💰 المجموع: ${money(qty*p.price)} درهم\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 المدينة: ${city}`;
+    const RLM="‏",tel=phone.replace(/^(\+212|00212)/,"0");
+    const msg=[
+      "السلام عليكم، بغيت نطلب من أطلس:","",
+      "🛒 المنتج: "+p.name,
+      "🔢 الكمية: "+qty,
+      "💰 الثمن: "+p.price+" درهم",
+      "💵 المجموع: "+(qty*p.price)+" درهم","",
+      "👤 الاسم: "+name,
+      "📞 الهاتف: "+tel,
+      "📍 المدينة: "+city
+    ].map(l=>l?RLM+l:l).join("\n");
     const url="https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
     $("waLink").href=url; e.target.hidden=true; $("orderDone").hidden=false;
     try{if(window.fbq)fbq("track","Lead",{content_name:p.name,value:qty*p.price,currency:"MAD"})}catch(_){}
