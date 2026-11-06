@@ -7,6 +7,10 @@
 <meta property="og:image" content="https://atlasma.online/img/harrata-cut.webp">
 <title>أطلس للمعدات الفلاحية</title>
 <meta name="description" content="أطلس | معدات فلاحية ومعدات التعاونيات بالمغرب: حفارات، مضخات، آلات الحراثة وقطع الأعشاب، مطحنة أملو. الثمن واضح والتوصيل لجميع المدن.">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1858801875293088');fbq('track','PageView');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600;700;800&family=Cairo:wght@400;600;700;800&display=swap">
@@ -861,6 +865,7 @@ function startRing(){
 }
 
 function productView(p){
+  try{if(window.fbq)fbq("track","ViewContent",{content_name:p.name,content_ids:[p.id],content_type:"product",value:p.price,currency:"MAD"})}catch(_){}
   const others=P.filter(x=>x.cat===p.cat&&x.id!==p.id).concat(P.filter(x=>x.cat!==p.cat)).slice(0,4);
   const media=[{t:"c",k:p.id+"-cut"}].concat(p.imgs.map(k=>({t:"i",k}))).concat(p.video?[{t:"v",k:p.video}]:[]);
   app.innerHTML=`
@@ -952,6 +957,7 @@ function productView(p){
 
   let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
   app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));qo.textContent=qty;tot.textContent=money(qty*p.price)});
+  let icSent=false;document.getElementById("orderForm").addEventListener("focusin",()=>{if(icSent)return;icSent=true;try{if(window.fbq)fbq("track","InitiateCheckout",{content_name:p.name,value:p.price,currency:"MAD"})}catch(_){}});
   document.getElementById("orderForm").addEventListener("submit",e=>{
     e.preventDefault();
     const $=id=>document.getElementById(id),err=$("f-err");
@@ -998,6 +1004,7 @@ function route(){
   setInterval(()=>{const c=it[i];c.classList.remove("on");c.classList.add("out");i=(i+1)%it.length;const n=it[i];n.classList.remove("out");n.style.transition="none";n.style.transform="";void n.offsetWidth;n.style.transition="";n.classList.add("on");setTimeout(()=>c.classList.remove("out"),600)},3200)})();
 document.getElementById("footCats").innerHTML=CATS.map(c=>`<a href="#c-${c.id}">${c.name}</a>`).join("");
 addEventListener("hashchange",route);
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"]');if(a&&a.id!=="waLink"){try{if(window.fbq)fbq("track","Contact")}catch(_){}}});
 route();
 </script>
 
