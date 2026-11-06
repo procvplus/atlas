@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/favicon.png">
+<meta property="og:image" content="https://atlasma.online/img/harrata-cut.webp">
+<title>أطلس للمعدات الفلاحية</title>
+<meta name="description" content="أطلس | معدات فلاحية ومعدات التعاونيات بالمغرب: حفارات، مضخات، آلات الحراثة وقطع الأعشاب، مطحنة أملو. الثمن واضح والتوصيل لجميع المدن.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600;700;800&family=Cairo:wght@400;600;700;800&display=swap">
+<style>
+/* Concept: "a sunny morning in the field". Committed light theme: sky-blue to fresh-white, crop green, sun yellow for every call to action, a touch of soil brown. Real product cut-outs stand on a 3D grass podium that turns like a showroom; every product has its own landing view with a 3D stage, price sticker and an order form that hands off to WhatsApp. */
+:root{
+  --sky:#DDF0FF; --sky-2:#F3FAFF; --paper:#FBFCF7; --surface:#FFFFFF;
+  --green:#2E9B3A; --green-2:#23802E; --leaf:#145A22; --mint:#E9F6E6; --grass:#6CC04A;
+  --sun:#FFC52E; --sun-ink:#3A2600; --soil:#7A5230; --soil-2:#5C3C21;
+  --ink:#1D2B1F; --muted:#5A6B5D; --line:#E2E8DD; --red:#D64545; --red-soft:#FDECEC;
+  --wa:#25A55A;
+  --f-display:"Baloo Bhaijaan 2","Cairo",Tahoma,sans-serif;
+  --f-body:"Cairo",Tahoma,"Segoe UI",sans-serif;
+  --r:22px; --shadow:0 18px 40px -22px rgba(20,90,34,.45); --shadow-lg:0 34px 60px -30px rgba(20,90,34,.55);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{direction:rtl;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--green-2)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;line-height:1.3;text-wrap:balance;font-weight:800;color:var(--leaf)}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+button,input{font:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+section[id],.order{scroll-margin-top:90px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.8em 1.5em;border-radius:16px;font-weight:800;text-decoration:none;border:0;cursor:pointer;font-size:1.05rem;transition:transform .15s,box-shadow .15s;white-space:nowrap;font-family:var(--f-body)}
+.btn svg{width:1.25em;height:1.25em;flex:none}
+.btn-sun{background:linear-gradient(180deg,#FFD453,var(--sun));color:var(--sun-ink);box-shadow:0 6px 0 #D99A00,0 16px 26px -12px rgba(217,154,0,.8)}
+.btn-sun:hover{transform:translateY(-2px);box-shadow:0 8px 0 #D99A00,0 20px 30px -12px rgba(217,154,0,.8)}
+.btn-sun:active{transform:translateY(4px);box-shadow:0 2px 0 #D99A00}
+.btn-green{background:linear-gradient(180deg,#38B046,var(--green));color:#fff;box-shadow:0 6px 0 #1B6E25,0 16px 26px -12px rgba(27,110,37,.8)}
+.btn-green:hover{transform:translateY(-2px)}
+.btn-green:active{transform:translateY(4px);box-shadow:0 2px 0 #1B6E25}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 6px 0 #17783E}
+.btn-wa:active{transform:translateY(4px);box-shadow:0 2px 0 #17783E}
+.btn-white{background:#fff;color:var(--leaf);box-shadow:0 6px 0 #CFE3CA,0 14px 24px -14px rgba(20,90,34,.5)}
+.btn-white:hover{transform:translateY(-2px)}
+.btn-block{width:100%}
+
+/* top strip */
+.strip{background:var(--green-2);color:#fff;font-weight:800;font-size:.9rem}
+.rot{position:relative;height:36px;overflow:hidden}
+.rot span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;opacity:0;transform:translateY(100%) rotateX(-80deg);transform-origin:50% 0;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.rot span.on{opacity:1;transform:none}
+.rot span.out{opacity:0;transform:translateY(-100%) rotateX(80deg);transform-origin:50% 100%}
+.rot svg{width:18px;height:18px;color:var(--sun);flex:none}
+.rot b{color:var(--sun)}
+@media (max-width:380px){.strip{font-size:.8rem}}
+
+/* header */
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 20px -16px rgba(20,90,34,.6)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:9px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:46px;height:46px;flex:none;filter:drop-shadow(0 4px 6px rgba(20,90,34,.25))}
+.logo b{display:block;font-family:var(--f-display);font-weight:800;font-size:1.6rem;line-height:1;color:var(--leaf)}
+.logo small{display:block;font-size:.74rem;color:var(--muted);font-weight:700}
+.nav{display:flex;gap:2px}
+.nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.97rem;padding:6px 13px;border-radius:999px}
+.nav a:hover{background:var(--mint);color:var(--green-2)}
+.bar .btn{padding:.6em 1.1em;font-size:.95rem}
+@media (max-width:920px){.nav{display:none}}
+@media (max-width:430px){.bar .btn .t{display:none}.bar .btn{padding:.65em .75em}}
+
+/* hero */
+.hero{position:relative;background:radial-gradient(60% 70% at 15% 20%,rgba(255,214,90,.45),transparent 60%),linear-gradient(180deg,var(--sky) 0%,var(--sky-2) 55%,var(--paper) 100%);overflow:hidden;isolation:isolate}
+.hero .sun{position:absolute;width:150px;height:150px;border-radius:50%;left:6%;top:30px;background:radial-gradient(circle,#FFE38A 0 45%,rgba(255,215,90,.35) 46% 60%,transparent 61%);z-index:-1;animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.hills{position:absolute;inset:auto 0 0 0;height:190px;z-index:-1}
+.hills svg{width:100%;height:100%;display:block}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding-block:46px 120px}
+@media (max-width:960px){.hero .wrap{grid-template-columns:1fr;padding-block:28px 110px;gap:8px}}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--green-2);font-weight:800;font-size:.9rem;padding:6px 14px 6px 8px;border-radius:999px;box-shadow:0 8px 20px -14px rgba(20,90,34,.7)}
+.pill i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--mint)}
+.pill svg{width:16px;height:16px}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.7rem);margin-top:16px;line-height:1.2}
+.hero h1 .hl{color:var(--green);position:relative;display:inline-block}
+.hero h1 .hl::after{content:"";position:absolute;inset:auto -4px .08em -4px;height:.32em;background:var(--sun);border-radius:6px;z-index:-1;transform:rotate(-1.5deg)}
+.hero .lead{color:var(--muted);font-size:1.15rem;margin-top:14px;max-width:50ch;font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.proof{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.proof span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.85);border:1px solid var(--line);padding:6px 12px;border-radius:12px;font-weight:700;font-size:.9rem}
+.proof svg{width:18px;height:18px;color:var(--green)}
+
+/* 3D showroom */
+.show{position:relative;height:500px;perspective:1100px;user-select:none;overflow:hidden;border-radius:30px}
+@media (max-width:960px){.show{height:420px}}
+@media (max-width:480px){.show{height:360px}}
+.ring{position:absolute;inset:0}
+.ring .it{position:absolute;left:50%;bottom:118px;width:270px;height:300px;margin-left:-135px;display:flex;align-items:flex-end;justify-content:center;cursor:pointer;will-change:transform,opacity;text-decoration:none}
+.ring .it img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 22px 18px rgba(30,50,20,.35));pointer-events:none}
+@media (max-width:480px){.ring .it{width:200px;height:220px;margin-left:-100px;bottom:96px}}
+.podium{position:absolute;left:50%;bottom:40px;width:min(440px,86%);transform:translateX(-50%);height:150px;pointer-events:none}
+.podium .top{position:absolute;inset:0 0 auto 0;height:110px;border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#9BE07A 0%,#6CC04A 45%,#4A9C33 100%);box-shadow:inset 0 -10px 18px rgba(0,0,0,.18);z-index:2}
+.podium .top::after{content:"";position:absolute;inset:14% 18%;border-radius:50%;border:2px dashed rgba(255,255,255,.45)}
+.podium .side{position:absolute;left:0;right:0;top:55px;height:70px;background:linear-gradient(90deg,var(--soil-2),var(--soil) 30%,#9A6B40 55%,var(--soil) 75%,var(--soil-2));border-radius:0 0 50% 50% / 0 0 55px 55px;z-index:1}
+.podium .shadow{position:absolute;left:4%;right:4%;bottom:-18px;height:40px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,60,20,.35),transparent);z-index:0}
+@media (max-width:480px){.podium{height:120px;bottom:30px}.podium .top{height:84px}.podium .side{top:42px;height:56px}}
+.cap{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:8px 8px 8px 16px;box-shadow:var(--shadow-lg);white-space:nowrap;z-index:5;text-decoration:none;max-width:96%}
+.cap b{font-family:var(--f-display);color:var(--leaf);font-size:1.02rem;overflow:hidden;text-overflow:ellipsis}
+.cap .pz{background:var(--sun);color:var(--sun-ink);font-weight:800;border-radius:12px;padding:4px 12px;flex:none}
+.arrows{position:absolute;inset:auto 0 150px 0;display:flex;justify-content:space-between;z-index:6;pointer-events:none}
+.arrows button{pointer-events:auto;width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--leaf);box-shadow:var(--shadow);cursor:pointer;display:grid;place-items:center}
+.arrows svg{width:22px;height:22px}
+
+/* floating benefit cards */
+.benefits{position:relative;z-index:3;margin-top:-80px}
+.benefits .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:960px){.benefits .grid4{grid-template-columns:1fr 1fr}}
+.bcard{background:#fff;border-radius:var(--r);padding:18px;display:flex;gap:14px;align-items:center;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+.ico3d{width:54px;height:54px;flex:none;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#4CC05A,var(--green-2));color:#fff;box-shadow:0 5px 0 #145A22,0 10px 18px -8px rgba(20,90,34,.7);transform:perspective(200px) rotateX(12deg)}
+.ico3d svg{width:28px;height:28px}
+.ico3d.sun{background:linear-gradient(145deg,#FFD866,#F5AE00);color:var(--sun-ink);box-shadow:0 5px 0 #C98A00,0 10px 18px -8px rgba(201,138,0,.7)}
+.bcard b{display:block;font-family:var(--f-display);color:var(--leaf);font-size:1.05rem;line-height:1.3}
+.bcard small{color:var(--muted);font-weight:600;font-size:.88rem;line-height:1.4;display:block}
+@media (max-width:480px){.bcard{flex-direction:column;align-items:flex-start;padding:14px;gap:8px}}
+
+/* section heads */
+section.s{padding-block:76px}
+@media (max-width:600px){section.s{padding-block:54px}}
+.head{text-align:center;max-width:720px;margin:0 auto 36px}
+.tagline{display:inline-block;background:var(--mint);color:var(--green-2);font-weight:800;font-size:.9rem;padding:4px 14px;border-radius:999px}
+.h2{font-size:clamp(1.8rem,4vw,2.7rem);margin-top:10px}
+.h2 .g{color:var(--green)}
+.sub{color:var(--muted);margin-top:10px;font-weight:600}
+
+/* categories with pop-out product */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;row-gap:64px;padding-top:44px}
+
+@media (max-width:520px){.cats{grid-template-columns:repeat(2,1fr);gap:12px;row-gap:52px}}
+.cat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:190px;border-radius:var(--r);text-decoration:none;background:var(--c,#E9F6E6);padding:14px;box-shadow:var(--shadow);transition:transform .25s}
+.cat:hover{transform:translateY(-6px) rotate(-1deg)}
+.cat img{position:absolute;left:50%;top:-44px;transform:translateX(-50%);height:155px;width:78%;object-fit:contain;filter:drop-shadow(0 14px 10px rgba(0,0,0,.25));transition:transform .3s}
+.cat:hover img{transform:translateX(-50%) scale(1.08) rotate(3deg)}
+.cat b{font-family:var(--f-display);color:var(--leaf);font-size:1.08rem;line-height:1.3;position:relative}
+.cat small{color:var(--muted);font-weight:700;position:relative}
+
+/* filter chips */
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 10px;margin-bottom:22px;justify-content:center}
+@media (max-width:760px){.chips{justify-content:flex-start}}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:7px 18px;cursor:pointer;font-weight:800;font-size:.95rem}
+.chip[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 0 #1B6E25}
+
+/* product cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+@media (max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
+.pc{perspective:900px}
+.pc>a{position:relative;display:flex;flex-direction:column;height:100%;background:#fff;border-radius:var(--r);text-decoration:none;border:1px solid var(--line);box-shadow:var(--shadow);transform-style:preserve-3d;transform:rotateX(var(--ty,0deg)) rotateY(var(--tx,0deg));transition:transform .25s ease,box-shadow .25s}
+.pc>a:hover{box-shadow:var(--shadow-lg)}
+.pc .st{position:relative;height:230px;border-radius:var(--r) var(--r) 0 0;background:radial-gradient(circle at 50% 75%,#fff 0 20%,transparent 21%),radial-gradient(120% 90% at 50% 100%,var(--mint),#F6FBF3 70%);display:flex;align-items:flex-end;justify-content:center;padding:18px 16px 26px}
+.pc .st::after{content:"";position:absolute;left:22%;right:22%;bottom:16px;height:16px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,60,20,.3),transparent)}
+.pc .st img{position:relative;z-index:1;max-height:100%;max-width:100%;object-fit:contain;transform:translateZ(40px);transition:transform .35s;filter:drop-shadow(0 12px 10px rgba(0,0,0,.22))}
+.pc>a:hover .st img{transform:translateZ(60px) translateY(-8px) scale(1.04)}
+.sticker{position:absolute;top:12px;left:12px;z-index:2;width:84px;height:84px;border-radius:50%;background:var(--sun);color:var(--sun-ink);display:grid;place-items:center;text-align:center;line-height:1.05;transform:rotate(-12deg) translateZ(50px);box-shadow:0 8px 16px -8px rgba(160,110,0,.9);font-weight:800}
+.sticker b{display:block;font-family:var(--f-display);font-size:1.25rem}
+.sticker small{font-size:.72rem}
+.badge{position:absolute;top:14px;right:14px;z-index:2;background:var(--green);color:#fff;font-weight:800;font-size:.76rem;padding:3px 10px;border-radius:999px}
+.pc .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.pc .k{color:var(--green);font-weight:800;font-size:.8rem}
+.pc h3{font-size:1.12rem;line-height:1.4}
+.pc .hk{color:var(--muted);font-size:.92rem;line-height:1.5;font-weight:600}
+.pc .btn{margin-top:auto;padding:.6em;font-size:.98rem}
+@media (max-width:600px){.pc .st{height:170px;padding:12px 10px 20px}.sticker{width:62px;height:62px;top:8px;left:8px}.sticker b{font-size:.95rem}.sticker small{font-size:.62rem}.badge{display:none}.pc .bd{padding:10px}.pc h3{font-size:.95rem}.pc .hk{display:none}.pc .btn{font-size:.88rem;padding:.55em}}
+
+/* compare */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:800px){.cmp{grid-template-columns:1fr}}
+.cmp .col{border-radius:var(--r);padding:26px;background:#fff;border:2px solid var(--line)}
+.cmp .bad{background:var(--red-soft);border-color:#F6C9C9}
+.cmp .good{background:var(--mint);border-color:#A8DDA0;box-shadow:var(--shadow-lg);transform:perspective(900px) rotateY(-3deg)}
+.cmp h3{display:flex;align-items:center;gap:10px;font-size:1.3rem;margin-bottom:14px}
+.cmp .bad h3{color:var(--red)}
+.cmp ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cmp li{display:flex;gap:10px;align-items:flex-start;font-weight:700}
+.cmp li svg{width:24px;height:24px;flex:none;margin-top:2px;border-radius:50%;padding:3px}
+.cmp .bad li svg{background:var(--red);color:#fff}
+.cmp .good li svg{background:var(--green);color:#fff}
+
+/* spotlight */
+.spot{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;background:linear-gradient(135deg,#FFF6D6,#FFFFFF 60%);border-radius:32px;padding:40px;box-shadow:var(--shadow-lg);border:1px solid #F4E3A8}
+@media (max-width:880px){.spot{grid-template-columns:1fr;padding:24px;gap:28px}}
+.phone{position:relative;max-width:300px;width:100%;margin:0 auto;border-radius:36px;padding:10px;background:#1C2A1E;box-shadow:0 40px 60px -30px rgba(0,0,0,.6);transform:perspective(1000px) rotateY(12deg) rotateX(4deg)}
+.phone video,.phone img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:28px;background:#000}
+.phone .live{position:absolute;top:22px;right:22px;background:var(--red);color:#fff;font-weight:800;font-size:.78rem;padding:2px 10px;border-radius:999px}
+.spot .cut{position:absolute;left:-10px;bottom:-20px;width:170px;filter:drop-shadow(0 18px 14px rgba(0,0,0,.3))}
+@media (max-width:880px){.spot .cut{width:120px;left:0;bottom:auto;top:200px}}
+.spot ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+.spot li{display:flex;gap:12px;align-items:center;font-weight:700}
+.spot li .ico3d{width:42px;height:42px;border-radius:12px}
+.spot li .ico3d svg{width:22px;height:22px}
+.pricebig{display:flex;align-items:center;gap:16px;margin-top:22px;flex-wrap:wrap}
+.pricebig .tagp{background:var(--sun);color:var(--sun-ink);border-radius:18px;padding:8px 18px;font-family:var(--f-display);font-weight:800;font-size:2rem;line-height:1.2;box-shadow:0 6px 0 #D99A00;transform:rotate(-2deg)}
+.pricebig .tagp small{font-size:.5em;margin-right:4px}
+
+/* steps */
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:st;position:relative}
+@media (max-width:800px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:st;position:relative;background:#fff;border-radius:var(--r);padding:30px 22px 22px;box-shadow:var(--shadow);text-align:center;border:1px solid var(--line)}
+.steps li::before{content:counter(st);position:absolute;top:-22px;left:50%;transform:translateX(-50%);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--sun);color:var(--sun-ink);font:800 1.35rem var(--f-display);box-shadow:0 5px 0 #D99A00}
+.steps .ico3d{margin:6px auto 12px}
+.steps h3{font-size:1.2rem;margin-bottom:4px}
+.steps p{color:var(--muted);font-weight:600}
+
+/* band */
+.band{position:relative;background:linear-gradient(135deg,var(--green) 0%,var(--green-2) 100%);color:#fff;border-radius:32px;padding:44px 36px;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
+.band::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-35deg,rgba(255,255,255,.06) 0 14px,transparent 14px 34px)}
+.band h2{color:#fff;font-size:clamp(1.6rem,3.6vw,2.4rem);position:relative}
+.band p{color:#E4F5E0;font-weight:600;margin-top:6px;position:relative}
+.band .cta-row{margin-top:0;position:relative}
+
+/* faq */
+.faq{display:grid;gap:12px;max-width:820px;margin:0 auto}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:4px 20px;box-shadow:0 6px 16px -14px rgba(20,90,34,.6)}
+.faq summary{cursor:pointer;font-weight:800;padding:13px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;color:var(--leaf)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;background:var(--mint);color:var(--green-2);font:800 1.2rem/1 var(--f-display)}
+.faq details[open] summary::after{content:"−";background:var(--green);color:#fff}
+.faq p{color:var(--muted);padding-bottom:14px;font-weight:600}
+
+/* ===== product page ===== */
+.ptop{background:linear-gradient(180deg,var(--sky) 0%,var(--sky-2) 60%,var(--paper) 100%);position:relative;overflow:hidden}
+.crumb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:.9rem;font-weight:700;padding-top:16px}
+.crumb a{text-decoration:none}
+.crumb a:hover{color:var(--green)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;padding-block:14px 60px}
+@media (max-width:920px){.pgrid{grid-template-columns:1fr;gap:20px}}
+.stage{position:relative;background:radial-gradient(70% 60% at 50% 30%,#fff,transparent 70%);border-radius:28px;min-width:0}
+.stage .view{position:relative;height:460px;display:flex;align-items:flex-end;justify-content:center;perspective:1000px}
+@media (max-width:520px){.stage .view{height:340px}}
+.stage .podium{bottom:10px}
+.stage .prod{position:relative;z-index:3;max-height:380px;max-width:86%;object-fit:contain;margin-bottom:96px;filter:drop-shadow(0 26px 20px rgba(30,50,20,.35));animation:float 5s ease-in-out infinite;transform:rotateY(var(--gx,0deg)) rotateX(var(--gy,0deg))}
+@media (max-width:520px){.stage .prod{max-height:250px;margin-bottom:76px}}
+@keyframes float{50%{translate:0 -10px}}
+.stage .photo{position:relative;z-index:3;width:100%;height:100%;object-fit:contain;border-radius:22px;background:#fff;box-shadow:var(--shadow-lg)}
+.stage video.photo{object-fit:contain;background:#000}
+.stage .sticker{top:10px;left:10px;width:100px;height:100px;transform:rotate(-12deg);z-index:6}
+.stage .sticker b{font-size:1.45rem}
+.thumbs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.thumbs button{width:70px;height:70px;padding:4px;border:2px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;position:relative;box-shadow:0 4px 0 var(--line)}
+.thumbs button[aria-current="true"]{border-color:var(--green);box-shadow:0 4px 0 var(--green)}
+.thumbs img{width:100%;height:100%;object-fit:contain}
+.thumbs .play{position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:rgba(0,0,0,.35);border-radius:12px}
+.thumbs .play svg{width:26px;height:26px}
+.thumbs .lbl{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:.62rem;font-weight:800;padding:0 6px;border-radius:6px;white-space:nowrap}
+
+.pinfo{min-width:0;display:flex;flex-direction:column;gap:16px}
+.pinfo h1{font-size:clamp(1.8rem,4vw,2.7rem)}
+.hook{display:inline-flex;align-self:flex-start;background:#FFF3C4;color:#6B4A00;font-weight:800;padding:6px 14px;border-radius:12px;font-size:1.02rem}
+.pinfo .lead{color:var(--muted);font-weight:600}
+.prow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.prow .tagp{background:var(--sun);color:var(--sun-ink);border-radius:18px;padding:6px 20px;font-family:var(--f-display);font-weight:800;font-size:2.3rem;line-height:1.25;box-shadow:0 6px 0 #D99A00;transform:rotate(-2deg)}
+.prow .tagp small{font-size:.45em;margin-right:4px}
+.prow .dl{display:grid;gap:2px;font-weight:700;font-size:.92rem}
+.prow .dl span{display:flex;align-items:center;gap:6px}
+.prow .dl svg{width:18px;height:18px;color:var(--green)}
+.bens{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:480px){.bens{grid-template-columns:1fr}}
+.ben{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center;box-shadow:0 8px 18px -16px rgba(20,90,34,.7)}
+.ben .ico3d{width:40px;height:40px;border-radius:12px}
+.ben .ico3d svg{width:20px;height:20px}
+.ben b{display:block;color:var(--leaf);font-family:var(--f-display);font-size:1rem;line-height:1.25}
+.ben span{color:var(--muted);font-size:.84rem;line-height:1.35;display:block;font-weight:600}
+
+/* order form */
+.order{background:#fff;border-radius:26px;padding:24px;border:3px solid var(--green);box-shadow:0 8px 0 var(--green-2),var(--shadow-lg);position:relative}
+.order .rib{position:absolute;top:-18px;right:20px;background:var(--sun);color:var(--sun-ink);font-weight:800;padding:4px 16px;border-radius:999px;box-shadow:0 4px 0 #D99A00}
+.order h2{font-size:1.45rem;margin-bottom:4px}
+.order .sm{color:var(--muted);font-weight:600;font-size:.92rem;margin-bottom:14px}
+.f{display:grid;gap:12px}
+.f label{display:grid;gap:4px;font-weight:800;font-size:.95rem;color:var(--leaf)}
+.f input{width:100%;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:14px;padding:12px 14px;font-size:1.03rem;font-weight:600}
+.f input:focus{border-color:var(--green);outline:none;background:#fff;box-shadow:0 0 0 4px rgba(46,155,58,.15)}
+.f .two{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+.qty{display:flex;align-items:center;border:2px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}
+.qty button{border:0;background:var(--mint);color:var(--green-2);width:46px;height:48px;font-size:1.4rem;font-weight:800;cursor:pointer}
+.qty output{flex:1;text-align:center;font-weight:800;font-family:var(--f-display);font-size:1.2rem}
+.total{display:flex;justify-content:space-between;align-items:center;background:var(--mint);border-radius:14px;padding:10px 14px;font-weight:800;color:var(--leaf)}
+.total b{font-family:var(--f-display);font-size:1.6rem;color:var(--green-2)}
+.err{color:var(--red);font-size:.92rem;font-weight:800;min-height:1.2em}
+.note{font-size:.86rem;color:var(--muted);text-align:center;font-weight:600}
+.done{display:grid;gap:12px;text-align:center}
+.done .ok{width:70px;height:70px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:var(--green);color:#fff;box-shadow:0 6px 0 var(--green-2)}
+.done .ok svg{width:38px;height:38px}
+.done p{color:var(--muted);font-weight:600}
+
+.pdet{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+@media (max-width:920px){.pdet{grid-template-columns:1fr}}
+.box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.box h2{font-size:1.35rem;margin-bottom:12px}
+.spec{width:100%;border-collapse:separate;border-spacing:0 8px}
+.spec th,.spec td{text-align:right;padding:10px 14px;vertical-align:top}
+.spec th{background:var(--mint);color:var(--green-2);font-weight:800;width:38%;border-radius:0 12px 12px 0;font-size:.95rem}
+.spec td{background:var(--paper);font-weight:700;border-radius:12px 0 0 12px}
+.uses{display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--mint);color:var(--leaf);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.92rem}
+.tag svg{width:16px;height:16px;color:var(--green)}
+.about{display:grid;gap:12px;color:var(--ink);font-weight:600}
+.pfaq{max-width:none}
+.pfaq details{box-shadow:none;background:var(--paper)}
+.boxlist{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.boxlist li{display:flex;gap:10px;align-items:center;font-weight:700}
+.boxlist svg{width:22px;height:22px;flex:none;background:var(--green);color:#fff;border-radius:50%;padding:3px}
+.ask p{color:var(--muted);font-weight:600;margin-bottom:14px}
+.trustlist{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.trustlist li{display:flex;gap:12px;align-items:center;font-weight:700}
+.trustlist .ico3d{width:42px;height:42px;border-radius:12px}
+.trustlist .ico3d svg{width:22px;height:22px}
+
+/* sticky + float */
+.sticky{position:fixed;inset:auto 0 0;z-index:45;background:#fff;box-shadow:0 -10px 30px -16px rgba(20,90,34,.6);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:14px}
+.sticky .p{font-family:var(--f-display);font-weight:800;font-size:1.4rem;color:var(--leaf);flex:none;line-height:1.1}
+.sticky .p small{display:block;font-family:var(--f-body);font-size:.7rem;color:var(--muted)}
+.sticky .btn{flex:1;padding:.7em}
+@media (min-width:921px){.sticky{display:none}}
+.wafloat{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:44;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 5px 0 #17783E,0 14px 24px -10px rgba(23,120,62,.8);text-decoration:none;animation:ring 3s ease-in-out infinite}
+.wafloat svg{width:32px;height:32px}
+@keyframes ring{0%,85%,100%{transform:rotate(0)}88%{transform:rotate(-12deg)}92%{transform:rotate(10deg)}96%{transform:rotate(-6deg)}}
+body.on-product .wafloat{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+@media (min-width:921px){body.on-product .wafloat{bottom:calc(18px + env(safe-area-inset-bottom,0px))}}
+
+footer{background:var(--leaf);color:#CFE6CB;margin-top:80px;position:relative}
+footer::before{content:"";position:absolute;inset:-40px 0 auto 0;height:42px;background:var(--leaf);clip-path:ellipse(70% 100% at 50% 100%)}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;padding-block:40px 26px;position:relative}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+footer h4{color:#fff;font-size:1.1rem;margin-bottom:8px}
+footer a{color:#CFE6CB;text-decoration:none;display:block;padding:3px 0;font-weight:600}
+footer a:hover{color:var(--sun)}
+footer p{font-weight:600}
+.soc{display:flex;gap:12px;margin:4px 0 12px}
+.soc a{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;color:#fff;padding:0;transition:transform .2s;box-shadow:0 5px 0 rgba(0,0,0,.25)}
+.soc a:hover{transform:translateY(-3px);color:#fff}
+.soc svg{width:26px;height:26px}
+.soc .fb{background:#1877F2}
+.soc .ig{background:radial-gradient(circle at 30% 107%,#FDF497 0%,#FD5949 45%,#D6249F 60%,#285AEB 90%)}
+.soc .wa{background:#25D366}
+footer .copy{border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.85rem;padding-block:14px}
+body.on-product footer{padding-bottom:84px}
+@media (min-width:921px){body.on-product footer{padding-bottom:0}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<div class="strip" role="region" aria-label="إعلانات">
+  <div class="wrap"><div class="rot" id="rot" aria-live="polite">
+    <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>التوصيل لجميع مدن المغرب</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>طلب أو سؤال؟ واتساب: <b class="num">0631 312 155</b></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>الثمن مكتوب على كل منتج</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg>جديد: مطحنة أملو بالحجر للتعاونيات</span>
+  </div></div>
+</div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="أطلس — الرئيسية">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#2E9B3A"/><circle cx="33" cy="15" r="5" fill="#FFC52E"/><path d="M5 32 17 15l7 9 5-6 14 14Z" fill="#fff"/><path d="M3 34c8-4 34-4 42 0v4c-8 8-34 8-42 0Z" fill="#7A5230"/><path d="M4 34c9-3.5 31-3.5 40 0" stroke="#6CC04A" stroke-width="4" fill="none"/></svg>
+      <span><b>أطلس</b><small>معدات فلاحية · معدات التعاونيات</small></span>
+    </a>
+    <nav class="nav" aria-label="القائمة"><a href="#products">المنتجات</a><a href="#compare">علاش ماكينة؟</a><a href="#how">كيفاش تطلب</a><a href="#faq">أسئلة</a></nav>
+    <a class="btn btn-green" href="#products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 8h-12Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg><span class="t">تسوّق دابا</span></a>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<a class="wafloat" href="https://wa.me/212631312155" target="_blank" rel="noopener" aria-label="تواصل معنا فالواتساب"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
+<div class="sticky" id="sticky" hidden><span class="p" id="stickyPrice"></span><a class="btn btn-sun" href="#order" id="stickyBtn">اطلب الآن</a></div>
+
+<footer>
+  <div class="wrap">
+    <div><h4>أطلس | معدات التعاونيات</h4><p>معدات فلاحية ومعدات التعاونيات والصناعات الغذائية. منتجات مجرّبة، ثمن واضح، والتوصيل لجميع مدن المغرب.</p></div>
+    <div><h4>الأصناف</h4><div id="footCats"></div></div>
+    <div><h4>تابعنا وتواصل معنا</h4>
+      <div class="soc">
+        <a class="fb" href="https://www.facebook.com/share/1EWZoo4RHN/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22Z"/></svg></a>
+        <a class="ig" href="https://www.instagram.com/atlas_proo/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a class="wa" href="https://wa.me/212631312155" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
+      </div>
+      <a href="https://wa.me/212631312155" target="_blank" rel="noopener">واتساب: <span class="num">+212 631 312 155</span></a>
+      <a href="https://www.instagram.com/atlas_proo/" target="_blank" rel="noopener">إنستغرام: <span class="num">@atlas_proo</span></a>
+      <a href="https://www.facebook.com/share/1EWZoo4RHN/" target="_blank" rel="noopener">فيسبوك: أطلس | معدات التعاونيات</a></div>
+  </div>
+  <div class="copy">© <span class="num">2026</span> أطلس — جميع الحقوق محفوظة</div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></symbol>
+</svg>
+
+<script>
+document.documentElement.lang="ar";document.documentElement.dir="rtl";
+const WA="212631312155";
+const IMG = (window.ATLAS_IMG||{});
+const src = k => IMG[k] || ("img/"+k+".webp");
+const VID = IMG["amlou-demo-mp4"] || "img/amlou-demo.mp4";
+const CATS=[
+  {id:"hfr",name:"الحفر والغرس",cover:"hafara",c:"#FFF1D6"},
+  {id:"pumps",name:"المضخات",cover:"vidange15",c:"#DDF0FF"},
+  {id:"cut",name:"الحش والعشب",cover:"faucheuse",c:"#E6F6E0"},
+  {id:"till",name:"الحراثة",cover:"harrata",c:"#FFE3DF"},
+  {id:"coop",name:"معدات التعاونيات",cover:"amlou",c:"#F2ECFF"},
+  {id:"power",name:"الكهرباء واللحام",cover:"generator",c:"#FFF6C9"},
+  {id:"tools",name:"العدّة والأدوات",cover:"sprayer",c:"#E3F2F1"},
+  {id:"parts",name:"قطع الغيار",cover:"carbu",c:"#EEF1F4"}
+];
+const P=[
+  {id:"amlou",cat:"coop",price:2800,badge:"فيديو حقيقي",name:"مطحنة أملو بالحجر HD-140",hook:"صايب أملو فالدار ولا لمشروعك بسهولة",
+   lead:"مطحنة احترافية بأحجار الطحن، كتعطيك أملو بقوام ناعم ومتجانس بحال التقليدي. الاختيار المثالي للتعاونيات والمشاريع اللي باغية إنتاج احترافي ونتيجة مضمونة.",
+   imgs:["amlou-1","amlou-2","amlou-3"],video:"amlou-demo",
+   bens:[["طحن بالحجر","قوام ناعم بحال التقليدي","stone"],["1500 واط","محرك قوي للخدمة اليومية","bolt"],["حتى 140 كلغ/س","إنتاج كبير حسب المادة","gauge"]],
+   specs:[["الموديل","HD-140"],["القوة","1500W · 220V"],["سرعة المحرك","1400 دورة فالدقيقة"],["الإنتاج","حتى 140 كلغ فالساعة (حسب المادة)"],["الطحن","أحجار طحن + قمع كبير من الستانلس"],["الاستعمال","منزلي، تعاونيات ومشاريع"]],
+   uses:["أملو","اللوز والكركاع","السمسم","الفول السوداني","التوابل والقهوة"]},
+  {id:"harrata",cat:"till",price:15000,badge:"ديزل · بالشونيات",name:"آلة الحراثة بمحرك ديزل",hook:"وجد أرضك للموسم الفلاحي بكل سهولة",
+   lead:"باغي توفّر الوقت والمجهود وتنقّص مصاريف اليد العاملة؟ آلة حراثة بمحرك مازوط اقتصادي، فوق الشونيات (Chenilles) باش تبقى ثابتة فالأرض، وكتجي مع تجهيزات لعدة خدمات.",
+   imgs:["harrata-1","harrata-2"],
+   bens:[["محرك ديزل","اقتصادية فالمازوط","fuel"],["بالشونيات","Chenilles: ثابتة فالأرض الصعيبة","tracks"],["4 تجهيزات","حراثة، تنظيف، تسوية، سماد","tools"]],
+   specs:[["المحرك","ديزل (مازوط)"],["الحركة","شونيات (Chenilles)"],["التجهيزات","محراث، مشط تنظيف، خطّاط، موزّع السماد"],["الخدمة","حراثة وتحضير التربة"]],
+   uses:["الفلاحين","أصحاب الأراضي","الضيعات","الخضر والأشجار"]},
+  {id:"hafara",cat:"hfr",price:2200,badge:"بالعجلة",name:"حفّارة التربة بالعجلة",hook:"بغيتي تحفر وتغرس بلا مجهود كبير؟",
+   lead:"مع حفّارة التربة بالعجلة، سهّل على راسك أشغال الحفر وخدم أرضك بطريقة عملية. العجلة كتشيل عليك الثقل، ونتا غير وجّه.",
+   imgs:["hafara-2","hafara-1"],
+   bens:[["3 CV","محرك 63cc قوي","bolt"],["بالعجلة","سهلة فالتنقل","wheel"],["جوج ميشات","15 سم و20 سم","tools"]],
+   specs:[["المحرك","63cc · 3 CV"],["الوقود","بنزين مخلوط مع الزيت (Mélange 2 temps)"],["ميشات الحفر","15 سم و20 سم"],["الهيكل","معدني بعجلة ومقبضين"]],
+   uses:["غرس الأشجار","ثقوب الأعمدة","السياجات","الأشغال الفلاحية"]},
+  {id:"ed630",cat:"hfr",price:2000,badge:"ميشة 80 سم",name:"مثقاب الأرض بالبنزين ED630",hook:"اليد العاملة غالية والحفر باليد كياخد الوقت؟",
+   lead:"مع مثقاب الأرض بالبنزين، سهّل الخدمة ديالك: خدم بسرعة أكبر، بمجهود أقل، ووفّر مصاريف اليد العاملة.",
+   imgs:["ed630-1","ed630-4","ed630-5","ed630-2","ed630-3"],
+   bens:[["63cc","محرك Top Star","bolt"],["عمق 80 سم","للأشجار والأعمدة","gauge"],["جوج ميشات","20 سم و30 سم","tools"]],
+   specs:[["المحرك","63cc · Top Star ED630"],["الوقود","بنزين (Essence)"],["طول الميشة","80 سم"],["عرض الميشات","20 سم و30 سم"],["المقبض","مزدوج مع زر التشغيل"]],
+   uses:["غرس الأشجار","تركيب الأعمدة","السياجات","أشغال الحفر"]},
+  {id:"hachach",cat:"cut",price:1100,badge:"كاملة بالإكسسوارات",name:"آلة قطع الأعشاب بالبنزين 52cc",hook:"الأعشاب والأحراش غلبوك؟ الحل عندنا",
+   lead:"آلة عملية للفلاحة وتنظيف الأراضي، كتجمع ليك عدة استعمالات فمنتج واحد: من قص الربيع حتى جمع الفصة.",
+   imgs:["hachach-1","hachach-2","hachach-3"],
+   bens:[["متعددة","ديسكات + كاج الفصة","tools"],["مريحة","حزام ومقبض مزدوج","hand"],["52cc","للأعشاب الكثيفة","bolt"]],
+   specs:[["المحرك","52cc · جوج أشواط"],["الوقود","بنزين مخلوط مع الزيت (Mélange)"],["الشفرات","ديسك مثلث + ديسك بالأسنان"],["الإكسسوارات","كاج الفصة، واقي، حزام الكتف، قرعة الخلط"],["المقبض","مزدوج"]],
+   uses:["تنظيف الأراضي","الحدائق","حواف الطرق","حصاد الفصة"]},
+  {id:"vidange15",cat:"pumps",price:2100,badge:"2 HP · أوتوماتيكية",name:"مضخة المياه العادمة Jadever 1.5 kW",hook:"الما الموسخ والفيضانات كيصدعوك؟",
+   lead:"مضخة غاطسة قوية من Jadever لشفط المياه العادمة والموسخة، كتجي مع صندوق التحكم والعوامة الأوتوماتيكية باش تشعل وتطفي بوحدها.",
+   imgs:["vidange15-1","vidange15-2"],
+   bens:[["21 م³/س","صبيب قوي","drop"],["أوتوماتيكية","عوامة + صندوق تحكم","auto"],["محمية","حماية حرارية","shield"]],
+   specs:[["القوة","1.5 kW · 2 HP"],["الصبيب الأقصى","21 م³ فالساعة"],["العلو الأقصى","14.5 متر"],["قطر المخرج","2 بوصة"],["الكهرباء","220–240V · 50Hz"],["مع المضخة","صندوق تحكم + عوامة"]],
+   uses:["المياه العادمة","الآبار والصهاريج","الأقبية","الفيضانات"]},
+  {id:"vidange075",cat:"pumps",price:1600,badge:"1 HP · أوتوماتيكية",name:"مضخة المياه العادمة Jadever 0.75 kW",hook:"تفريغ الما بلا تعب وبلا ما تبقى واقف عليها",
+   lead:"مضخة غاطسة من Jadever بجسم من الستانلس، مع عوامة أوتوماتيكية كتشعل وتطفي بوحدها حسب مستوى الما.",
+   imgs:["vidange075-1","vidange075-2"],
+   bens:[["18 م³/س","صبيب مزيان","drop"],["أوتوماتيكية","عوامة كتشعل وتطفي","auto"],["ستانلس","ضد الصدأ","shield"]],
+   specs:[["القوة","0.75 kW · 1 HP"],["الصبيب الأقصى","18 م³ فالساعة"],["العلو الأقصى","13 متر"],["قطر المخرج","2 بوصة"],["الكهرباء","220–240V · 50Hz"],["مع المضخة","عوامة (Flotteur)"]],
+   uses:["المياه العادمة","تفريغ الصهاريج","الأقبية","الفيضانات"]},
+  {id:"qb60",cat:"pumps",price:750,badge:"0.5 HP",name:"مضخة سطحية QB60",hook:"الما فين ما احتاجيتيه، للدار ولا للجردة",
+   lead:"مضخة سطحية للاستعمال المنزلي والفلاحي: كتنقل الما النقي وكتعمّر الخزانات، ببوبيناج ودوّارة من النحاس.",
+   imgs:["qb60-1"],
+   bens:[["علو 35 م","للسطح والخزان","gauge"],["شفط 8 م","من البير ولا الصهريج","drop"],["نحاس","سلك ودوّارة نحاس","shield"]],
+   specs:[["القوة","0.5 HP · 0.37 kW"],["العلو الأقصى","35 متر"],["الصبيب الأقصى","35 لتر فالدقيقة"],["عمق الشفط","8 متر"],["المدخل / المخرج","1 × 1 بوصة"],["الكهرباء","220V · 2900 دورة/د"]],
+   uses:["تعبئة الخزانات","نقل الما النقي","السقي والحدائق"]},
+  {id:"pompe12v",cat:"pumps",price:300,badge:"12 فولت",name:"مضخة غاطسة 12 فولت",hook:"ما كاينش الضو؟ خدم بالبطارية",
+   lead:"مضخة صغيرة وعملية كتخدم بالبطارية 12V، مناسبة للسقي الصغير والتفريغ فين ما كاينش الكهرباء.",
+   imgs:["pompe12v-1","pompe12v-2","pompe12v-3"],
+   bens:[["12V","كتخدم بالبطارية","bolt"],["50 ل/د","صبيب مزيان","drop"],["خفيفة","سهلة فالحمل","hand"]],
+   specs:[["الجهد","12V DC · 5.4A"],["الصبيب","50 لتر فالدقيقة"],["قطر المخرج","25 مم (1 بوصة)"],["الموديل","BL2512 · My Mill Motor"]],
+   uses:["السقي الصغير","القوارب","الخزانات والبراميل"]},
+  {id:"carbu",cat:"parts",price:250,badge:"بنزين + غاز",name:"كاربيراتور الغاز 6.5 HP",hook:"وفّر فالبنزين وخدم بالغاز",
+   lead:"كاربيراتور مزدوج (بنزين + غاز) للمحركات ديال 6.5 HP: نفس المحرك، مصاريف أقل.",
+   imgs:["carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
+   bens:[["مزدوج","بنزين ولا غاز","fuel"],["6.5 HP","للمحركات الشائعة","bolt"],["توفير","مصاريف أقل","coin"]],
+   specs:[["المحركات","6.5 HP"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
+   uses:["المولدات","المضخات بالمحرك","المحركات الفلاحية"]}
+];
+
+const EXTRA={
+ amlou:{about:["مطحنة HD-140 كتخدم بجوج ديال الأحجار ديال الطحن (meules) كيدورو قدام بعضهم، وهادشي اللي كيعطي أملو والعجائن قوام ناعم ومتجانس بحال الرحى التقليدية، ولكن بسرعة الماكينة.","فوقها قمع كبير من الستانلس، وروبيني صغير باش تزيد الزيت ولا الما فاش كتحتاج، ومسمار كتحكم بيه فالنعومة: كتقرّب الأحجار باش يجي ناعم، ولا كتبعدهم باش يجي خشين.","مناسبة للتعاونيات، محلات أملو والعسل، والعائلات اللي كتوجد كميات كبيرة."],
+  faq:[["واش كنحط اللوز المحمّص ديريكت؟","إيه، كتحط اللوز ولا الكركاع المحمّص فالقمع والمطحنة كتحولو لعجينة. للنتيجة الأحسن دوزو مرة خشينة ومن بعد مرة ثانية ناعمة."],["شحال كتطحن فالساعة؟","اللوحة ديالها كتقول حتى 140 كلغ فالساعة، ولكن الكمية الحقيقية كتختلف حسب المادة: أملو والعجائن الثقيلة كيتطحنو بشوية على الحبوب."],["واش كتخدم بالضو ديال الدار؟","إيه، 220 فولت و1500 واط. ركّبها فبريز مزيانة فيها الأرض (prise de terre)."],["شنو نقدر نطحن بيها من غير أملو؟","اللوز، الكاوكاو، السمسم (الطحينة)، الجوز، التوابل، القهوة والحبوب. ما تدخلش ليها حجر ولا حديد."],["كيفاش كنتقّيها؟","طفيها وقلعها من الضو، حل الغطا ديال الأحجار، نقيهم بالما السخون ونشّفهم مزيان قبل ما تسدها."],["واش الأحجار كيتبدلو؟","الأحجار كيعيشو بزاف ديال الوقت. إلا احتاجيتي تبدلهم من بعد، سولنا على القطع فالواتساب."]]},
+ harrata:{about:["آلة حراثة (Motoculteur) بمحرك ديزل، فوق الشونيات (Chenilles) بلاصة العجلات: كتشد الأرض مزيان حتى فالأراضي الثقيلة والطين، وما كتزلقش.","كتبدّل التجهيز حسب الخدمة: المحراث لقلب التربة، المشط لتنظيف الأرض من الحشيش والحجر، الخطّاط لفتح الخطوط والسواقي، وصندوق توزيع السماد باش تسمّد وانت خدام.","الحجم ديالها مناسب للجرادي، الضيعات الصغيرة والمتوسطة، والخدمة بين صفوف الأشجار والخضر."],
+  faq:[["علاش الشونيات حسن من العجلات؟","الشونيات كتوزّع الثقل على مساحة كبيرة، كتشد الأرض الطرية والطين وما كتغرقش، وكتعطيك ثبات كثر فالحراثة."],["واش كتصلح للأرض الصغيرة وبين الأشجار؟","إيه، حجمها مدموج وكتدور بسهولة، مناسبة للخدمة بين صفوف الأشجار والخضر."],["علاش ديزل؟","محرك الديزل كيصرف أقل من البنزين، عندو قوة كثر فالخدمة الثقيلة، والمازوط أرخص."],["شنو التجهيزات اللي كيبانو فالتصاور؟","محراث، مشط تنظيف، خطّاط وصندوق توزيع السماد. أكّد معانا فالواتساب التجهيزات اللي داخلين فالثمن قبل ما تأكد الطلب."],["واش خاصني خبرة باش نخدم بيها؟","لا، الخدمة بيها ساهلة. كنشرحو ليك التشغيل والصيانة فالواتساب، وتقرا الدليل ديالها."]]},
+ hafara:{about:["حفّارة بمحرك 63cc جوج أشواط (3 CV) فوق هيكل بعجلة: العجلة كتشيل الثقل ديال الماكينة، ونتا غير كتوجّهها بالمقبضين.","هادشي كيخليك تحفر بزاف ديال الثقوب فالنهار بلا ما تعيا، وبخدام واحد.","كتجي مع جوج ميشات: 15 سم للغرس الصغير والأعمدة الرقيقة، و20 سم للأشجار والأعمدة الكبار."],
+  faq:[["شنو البنزين اللي كتخدم بيه؟","بنزين عادي مخلوط مع زيت ديال جوج أشواط (Mélange 2 temps). النسبة الشائعة: 40 مل زيت لكل لتر بنزين (25:1)، ولا حسب الدليل ديال الماكينة."],["واش نقدر نخدم بيها بوحدي؟","إيه، العجلة والهيكل كيشيلو الثقل، وشخص واحد كيكفي فالأرض العادية."],["والأرض الصلبة ولا فيها الحجر؟","فالأرض الصلبة رطّبها شوية بالما قبل الحفر. الحجر الكبير خاصك تحيدو باش ما تضرّش الميشة."],["واش الميشات كيتبدلو؟","إيه، كتبدّل بين ميشة 15 سم و20 سم حسب الثقب اللي بغيتي."],["شنو الفرق بينها وبين المثقاب ED630؟","هادي فوق العجلة: مريحة كثر وما كتعياش. ED630 خفيفة وكتشدها باليدين، وثمنها أرخص."]]},
+ ed630:{about:["مثقاب الأرض بمحرك Top Star ED630 (63cc جوج أشواط)، كيتشد بمقبض مزدوج فيه زر التشغيل والبنزين.","ميشة طويلة 80 سم كتعطيك ثقوب عميقة للأشجار والأعمدة، وكتجي بجوج ديال الميشات (20 و30 سم).","خفيف وسهل فالنقل فالطوموبيل ولا البيكوب."],
+  faq:[["شنو البنزين اللي كيخدم بيه؟","بنزين مخلوط مع زيت جوج أشواط (Mélange). النسبة الشائعة: 40 مل زيت لكل لتر بنزين (25:1)، ولا حسب الدليل."],["واش خاصها جوج د الناس؟","فالأرض العادية شخص واحد كيكفي بالمقبض المزدوج. فالأرض الصلبة ولا الميشة 30 سم، الأحسن جوج."],["شحال كيوصل العمق؟","حتى 80 سم تقريباً، اللي هو طول الميشة."],["شنو الفرق بينو وبين الحفّارة بالعجلة؟","ED630 أخف وأرخص. الحفّارة بالعجلة كتشيل عليك الثقل وأريح إلا كنتي غادي تحفر بزاف."]]},
+ hachach:{about:["آلة قطع الأعشاب (Débroussailleuse) بمحرك 52cc جوج أشواط، كتجي كاملة بالإكسسوارات ديالها.","فيها ديسك مثلث للربيع والحشيش، وديسك بالأسنان للأحراش والقصب الرقيق، وكاج (سلة) كتخلي الفصة تطيح منظمة باش تجمعها ساهل.","المقبض المزدوج وحزام الكتف كيوزعو الثقل على الجسم، باش تخدم مدة طويلة بلا ما تعيا."],
+  box:["المحرك 52cc مع العصا","ديسك مثلث","ديسك بالأسنان","كاج الفصة والواقي","المقبض المزدوج","حزام الكتف","قرعة خلط البنزين والزيت","الدليل وأدوات التركيب"],
+  faq:[["شنو البنزين اللي كتخدم بيه؟","بنزين مخلوط مع زيت جوج أشواط. النسبة الشائعة: 40 مل زيت لكل لتر بنزين (25:1)، والقرعة اللي معاها كتعاونك تخلط مزيان."],["واش كتقطع الأحراش والقصب؟","إيه، بالديسك ديال الأسنان كتقطع الأحراش والقصب الرقيق. للحشيش العادي استعمل الديسك المثلث."],["كيفاش نجمع بيها الفصة؟","ركّب الكاج مع الديسك: الفصة كتطيح منظمة على جنب، ساهلة فالجمع."],["واش ثقيلة؟","الحزام ديال الكتف والمقبض المزدوج كيخليوها مريحة، حتى فالخدمة الطويلة."],["واش صعيبة فالتركيب؟","لا، كتجي مع أدوات التركيب والدليل، والتركيب كياخد دقايق. إلا احتاجيتي شي شرح سولنا فالواتساب."]]},
+ vidange15:{about:["مضخة غاطسة من Jadever مخصّصة للمياه العادمة والما الموسخ (Pompe de relevage / vide-cave): كتشفط الما اللي فيه شوية ديال الأوساخ.","كتجي مع صندوق التحكم وعوامة (Flotteur) أوتوماتيكية: كتشعل بوحدها ملي يطلع الما وكتطفي ملي ينقص، باش ما تخدمش ناشفة.","محرك 1.5 kW بسلك ديال الحماية الحرارية، وجسم من الستانلس مقاوم للصدأ."],
+  box:["المضخة 1.5 kW","صندوق التحكم","العوامة (Flotteur)","المخرج 2 بوصة","السلك الكهربائي"],
+  faq:[["واش كتشفط الما اللي فيه الوسخ؟","إيه، مخصّصة للما الموسخ والمياه العادمة فيها أوساخ صغيرة. ماشي للحجر الكبير، الخرق ولا البلاستيك."],["واش خاصها تكون داخل الما؟","إيه، مضخة غاطسة: خاصها تكون غاطسة ملي كتخدم. العوامة كتطفيها بوحدها ملي ينقص الما."],["شحال كتغطس؟","حسب اللوحة ديالها حتى 5 متر تحت الما."],["واش كتخدم بالضو ديال الدار؟","إيه، 220 فولت. 1.5 kW كتحتاج بريز مزيانة ولا خط مباشر."],["نختار 1.5 kW ولا 0.75 kW؟","إلا كان عندك بزاف ديال الما ولا خاصك تطلعو للفوق (حتى 14.5 م)، خود 1.5 kW. للأقبية والصهاريج الصغار، 0.75 kW كتكفي."]]},
+ vidange075:{about:["مضخة غاطسة من Jadever للمياه العادمة والما الموسخ: كتفرّغ الأقبية، الصهاريج والحفر بلا تعب.","فيها عوامة (Flotteur) أوتوماتيكية كتشعل وتطفي بوحدها حسب مستوى الما.","محرك 0.75 kW بحماية حرارية وجسم ستانلس ضد الصدأ."],
+  box:["المضخة 0.75 kW","العوامة (Flotteur)","المخرج 2 بوصة","السلك الكهربائي"],
+  faq:[["واش كتشفط الما اللي فيه الوسخ؟","إيه، الما الموسخ فيه أوساخ صغيرة. ماشي للحجر الكبير ولا الخرق."],["واش كتخدم أوتوماتيك؟","إيه، العوامة كتشعلها ملي يطلع الما وكتطفيها ملي ينقص."],["شحال كتطلع الما للفوق؟","حتى 13 متر كأقصى علو. كلما طلعتي للفوق كينقص الصبيب."],["نختار 0.75 kW ولا 1.5 kW؟","0.75 kW كتكفي للأقبية والصهاريج العادية. إلا الما بزاف ولا العلو كبير، خود 1.5 kW."]]},
+ qb60:{about:["مضخة سطحية (Pompe périphérique) كتركب برا الما: كتشفط من البير ولا الصهريج وكتطلّع الما للخزان ولا للسطح.","بوبيناج بسلك النحاس ودوّارة (Turbine) من النحاس: كتعيش وكتقاوم الحرارة.","مناسبة للدار، الجردة والسقي الصغير."],
+  faq:[["واش كتطلع الما من البير؟","إيه، إلا كان مستوى الما ماشي تحت من 8 متر على المضخة. إلا كان البير أعمق، خاصك مضخة غاطسة."],["واش كتخدم أوتوماتيك؟","QB60 كتشعل وتطفي يدوياً. إلا بغيتيها أوتوماتيك كيتزاد ليها جهاز ديال الضغط (Pressostat)."],["شحال كتجيب ديال الما؟","حتى 35 لتر فالدقيقة. كلما كان العلو كبير كينقص الصبيب."],["واش للما السخون؟","لا، للما النقي العادي. ما تشفطش بيها ما فيه الرملة ولا الوسخ."],["واش خاصها تعمير قبل التشغيل؟","إيه، أول مرة عمّر الجسم ديالها والتيو ديال الشفط بالما قبل ما تشعلها، باش ما تدورش ناشفة."]]},
+ pompe12v:{about:["مضخة غاطسة صغيرة كتخدم بالتيار المستمر 12V: كتربطها مع بطارية الطوموبيل، بطارية عادية ولا نظام شمسي 12V.","مناسبة فين ما كاينش الضو: الجرادي، القوارب، تفريغ البراميل والخزانات.","خفيفة، كتحطها فالما وتربط الخيوط وصافي."],
+  faq:[["واش كتخدم بالبلاكة الشمسية؟","إيه، مع نظام 12V (لوحة شمسية + منظم + بطارية)."],["واش كتخدم بالضو ديال الدار 220V؟","لا، خاصها 12V DC. تقدر تستعمل محوّل (Alimentation) 12V يعطي على الأقل 6A."],["شحال كتجيب ديال الما؟","حوالي 50 لتر فالدقيقة كأقصى صبيب."],["واش كتغطس فالما؟","إيه، مضخة غاطسة: خاصها تكون داخل الما ملي كتخدم."]]},
+ carbu:{about:["كاربيراتور مزدوج (Dual fuel) للمحركات ديال 6.5 HP: كيخلي المحرك يخدم بالغاز ولا بالبنزين.","مناسب للمحركات الشائعة ديال المولدات الكهربائية والمضخات بالمحرك.","كيتركب بلاصة الكاربيراتور القديم، وكيجي مع الخراطيم ديالو."],
+  faq:[["واش كيناسب المحرك ديالي؟","مناسب للمحركات 6.5 HP اللي كتكون فالمولدات والمضخات. صيفط لنا تصويرة المحرك فالواتساب ونأكدو ليك."],["واش كيخدم بالبوطة ديال الدار؟","إيه، بالغاز مع ريكولاتور مناسب، وتقدر ترجع للبنزين فأي وقت."],["واش صعيب فالتركيب؟","كيتركب بلاصة القديم بنفس البولونات. أي ميكانيسيان كيركبو فدقايق."]]}
+};
+P.forEach(p=>Object.assign(p,EXTRA[p.id]||{}));
+P.push(
+ {id:"reaper",cat:"cut",price:16000,badge:"ديزل 6 خيل",name:"حصّادة الفصة بالديزل 6 خيل",hook:"كتحش الفصة وكتلوحها على جنب، بلا يد عاملة",
+  lead:"حصّادة (Moissonneuse-andaineuse) بمحرك ديزل 6 خيل: كتقطع الفصة والزرع وكتصفّفها على جنب فخط منظم، باش يبقى غير الجمع.",
+  imgs:["reaper-1"],
+  bens:[["6 خيل ديزل","قوية واقتصادية فالمازوط","fuel"],["كتلوح لجنب","الفصة كتطيح منظمة","tools"],["بالعجلات","كتمشي بوحدها","wheel"]],
+  specs:[["المحرك","ديزل (مازوط) · 6 خيل"],["الخدمة","حش وتصفيف على جنب (Andainage)"],["الحركة","كتمشي بوحدها، والفلاح كيوجّه"],["الاستعمال","الفصة، الشعير، القمح والكلأ"]],
+  uses:["الفصة","الشعير والقمح","الكلأ للبهايم","الضيعات"],
+  about:["حصّادة كتمشي بالمحرك ديالها ونتا غير كتوجّهها. السكاكين ديال القدام كيقطعو الفصة ولا الزرع، والحزام (Tapis) كيدفعو لجنب وكيخليه فخط منظم (Andain).","هادشي كيوفر عليك نهارات ديال الحش باليد، وكيسهّل الجمع ديال الكلأ ولا الربط.","محرك ديزل 6 خيل: صبور على الخدمة الطويلة وكيصرف قليل."],
+  faq:[["شنو الفرق بينها وبين الحشاشة 7 خيل؟","الحصّادة بالديزل كتقطع وكتصفّف الفصة على جنب فخط منظم، مزيانة للمساحات الكبيرة. الحشاشة 7 خيل بالبنزين كتقطع بالمنشار ديالها وكتخلي الفصة طايحة فبلاصتها، وثمنها أرخص."],["واش كتحصد القمح والشعير؟","إيه، كتقطع الفصة والزرع (القمح والشعير) وكتصفّفهم على جنب. ما كتدرسش، غير كتحصد."],["شحال كتحصد فالنهار؟","كتختلف حسب الأرض والزرع وسرعة الخدمة. سولنا فالواتساب على المساحة ديالك ونعطيوك فكرة."],["واش صعيبة فالخدمة؟","لا، كتمشي بوحدها والتوجيه ساهل. كنشرحو ليك التشغيل والصيانة."]]},
+ {id:"faucheuse",cat:"cut",price:11000,badge:"بنزين 7 خيل",name:"حشاشة الفصة بالبنزين 7 خيل",hook:"حش الفصة بسرعة وبلا تعب",
+  lead:"حشاشة (Motofaucheuse) بمحرك بنزين 7 خيل ومنشار قاطع طويل قدام: كتحش الفصة والربيع بسرعة وبمجهود قليل.",
+  imgs:["faucheuse-1","faucheuse-2"],
+  bens:[["7 خيل","محرك بنزين قوي","bolt"],["منشار طويل","قطع عريض فكل دوزة","tools"],["مقبض مريح","توجيه ساهل","hand"]],
+  specs:[["المحرك","بنزين (Essence sec) · 7 خيل"],["أداة القطع","منشار بالأسنان (Barre de coupe)"],["الحركة","بالعجلات"],["الاستعمال","الفصة، الربيع والكلأ"]],
+  uses:["الفصة","الربيع","الكلأ","الجرادي والضيعات"],
+  about:["حشاشة بمحرك بنزين 7 خيل، قدامها منشار قاطع (Barre de coupe) كيتحرك يمين وشمال وكيقطع الفصة والربيع من التحت.","المقبض الطويل كيخليك توجهها وانت واقف، بلا ما تحني ظهرك.","مناسبة للمساحات الصغيرة والمتوسطة، وكتعوّض الحش بالمنجل."],
+  faq:[["شنو البنزين؟","بنزين عادي بلا زيت (Essence sec)، حيت المحرك 4 أشواط. الزيت ديال المحرك كيتحط بوحدو فالكارتير."],["شنو الفرق بينها وبين الحصّادة 6 خيل ديزل؟","هادي أرخص وأخف، كتحش وكتخلي الفصة فبلاصتها. الحصّادة بالديزل كتصفّف الفصة على جنب ومناسبة للمساحات الكبيرة."],["واش كتقطع الربيع الطويل؟","إيه، المنشار ديالها كيقطع الفصة والربيع والكلأ الطويل."],["كيفاش نصون المنشار؟","نقيه من بعد كل خدمة، وشحمو بشوية ديال الزيت. السكاكين كيتسنّو ولا كيتبدلو ملي يتقادو."]]},
+ {id:"tondeuse",cat:"cut",price:3500,badge:"Jadever · أوتوماتيكية",name:"طندوزة العشب بالبنزين Jadever",hook:"حديقة نقية فدقايق، والطندوزة كتمشي بوحدها",
+  lead:"طندوزة العشب (Tondeuse) من Jadever بمحرك بنزين، فيها أومبرياج كيخليها تمشي بوحدها (Autotractée)، مع كيس كيجمع العشب.",
+  imgs:["tondeuse-1","tondeuse-2"],
+  bens:[["كتمشي بوحدها","أومبرياج (Autotractée)","auto"],["كيس الجمع","العشب كيتجمع بوحدو","leaf"],["Jadever","ماركة معروفة","shield"]],
+  specs:[["المحرك","بنزين (Essence sec) · 4 أشواط"],["الحركة","أوتوماتيكية بالأومبرياج (Autotractée)"],["جمع العشب","كيس الجمع (Bac de ramassage)"],["الماركة","Jadever"]],
+  uses:["الحدائق","الفيلات","الملاعب الصغيرة","المساحات الخضراء"],
+  about:["طندوزة بمحرك بنزين 4 أشواط، وفيها أومبرياج: كتشد المقبض والطندوزة كتمشي بوحدها، نتا غير كتوجّه.","العشب اللي كتقطع كيدخل للكيس اللي اللور، باش تبقى الحديقة نقية بلا ما تجمع.","كتقدر تبدّل علو القص حسب ما بغيتي العشب يكون."],
+  faq:[["شنو البنزين؟","بنزين عادي بلا زيت (Essence sec). المحرك عندو الزيت ديالو فالكارتير."],["شنو معنى أومبرياج؟","يعني الطندوزة كتمشي بوحدها ملي كتشد المقبض، ما كتحتاجش تدفعها. مريحة بزاف فالمساحات الكبيرة."],["واش كنقدر نبدّل علو القص؟","إيه، عندها تعديل ديال علو القص."],["واش للعشب الطويل بزاف؟","مخصّصة للعشب ديال الحدائق. إلا كان الربيع طويل بزاف، استعمل الحشاشة قبل."]]},
+ {id:"wqd",cat:"pumps",price:1300,badge:"بالعوامة",name:"مضخة المياه العادمة WQD18-10",hook:"تفريغ الما الموسخ بلا تعب",
+  lead:"مضخة غاطسة للمياه العادمة (Vide-cave) من My Mill Pump، فيها سكين كيقطع الأوساخ وعوامة أوتوماتيكية كتشعل وتطفي بوحدها.",
+  imgs:["wqd-1","wqd-2","wqd-3"],
+  bens:[["18 م³/س","صبيب كبير","drop"],["أوتوماتيكية","بالعوامة","auto"],["ستانلس","ضد الصدأ","shield"]],
+  specs:[["الموديل","WQD18-10-0.55 · My Mill Pump"],["القوة","‏0.55 kW (0.75 HP حسب اللوحة)"],["الصبيب الأقصى","18 م³ فالساعة"],["العلو الأقصى","10 متر"],["قطر المخرج","2 بوصة"],["الكهرباء","220V · 50Hz · 2.5A"]],
+  uses:["المياه العادمة","الأقبية","الحفر والصهاريج","الفيضانات"],
+  about:["مضخة غاطسة مخصّصة للما الموسخ والمياه العادمة: كتشفط الما اللي فيه الأوساخ وكتخرجو من المخرج 2 بوصة.","العوامة (Flotteur) كتشعلها ملي يطلع الما وكتطفيها ملي ينقص، باش ما تحرقش.","جسم من الستانلس ومحرك بسلك النحاس."],
+  faq:[["واش كتشفط الما فيه الوسخ؟","إيه، مخصّصة للما الموسخ. ماشي للحجر الكبير، الخرق ولا البلاستيك."],["شحال كتطلع الما؟","حتى 10 متر كأقصى علو. كلما طلعتي للفوق كينقص الصبيب."],["واش كتخدم أوتوماتيك؟","إيه، بالعوامة: كتشعل وتطفي بوحدها حسب مستوى الما."],["شنو الفرق بينها وبين Jadever؟","هاد WQD أرخص، والصبيب ديالها 18 م³/س. Jadever 1.5 kW كتطلع حتى 14.5 م وأقوى."]]},
+ {id:"qgd",cat:"pumps",price:800,badge:"علو 90 م",name:"مضخة البير QGD 1 حصان",hook:"طلّع الما من البير العميق",
+  lead:"مضخة غاطسة للبير (Pompe immergée à vis) من My Mill Pump: رقيقة باش تدخل فالبير، وكتطلّع الما حتى 90 متر.",
+  imgs:["qgd-2","qgd-1","qgd-3"],
+  bens:[["علو 90 م","للبير العميق","gauge"],["1 حصان","0.75 kW","bolt"],["ستانلس","مقاومة للصدأ","shield"]],
+  specs:[["الموديل","QGD3-90-0.75 · My Mill Pump"],["القوة","‏1 HP · ‏0.75 kW"],["العلو الأقصى","90 متر"],["الصبيب الأقصى","3 م³ فالساعة (≈ 50 لتر فالدقيقة)"],["قطر المخرج","1 بوصة"],["الكهرباء","220V · 50Hz · 3.4A"]],
+  uses:["الآبار","الأثقاب (Forage)","السقي","الخزانات"],
+  about:["مضخة بالبرغي (Vis) كتنزل داخل البير ولا الثقب، وكتطلع الما للسطح ولا للخزان حتى علو 90 متر.","الجسم ديالها ستانلس ورقيق، كيدخل فالأثقاب الضيقة.","مناسبة للسقي بالكوت كوت (Goutte à goutte) والدار."],
+  faq:[["شحال من عرض خاص البير؟","المضخة رقيقة، كتدخل فالأثقاب العادية. سولنا على القطر ديال البير ديالك ونأكدو ليك."],["شحال كتجيب ديال الما؟","حتى 3 م³ فالساعة، وكينقص الصبيب كلما كبر العلو."],["واش خاصها تكون داخل الما؟","إيه، خاصها تكون غاطسة ديما. ما تخليهاش تخدم ناشفة."],["واش كتخدم بالبلاكة الشمسية؟","كتخدم بـ220V. مع الطاقة الشمسية خاصك أونديلور (Onduleur) مناسب."]]},
+ {id:"generator",cat:"power",price:2800,badge:"3 كيلوفولت",name:"مولّد الكهرباء Jadever ‏3 kVA",hook:"الضو معاك فين ما مشيتي",
+  lead:"مولّد كهربائي بالبنزين من Jadever، 2800 واط و220 فولت: للضو، الماكينات والعدة فالجرادي، الورشات والمناطق بلا كهرباء.",
+  imgs:["generator-1"],
+  bens:[["2800 واط","3 kVA","bolt"],["220V","بريزات عادية","auto"],["Jadever","هيكل حديد قوي","shield"]],
+  specs:[["القوة","‏3 kVA · ‏2800W"],["الجهد","220V"],["الوقود","بنزين (Essence)"],["الخرجات","بريزات 220V + عداد"],["الهيكل","إطار حديد للحماية والحمل"]],
+  uses:["الجرادي والضيعات","الورشات","المضخات الصغيرة","الأعراس والمناسبات"],
+  about:["مولّد بالبنزين من Jadever كيعطيك 2800 واط ديال الكهرباء 220V، فيه بريزات عادية وعداد كيبين ليك الجهد.","الإطار ديال الحديد كيحميه وكيسهّل عليك تحملو.","كيكفي لماكينات بحال المضخات الصغيرة، الضو، المنشار ولا ماكينة اللحام الصغيرة."],
+  faq:[["شنو نقدر نشعل بيه؟","حتى 2800 واط فالمجموع: الضو، تلفزة، مضخة حتى 1 حصان، عدة كهربائية. جمع القوة ديال الأجهزة وخليها تحت 2800 واط."],["واش كيشعل مضخة 1.5 kW؟","المحركات كتجبد قوة كبيرة فالتشغيل. لمضخة 1.5 kW سولنا قبل، باش نتأكدو."],["شنو البنزين؟","بنزين عادي بلا زيت. المحرك عندو الزيت ديالو، شوف المستوى ديالو قبل كل تشغيل."],["واش كنقدر نخدمو داخل الدار؟","لا، ديما برا وفبلاصة فيها الهوا، حيت الدخان ديالو خطير."]]},
+ {id:"welder",cat:"power",price:1300,badge:"160 أمبير",name:"ماكينة اللحام Jadever ‏160A",hook:"لحام نقي واحترافي بماكينة خفيفة",
+  lead:"ماكينة لحام إنفيرتر (Poste à souder Inverter MMA) من Jadever، 160 أمبير على 220 فولت: خفيفة وكتلحم بالبابات (Électrodes).",
+  imgs:["welder-1","welder-2"],
+  bens:[["160A","قوة لحام","bolt"],["إنفيرتر","خفيفة وكتصرف قليل","auto"],["220V","ضو الدار","shield"]],
+  specs:[["الموديل","JDWD11601 · Jadever"],["النوع","Inverter MMA (بالإلكترود)"],["تيار اللحام","من 10A حتى 160A"],["الكهرباء","220–240V · 50/60Hz"],["التيار الأقصى","‏26A (فعلي 19A)"],["الحماية","IP21S · Class F"]],
+  uses:["الحدادة","الصيانة فالضيعة","الأبواب والشبابك","الأشغال الصغيرة"],
+  about:["ماكينة لحام بتقنية الإنفيرتر: خفيفة وصغيرة على الماكينات القديمة، وكتعطيك قوس (Arc) مستقر ولحام نقي.","كتخدم بالبابات (Électrodes) العادية، والتيار كيتعدّل من 10 حتى 160 أمبير حسب السمك.","مناسبة للحدادين، الصيانة فالضيعة والدار."],
+  faq:[["شنو البابات اللي كتخدم بيها؟","البابات العادية (Électrodes rutile) ديال 2.5 و3.2 مم، وحتى 4 مم للسمك الكبير."],["واش كتخدم بضو الدار؟","إيه، 220V. للخدمة بـ160A خاص الخط والقاطع يتحملو (حتى 26A)."],["واش للمبتدئين؟","إيه، الإنفيرتر كيسهّل اللحام وكيعطي قوس مستقر."],["واش كتخدم مع المولّد؟","إيه، مع مولّد قوي كفاية. للخدمة بالقوة الكاملة سولنا على المولّد المناسب."]]},
+ {id:"sprayer",cat:"tools",price:2700,badge:"1200 واط",name:"ماكينة الصباغة Jadever Airless",hook:"صبغ الحيوط بسرعة وبنتيجة نقية",
+  lead:"ماكينة رش الصباغة بالضغط العالي (Pompe à peinture Airless) من Jadever، 1200 واط: كتصبغ الحيوط، السقوف والأبواب بسرعة وبنتيجة متساوية.",
+  imgs:["sprayer-1","sprayer-2"],
+  bens:[["1200 واط","ضغط عالي","bolt"],["Airless","بلا كومبريسور","auto"],["سريعة","مساحات كبيرة","gauge"]],
+  specs:[["القوة","‏1200W"],["الكهرباء","220V"],["النوع","Airless (ضغط عالي بلا هوا)"],["الاستعمال","الصباغة الداخلية والخارجية"],["الماركة","Jadever"]],
+  uses:["الصباغين","الحيوط والسقوف","الأبواب والحديد","الورشات"],
+  about:["ماكينة Airless كتجبد الصباغة مباشرة من السطل وكترشها بضغط عالي من البيستولي، بلا ما تحتاج كومبريسور.","كتربّح بزاف ديال الوقت على الرولو والشيتة، والصباغة كتجي متساوية.","مناسبة للصباغين المحترفين وللي عندو مساحات كبيرة."],
+  faq:[["واش كتخدم بالصباغة الما (Eau)؟","إيه، مع الصباغة بالما والصباغة الزيتية. إلا كانت غليظة بزاف، رققها شوية حسب التوصيات ديال الصباغة."],["واش خاصها كومبريسور؟","لا، Airless كتخدم بوحدها بالضغط ديال المضخة."],["كيفاش كنتقّيها؟","من بعد الخدمة دوّز فيها الما (للصباغة بالما) ولا الديليون (للزيتية) حتى يخرج نقي."]]},
+ {id:"chainsaw",cat:"tools",price:1800,badge:"2 بطاريات 21V",name:"منشار الخشب بالبطارية 21V",hook:"قطع الخشب بلا بنزين وبلا سلك",
+  lead:"منشار خشب كهربائي (Tronçonneuse sans fil) كيخدم بالبطارية 21V، كيجي بجوج ديال البطاريات: خفيف، ساكت، وبلا بنزين.",
+  imgs:["chainsaw-1","chainsaw-2"],
+  bens:[["2 بطاريات","خدمة أطول","bolt"],["21V","بلا سلك","auto"],["خفيف","مريح فاليد","hand"]],
+  specs:[["الجهد","21V"],["البطاريات","2 بطاريات"],["النوع","منشار بالسلسلة (Chaîne)"],["الاستعمال","تقليم الأشجار وقطع الخشب"]],
+  uses:["تقليم الأشجار","الحطب","الجرادي","الأشغال الصغيرة"],
+  about:["منشار بالسلسلة كيخدم بالبطارية: ما كيحتاجش بنزين ولا سلك، وكتقدر تخدم بيه فوسط الجردة.","كيجي بجوج بطاريات: وحدة كتخدم بيها والأخرى كتشارجي.","خفيف وساكت على منشار البنزين، مزيان للتقليم والحطب."],
+  faq:[["شحال كتخدم البطارية؟","كتختلف حسب الخشب. مع جوج بطاريات كتخدم مدة أطول، وحدة كتشارجي والأخرى خدامة."],["واش كيقطع الخشب الغليظ؟","مخصّص للتقليم والفروع والحطب المتوسط. للجذوع الكبيرة خاص منشار بالبنزين."],["واش الشارجور معاه؟","سولنا فالواتساب نأكدو ليك شنو كاين فالكارطون."]]},
+ {id:"socket",cat:"tools",price:600,badge:"1/2 بوصة",name:"صندوق المنيطات 1/2 (Douilles)",hook:"كاع المقاسات فصندوق واحد",
+  lead:"صندوق ديال المنيطات (Coffret de douilles) 1/2 بوصة، بمقاسات مختلفة فصندوق بلاستيك قوي.",
+  imgs:["socket-1"],
+  bens:[["1/2 بوصة","المقاس الأكثر استعمالاً","tools"],["مقاسات بزاف","من الصغير للكبير","gauge"],["صندوق","منظم وسهل الحمل","shield"]],
+  specs:[["المقاس","1/2 بوصة (Carré 1/2)"],["المحتوى","منيطات بمقاسات مختلفة"],["الصندوق","بلاستيك قوي"]],
+  uses:["الميكانيك","صيانة الماكينات","الطوموبيلات","الورشات"],
+  about:["صندوق منظم فيه منيطات 1/2 بوصة بمقاسات من الصغار للكبار، كل وحدة فبلاصتها.","مناسب للميكانيك وصيانة الماكينات الفلاحية والطوموبيلات."],
+  faq:[["شنو المقاسات اللي فيه؟","كيجي بمقاسات مختلفة من الصغار للكبار. صيفط لنا فالواتساب نعطيوك اللائحة الكاملة."],["واش الكليكيت معاه؟","سولنا فالواتساب باش نأكدو ليك شنو كاين فالصندوق."]]}
+);
+
+
+const ic=(n,sw=2.2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${({
+  check:'<path d="m4 12 5 5L20 6"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>',
+  truck:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
+  tag:'<path d="M3 12V4h8l10 10-8 8Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 11h7M8.5 14h4"/>',
+  shield:'<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+  arrow:'<path d="M19 12H5m6-6-6 6 6 6"/>', next:'<path d="m9 6 6 6-6 6"/>', prev:'<path d="m15 6-6 6 6 6"/>',
+  bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7Z"/>', drop:'<path d="M12 3s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12Z"/>',
+  gauge:'<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4-5"/>', tools:'<path d="M14 7l3-3 3 3-3 3M17 4v0M4 20l9-9M8 4a4 4 0 0 0 4 5l-6 6"/>',
+  stone:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/>', fuel:'<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h12M14 9h2l2 2v6a2 2 0 0 0 4 0V8l-3-3"/><path d="M7 8h4"/>',
+  tracks:'<rect x="3" y="12" width="18" height="7" rx="3.5"/><circle cx="7.5" cy="15.5" r="1"/><circle cx="12" cy="15.5" r="1"/><circle cx="16.5" cy="15.5" r="1"/><path d="M7 12V8h8l2 4"/>',
+  wheel:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4v5.5M12 14.5V20M4 12h5.5M14.5 12H20"/>',
+  hand:'<path d="M7 11V6a1.5 1.5 0 0 1 3 0v5M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V5.5a1.5 1.5 0 0 1 3 0V12M16 11V8.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L4 14a1.5 1.5 0 0 1 2.4-1.8L7 13"/>',
+  auto:'<path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/>', coin:'<circle cx="12" cy="12" r="8"/><path d="M14.5 9.5c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6.5V8M12 16v1.5"/>',
+  cart:'<path d="M6 6h15l-1.5 8h-12Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/>',
+  form:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>', leaf:'<path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15Z"/><path d="M5 19 13 11"/>',
+  play:'<path d="M8 5v14l11-7Z" fill="currentColor"/>', star:'<path d="m12 3 2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.8Z"/>'
+})[n]}</svg>`;
+
+const catName=id=>(CATS.find(c=>c.id===id)||{}).name||"";
+const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const app=document.getElementById("app");
+
+function pcard(p){
+  return `<div class="pc"><a href="#p-${p.id}">
+    <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}</div>
+    <div class="bd"><span class="k">${catName(p.cat)}</span><h3>${esc(p.name)}</h3><p class="hk">${esc(p.hook)}</p>
+    <span class="btn btn-sun">${ic("cart")}اطلب الآن</span></div></a></div>`;
+}
+const FAQ=[
+  ["كيفاش ندير الطلب؟","اختار المنتج، عمّر الاسم والهاتف والمدينة فالفورمولير، ومن بعد كيتحل ليك الواتساب بالطلب ديالك واجد. كنأكدو معاك كاع التفاصيل فالواتساب."],
+  ["واش التوصيل لجميع المدن؟","إيه، التوصيل متوفر لجميع مدن المغرب. المدة كنحددوها معاك حسب المدينة ملي نأكدو الطلب."],
+  ["واش الثمن اللي فالسيت هو الثمن النهائي؟","الثمن المكتوب على كل منتج هو الثمن ديالو. أي تفصيل على التوصيل كنقولوه ليك بوضوح قبل ما تأكد."],
+  ["ما عرفتش شنو يناسبني، شنو ندير؟","صيفط لنا فالواتساب شنو الخدمة اللي بغيتي دير (مساحة الأرض، عمق البير، نوع الإنتاج...) ونعاونوك تختار المنتج المناسب قبل ما تشري."],
+  ["واش نقدر نطلب أكثر من وحدة؟","إيه، بدّل الكمية فالفورمولير والمجموع كيتحسب بوحدو. للتعاونيات والطلبات الكبيرة تواصل معنا مباشرة فالواتساب."]
+];
+const HILLS=`<svg viewBox="0 0 1440 190" preserveAspectRatio="none"><path d="M0 90 C240 30 420 40 640 80 S1080 140 1440 60 V190 H0Z" fill="#B9E39A"/><path d="M0 130 C300 80 520 100 760 125 S1180 150 1440 105 V190 H0Z" fill="#7FCB5B"/><g stroke="#5DAE3E" stroke-width="3" opacity=".55"><path d="M0 160 C400 140 900 150 1440 135"/><path d="M0 175 C400 158 900 168 1440 152"/></g><path d="M0 165 C380 150 900 165 1440 145 V190 H0Z" fill="#5FB240"/></svg>`;
+
+function homeView(){
+  const am=P.find(p=>p.id==="amlou");
+  app.innerHTML=`
+  <section class="hero">
+    <div class="sun"></div><div class="hills">${HILLS}</div>
+    <div class="wrap">
+      <div>
+        <span class="pill"><i>${ic("leaf")}</i>معدات فلاحية ومعدات التعاونيات</span>
+        <h1>خدم أرضك <span class="hl">بنص المجهود</span>،<br>وربّح الوقت والفلوس</h1>
+        <p class="lead">حفّارات، مضخات، آلات الحراثة وقطع الأعشاب، ومطحنة أملو للتعاونيات. منتجات مجرّبة بثمن واضح، كتوصلك حتى لباب الدار فأي مدينة.</p>
+        <div class="cta-row">
+          <a class="btn btn-sun" href="#products">${ic("cart")}شوف المنتجات والأثمنة</a>
+          <a class="btn btn-white" href="https://wa.me/${WA}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#25A55A"><use href="#i-wa"/></svg>نصيحة مجانية</a>
+        </div>
+        <div class="proof"><span>${ic("truck")}التوصيل لجميع المدن</span><span>${ic("tag")}الثمن مكتوب</span><span>${ic("chat")}تأكيد فالواتساب</span></div>
+      </div>
+      <div class="show" id="show">
+        <div class="ring" id="ring">${P.map(p=>`<a class="it" href="#p-${p.id}" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${src(p.id+"-cut")}" alt=""></a>`).join("")}</div>
+        <div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>
+        <div class="arrows"><button type="button" id="nx" aria-label="التالي">${ic("next",2.6)}</button><button type="button" id="pv" aria-label="السابق">${ic("prev",2.6)}</button></div>
+        <a class="cap" id="cap" href="#"><b id="capName"></b><span class="pz"><span class="num" id="capPrice"></span> درهم</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="benefits"><div class="wrap"><div class="grid4">
+    <div class="bcard"><span class="ico3d">${ic("truck")}</span><div><b>التوصيل لجميع المدن</b><small>كنوصلو حتى لعندك</small></div></div>
+    <div class="bcard"><span class="ico3d sun">${ic("tag")}</span><div><b>ثمن واضح</b><small>مكتوب على كل منتج</small></div></div>
+    <div class="bcard"><span class="ico3d">${ic("shield")}</span><div><b>منتجات مجرّبة</b><small>Jadever، Top Star...</small></div></div>
+    <div class="bcard"><span class="ico3d sun">${ic("chat")}</span><div><b>نصيحة قبل الشراء</b><small>نعاونوك تختار</small></div></div>
+  </div></div></div>
+
+  <section class="s" id="cats">
+    <div class="wrap">
+      <div class="head"><span class="tagline">الأصناف</span><h2 class="h2">شنو <span class="g">كتقلّب</span> عليه؟</h2></div>
+      <div class="cats">${CATS.map(c=>{const n=P.filter(p=>p.cat===c.id).length;return `<a class="cat" style="--c:${c.c}" href="#c-${c.id}"><img src="${src(c.cover+"-cut")}" alt="" loading="lazy"><b>${c.name}</b><small><span class="num">${n}</span> ${n>1?"منتجات":"منتج"}</small></a>`}).join("")}</div>
+    </div>
+  </section>
+
+  <section class="s" id="products" style="padding-top:10px">
+    <div class="wrap">
+      <div class="head"><span class="tagline">المنتجات</span><h2 class="h2">كاع المنتجات <span class="g">بالثمن</span></h2><p class="sub">كل منتج عندو صفحتو بالتصاور الحقيقية والمواصفات، والطلب كياخد دقيقة.</p></div>
+      <div class="chips" role="group" aria-label="الأصناف"><button class="chip" type="button" data-c="" aria-pressed="true">الكل</button>${CATS.map(c=>`<button class="chip" type="button" data-c="${c.id}" aria-pressed="false">${c.name}</button>`).join("")}</div>
+      <div class="grid" id="grid">${P.map(pcard).join("")}</div>
+    </div>
+  </section>
+
+  <section class="s" id="compare" style="padding-top:20px">
+    <div class="wrap">
+      <div class="head"><span class="tagline">علاش ماكينة؟</span><h2 class="h2">اليد العاملة غالية؟ <span class="g">الماكينة كتخلّص راسها</span></h2><p class="sub">كل نهار كتخدم فيه باليد هو نهار ديال الفلوس والتعب. قارن بوحدك:</p></div>
+      <div class="cmp">
+        <div class="col bad"><h3>${ic("x",3)} بلا ماكينة</h3><ul>
+          <li>${ic("x",3)}الحفر باليد كياخد نهارات وبزاف ديال الخدامة</li>
+          <li>${ic("x",3)}مصاريف اليد العاملة كتزيد كل موسم</li>
+          <li>${ic("x",3)}الحراثة والتنظيف كيتعطّلو وكيفوتك الوقت</li>
+          <li>${ic("x",3)}أملو باليد: إنتاج قليل وتعب كبير</li></ul></div>
+        <div class="col good"><h3>${ic("check",3)} مع معدات أطلس</h3><ul>
+          <li>${ic("check",3)}الحفّارة كتحفر الثقب فدقايق، بخدام واحد</li>
+          <li>${ic("check",3)}كتشريها مرة وحدة وكتخدم معاك سنين</li>
+          <li>${ic("check",3)}كتوجد أرضك فالوقت المناسب</li>
+          <li>${ic("check",3)}مطحنة أملو: إنتاج كبير وقوام ناعم ديما</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="coop" style="padding-top:10px">
+    <div class="wrap">
+      <div class="spot">
+        <div style="position:relative">
+          <div class="phone"><video src="${VID}" poster="${src("amlou-demo")}" autoplay muted loop playsinline preload="metadata"></video><span class="live">فيديو حقيقي</span></div>
+          <img class="cut" src="${src("amlou-cut")}" alt="">
+        </div>
+        <div>
+          <span class="tagline">للتعاونيات والمشاريع</span>
+          <h2 class="h2">${esc(am.name)}</h2>
+          <p class="sub">شوف بعينيك: كتحط اللوز والكركاع فوق، وكيخرج أملو ناعم من التحت. ماكينة وحدة كتبدا بيها مشروع مربح.</p>
+          <ul>${am.bens.map(b=>`<li><span class="ico3d">${ic(b[2])}</span><span><b>${b[0]}:</b> ${b[1]}</span></li>`).join("")}</ul>
+          <div class="pricebig"><span class="tagp"><span class="num">${money(am.price)}</span><small>درهم</small></span><a class="btn btn-green" href="#p-amlou">${ic("cart")}اطلبها دابا</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="how" style="padding-top:20px">
+    <div class="wrap">
+      <div class="head"><span class="tagline">كيفاش تطلب</span><h2 class="h2">الطلب ساهل، <span class="g">فـ3 خطوات</span></h2></div>
+      <ol class="steps">
+        <li><span class="ico3d">${ic("cart")}</span><h3>اختار المنتج</h3><p>شوف التصاور الحقيقية، الثمن والمواصفات.</p></li>
+        <li><span class="ico3d sun">${ic("form")}</span><h3>عمّر الفورمولير</h3><p>الاسم، الهاتف والمدينة. المجموع كيبان ليك دغيا.</p></li>
+        <li><span class="ico3d">${ic("chat")}</span><h3>أكد فالواتساب</h3><p>كيتحل ليك الواتساب بالطلب واجد، كنأكدو ونصيفطو.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="s" id="faq" style="padding-top:20px">
+    <div class="wrap">
+      <div class="head"><span class="tagline">أسئلة</span><h2 class="h2">الأسئلة اللي <span class="g">كتسولونا</span> عليها</h2></div>
+      <div class="faq">${FAQ.map(q=>`<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join("")}</div>
+    </div>
+  </section>
+
+  <section class="wrap"><div class="band">
+    <div><h2>ما لقيتيش اللي كتقلب عليه؟</h2><p>عندنا منتجات أخرى ما كاينينش فالسيت. صيفط لنا ونجاوبوك دغيا.</p></div>
+    <div class="cta-row"><a class="btn btn-sun" href="https://wa.me/${WA}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
+  </div></section>`;
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>filter(b.dataset.c));
+  bindTilt(); startRing();
+}
+function filter(c){
+  document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));
+  document.getElementById("grid").innerHTML=(c?P.filter(p=>p.cat===c):P).map(pcard).join(""); bindTilt();
+}
+
+/* 3D showroom ring */
+let ringRAF=0;
+function startRing(){
+  cancelAnimationFrame(ringRAF);
+  const ring=document.getElementById("ring"); if(!ring) return;
+  const items=[...ring.children], n=items.length, step=2*Math.PI/n;
+  const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  let theta=0, target=0, last=performance.now(), hold=0, paused=false;
+  const show=document.getElementById("show");
+  show.onpointerenter=e=>{if(e.pointerType==="mouse")paused=true}; show.onpointerleave=()=>paused=false;
+  document.getElementById("nx").onclick=()=>{target-=step;hold=0};
+  document.getElementById("pv").onclick=()=>{target+=step;hold=0};
+  let sx=null; show.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+  show.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){target+=dx>0?step:-step;hold=0}sx=null});
+  let front=-1;
+  function frame(t){
+    const dt=Math.min(64,t-last); last=t;
+    if(!paused && !reduce){hold+=dt; if(hold>2600){target-=step;hold=0}}
+    theta+=(target-theta)*Math.min(1,dt/180);
+    const w=show.clientWidth, sp=Math.min(w*0.34,210), pf=-theta/step;
+    items.forEach((el,i)=>{
+      let k=i-pf; k=((k%n)+n)%n; if(k>n/2)k-=n;
+      const ak=Math.abs(k), sc=1-Math.min(ak,1.6)*0.36;
+      el.style.transform=`translateX(${-k*sp}px) translateY(${-Math.min(ak,1.6)*28}px) scale(${sc}) rotateY(${Math.max(-1,Math.min(1,k))*-28}deg)`;
+      el.style.zIndex=200-Math.round(ak*10);
+      el.style.opacity=Math.min(1,Math.max(0,1.7-ak));
+      el.style.filter=ak>0.5?`blur(${Math.min(2,(ak-0.5)*2).toFixed(1)}px) saturate(.85)`:"none";
+    });
+    const f=((Math.round(-theta/step)%n)+n)%n;
+    if(f!==front){front=f;const p=P[f];document.getElementById("capName").textContent=p.name;document.getElementById("capPrice").textContent=money(p.price);document.getElementById("cap").href="#p-"+p.id;}
+    if(document.getElementById("ring")===ring) ringRAF=requestAnimationFrame(frame);
+  }
+  ringRAF=requestAnimationFrame(frame);
+}
+
+function productView(p){
+  const others=P.filter(x=>x.cat===p.cat&&x.id!==p.id).concat(P.filter(x=>x.cat!==p.cat)).slice(0,4);
+  const media=[{t:"c",k:p.id+"-cut"}].concat(p.imgs.map(k=>({t:"i",k}))).concat(p.video?[{t:"v",k:p.video}]:[]);
+  app.innerHTML=`
+  <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
+    <div class="wrap" style="position:relative;z-index:1">
+      <div class="crumb"><a href="#home">الرئيسية</a><span>/</span><a href="#c-${p.cat}">${catName(p.cat)}</a><span>/</span><span>${esc(p.name)}</span></div>
+      <div class="pgrid">
+        <div class="stage">
+          <div class="view" id="view"></div>
+          <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
+        </div>
+        <div class="pinfo">
+          <span class="hook">${esc(p.hook)}</span>
+          <h1>${esc(p.name)}</h1>
+          <p class="lead">${esc(p.lead)}</p>
+          <div class="prow"><span class="tagp"><span class="num">${money(p.price)}</span><small>درهم</small></span>
+            <div class="dl"><span>${ic("truck")}التوصيل لجميع المدن</span><span>${ic("chat")}تأكيد الطلب فالواتساب</span></div></div>
+          <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
+
+          <div class="order" id="order">
+            <span class="rib">اطلب دابا</span>
+            <h2>عمّر المعلومات ديالك</h2>
+            <p class="sm">كنتاصلو بيك فالواتساب باش نأكدو الطلب والتوصيل.</p>
+            <form class="f" id="orderForm" novalidate>
+              <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
+              <label for="f-phone">رقم الهاتف (واتساب)<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
+              <div class="two">
+                <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
+                <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
+              </div>
+              <div class="total"><span>المجموع</span><b><span class="num" id="f-total">${money(p.price)}</span> <small style="font-size:.55em">درهم</small></b></div>
+              <div class="err" id="f-err" role="alert"></div>
+              <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
+              <p class="note">ملي تأكد، كيتحل ليك الواتساب بالطلب ديالك واجد.</p>
+            </form>
+            <div class="done" id="orderDone" hidden>
+              <div class="ok">${ic("check",3)}</div>
+              <h2>الطلب ديالك واجد!</h2>
+              <p>بقات خطوة وحدة: صيفط الطلب فالواتساب باش نأكدوه معاك.</p>
+              <a class="btn btn-wa btn-block" id="waLink" target="_blank" rel="noopener" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>صيفط الطلب فالواتساب</a>
+              <p class="note">إلا ما تحلّش الواتساب، صيفط لنا على <span class="num">+212 631 312 155</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:20px">
+    <div class="wrap pdet">
+      <div style="display:grid;gap:24px;min-width:0">
+        ${p.about?`<div class="box"><h2>تعرّف على المنتج</h2><div class="about">${p.about.map(a=>`<p>${esc(a)}</p>`).join("")}</div></div>`:""}
+        <div class="box"><h2>المواصفات التقنية</h2>
+          <table class="spec"><tbody>${p.specs.map(s=>`<tr><th>${esc(s[0])}</th><td>${esc(s[1])}</td></tr>`).join("")}</tbody></table></div>
+        ${p.faq?`<div class="box"><h2>أسئلة على هاد المنتج</h2><div class="faq pfaq">${p.faq.map((q,i)=>`<details ${i===0?"open":""}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join("")}</div></div>`:""}
+      </div>
+      <div style="display:grid;gap:24px;min-width:0">
+        ${p.box?`<div class="box"><h2>شنو كاين فالكارطون</h2><ul class="boxlist">${p.box.map(b=>`<li>${ic("check",3)}${esc(b)}</li>`).join("")}</ul></div>`:""}
+        <div class="box"><h2>مناسب لـ</h2><div class="uses">${p.uses.map(u=>`<span class="tag">${ic("check",3)}${esc(u)}</span>`).join("")}</div></div>
+        <div class="box"><h2>علاش تشريها من أطلس؟</h2><ul class="trustlist">
+          <li><span class="ico3d">${ic("truck")}</span>التوصيل لجميع مدن المغرب</li>
+          <li><span class="ico3d sun">${ic("tag")}</span>الثمن واضح، بلا مفاجآت</li>
+          <li><span class="ico3d">${ic("chat")}</span>نصيحة وجواب سريع فالواتساب</li></ul>
+          <a class="btn btn-sun btn-block" href="#order" data-scroll style="margin-top:18px">${ic("cart")}اطلب الآن</a></div>
+        <div class="box ask"><h2>عندك سؤال آخر؟</h2><p>صيفط لنا السؤال ديالك فالواتساب ونجاوبوك دغيا.</p>
+          <a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام عليكم، عندي سؤال على: "+p.name)}"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:10px">
+    <div class="wrap">
+      <div class="head"><span class="tagline">ممكن يعجبوك</span><h2 class="h2">منتجات <span class="g">أخرى</span></h2></div>
+      <div class="grid">${others.map(pcard).join("")}</div>
+    </div>
+  </section>`;
+
+  const view=document.getElementById("view");
+  function show(i){
+    const m=media[i];
+    if(m.t==="c") view.innerHTML=`<span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span><img class="prod" id="prod" src="${src(m.k)}" alt="${esc(p.name)}"><div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>`;
+    else if(m.t==="v") view.innerHTML=`<video class="photo" src="${VID}" poster="${src(m.k)}" autoplay muted loop playsinline controls></video>`;
+    else view.innerHTML=`<img class="photo" src="${src(m.k)}" alt="${esc(p.name)}">`;
+    app.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
+  }
+  show(0);
+  app.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>show(+b.dataset.i));
+  view.addEventListener("pointermove",e=>{const pr=document.getElementById("prod");if(!pr||e.pointerType!=="mouse")return;const r=view.getBoundingClientRect();pr.style.setProperty("--gx",(((e.clientX-r.left)/r.width-.5)*24)+"deg");pr.style.setProperty("--gy",(-((e.clientY-r.top)/r.height-.5)*14)+"deg")});
+
+  let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
+  app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));qo.textContent=qty;tot.textContent=money(qty*p.price)});
+  document.getElementById("orderForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const $=id=>document.getElementById(id),err=$("f-err");
+    const name=$("f-name").value.trim(),phone=$("f-phone").value.replace(/[^\d+]/g,""),city=$("f-city").value.trim();
+    if(name.length<3){err.textContent="كتب الاسم الكامل ديالك.";$("f-name").focus();return}
+    if(!/^(\+?212|00212|0)[5-7]\d{8}$/.test(phone)){err.textContent="كتب رقم هاتف مغربي صحيح، مثال: 0612345678";$("f-phone").focus();return}
+    if(city.length<2){err.textContent="كتب المدينة ديالك.";$("f-city").focus();return}
+    err.textContent="";
+    const msg=`السلام عليكم، بغيت نطلب من أطلس:\n\n🛒 المنتج: ${p.name}\n🔢 الكمية: ${qty}\n💰 المجموع: ${money(qty*p.price)} درهم\n\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 المدينة: ${city}`;
+    const url="https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+    $("waLink").href=url; e.target.hidden=true; $("orderDone").hidden=false;
+    try{if(window.fbq)fbq("track","Lead",{content_name:p.name,value:qty*p.price,currency:"MAD"})}catch(_){}
+    try{const w=window.open(url,"_blank");if(!w&&!/claude/.test(location.host))location.href=url}catch(_){}
+  });
+  app.querySelectorAll("[data-scroll]").forEach(a=>a.addEventListener("click",goOrder));
+  bindTilt();
+}
+function goOrder(e){e.preventDefault();const o=document.getElementById("order");if(o){o.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>document.getElementById("f-name")?.focus({preventScroll:true}),500)}}
+document.getElementById("stickyBtn").addEventListener("click",goOrder);
+
+function bindTilt(){
+  if(!matchMedia("(hover:hover) and (pointer:fine)").matches)return;
+  document.querySelectorAll(".pc>a").forEach(a=>{
+    a.onpointermove=e=>{const r=a.getBoundingClientRect();a.style.setProperty("--tx",(((e.clientX-r.left)/r.width-.5)*12)+"deg");a.style.setProperty("--ty",(-((e.clientY-r.top)/r.height-.5)*10)+"deg")};
+    a.onpointerleave=()=>{a.style.removeProperty("--tx");a.style.removeProperty("--ty")};
+  });
+}
+
+const SECTIONS=["products","compare","how","faq","cats","coop"];
+function setSticky(p){document.body.classList.toggle("on-product",!!p);const s=document.getElementById("sticky");s.hidden=!p;
+  if(p)document.getElementById("stickyPrice").innerHTML=`<span class="num">${money(p.price)}</span> <small>درهم · التوصيل لجميع المدن</small>`}
+let view="";
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  if(h==="order")return;
+  if(h.startsWith("p-")){const p=P.find(x=>x.id===h.slice(2));if(p){cancelAnimationFrame(ringRAF);productView(p);setSticky(p);view=h;document.title=p.name+" | أطلس";scrollTo(0,0);return}}
+  document.title="أطلس للمعدات الفلاحية";setSticky(null);
+  if(view!=="home"){homeView();view="home"}
+  if(h.startsWith("c-")){filter(h.slice(2));document.getElementById("products").scrollIntoView();return}
+  if(SECTIONS.includes(h)){document.getElementById(h).scrollIntoView();return}
+  scrollTo(0,0);
+}
+(function(){const it=[...document.querySelectorAll("#rot span")];let i=0;if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  setInterval(()=>{const c=it[i];c.classList.remove("on");c.classList.add("out");i=(i+1)%it.length;const n=it[i];n.classList.remove("out");n.style.transition="none";n.style.transform="";void n.offsetWidth;n.style.transition="";n.classList.add("on");setTimeout(()=>c.classList.remove("out"),600)},3200)})();
+document.getElementById("footCats").innerHTML=CATS.map(c=>`<a href="#c-${c.id}">${c.name}</a>`).join("");
+addEventListener("hashchange",route);
+route();
+</script>
+
+</body>
+</html>
