@@ -1070,6 +1070,7 @@ function productView(p){
     if(city.length<2){err.textContent="كتب المدينة ديالك.";$("f-city").focus();return}
     err.textContent="";
     const RLM="‏",tel=phone.replace(/^(\+212|00212)/,"0");
+    const clean=t=>t.replace(/\u200f/g,"");
     const n=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,"."),d=new Date(),LINE="━━━━━━━━━━━━━━";
     const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(100+Math.random()*900));
     const msg=[
@@ -1077,8 +1078,8 @@ function productView(p){
       "رقم الطلب: "+ref,
       LINE,
       "📦 *المنتج*",
-      p.name,
-      ...(p.items?["المحتوى: "+p.items.map(id=>P.find(x=>x.id===id).name).join(" + ")]:[]),
+      clean(p.name),
+      ...(p.items?["المحتوى: "+p.items.map(id=>clean(P.find(x=>x.id===id).name)).join(" + ")]:[]),
       "الكمية: "+qty+(qty>1?" × "+n(p.price)+" درهم":""),
       LINE,
       "💰 المجموع: *"+n(qty*p.price)+" درهم*",
