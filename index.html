@@ -1034,7 +1034,7 @@ function productView(p){
           <li><span class="ico3d">${ic("chat")}</span>نصيحة وجواب سريع فالواتساب</li></ul>
           <a class="btn btn-sun btn-block" href="#order" data-scroll style="margin-top:18px">${ic("cart")}اطلب الآن</a></div>
         <div class="box ask"><h2>عندك سؤال آخر؟</h2><p>صيفط لنا السؤال ديالك فالواتساب ونجاوبوك دغيا.</p>
-          <a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام عليكم، عندي سؤال على: "+p.name)}"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
+          <a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=${WA}&text=${encodeURIComponent("السلام عليكم، عندي سؤال على: "+p.name)}"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
       </div>
     </div>
   </section>
@@ -1093,10 +1093,10 @@ function productView(p){
       LINE,
       "المرجو تأكيد الطلب، شكراً 🙏"
     ].map(l=>RLM+l).join("\n");
-    const url="https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+    const url="https://api.whatsapp.com/send?phone="+WA+"&text="+encodeURIComponent(msg);
     $("waLink").href=url; e.target.hidden=true; $("orderDone").hidden=false;
     try{if(window.fbq)fbq("track","Lead",{content_name:p.name,value:qty*p.price,currency:"MAD"})}catch(_){}
-    try{const w=window.open(url,"_blank");if(!w&&!/claude/.test(location.host))location.href=url}catch(_){}
+    try{const w=window.open(url,"_blank");if(!w&&!/claude/.test(location.host))setTimeout(function(){location.href=url},700)}catch(_){}
   });
   app.querySelectorAll("[data-scroll]").forEach(a=>a.addEventListener("click",goOrder));
   bindTilt();
@@ -1131,7 +1131,7 @@ function route(){
 document.querySelectorAll("footer .fi").forEach(e=>{e.innerHTML=ic({ICTRUCK:"truck",ICCARD:"card",ICSHIELD:"shield",ICCHAT:"chat"}[e.textContent.trim()])});
 document.getElementById("footCats").innerHTML=CATS.map(c=>`<a href="#c-${c.id}">${c.name}</a>`).join("");
 addEventListener("hashchange",route);
-document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"]');if(a&&a.id!=="waLink"){try{if(window.fbq)fbq("track","Contact")}catch(_){}}});
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]');if(a&&a.id!=="waLink"){try{if(window.fbq)fbq("track","Contact")}catch(_){}}});
 route();
 </script>
 
