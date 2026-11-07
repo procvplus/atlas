@@ -444,6 +444,7 @@ body.on-product footer{padding-bottom:84px}
 .vlive{position:absolute;top:12px;right:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-weight:800;font-size:.8rem;padding:4px 12px;border-radius:999px;z-index:2}
 .vlive svg{width:14px;height:14px}
 .thumbs .lbl.vl{background:var(--red);color:#fff}
+.refbox{margin:6px auto 14px;display:inline-block;background:#fff;border:2px dashed var(--green);border-radius:12px;padding:8px 16px;font-weight:700;color:var(--ink)}.refbox b{color:var(--green-2);font-size:1.1rem;letter-spacing:.5px;direction:ltr;unicode-bidi:isolate}
 </style>
 </head>
 <body>
@@ -1048,6 +1049,7 @@ function productView(p){
               <div class="ok">${ic("check",3)}</div>
               <h2>الطلب ديالك واجد!</h2>
               <p>بقات خطوة وحدة: صيفط الطلب فالواتساب باش نأكدوه معاك.</p>
+              <div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div>
               <a class="btn btn-wa btn-block" id="waLink" target="_blank" rel="noopener" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>صيفط الطلب فالواتساب</a>
               <p class="note">إلا ما تحلّش الواتساب، صيفط لنا على <span class="num">+212 6 31 31 21 55</span></p>
             </div>
@@ -1113,7 +1115,7 @@ function productView(p){
     const RLM="‏",tel=phone.replace(/^(\+212|00212)/,"0");
     const clean=t=>t.replace(/\u200f/g,"");
     const n=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,"."),d=new Date(),LINE="━━━━━━━━━━━━━━";
-    const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(100+Math.random()*900));
+    const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
     const msg=[
       "🧾 *طلب جديد من أطلس*",
       "رقم الطلب: "+ref,
@@ -1135,7 +1137,7 @@ function productView(p){
       "المرجو تأكيد الطلب، شكراً 🙏"
     ].map(l=>RLM+l).join("\n");
     const url="https://api.whatsapp.com/send?phone="+WA+"&text="+encodeURIComponent(msg);
-    $("waLink").href=url; e.target.hidden=true; $("orderDone").hidden=false;
+    $("waLink").href=url; $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false;
     try{if(window.fbq)fbq("track","Lead",{content_name:p.name,value:qty*p.price,currency:"MAD"})}catch(_){}
     try{const w=window.open(url,"_blank");if(!w&&!/claude/.test(location.host))setTimeout(function(){location.href=url},700)}catch(_){}
   });
