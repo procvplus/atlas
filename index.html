@@ -37,7 +37,7 @@ h1,h2,h3,h4{font-family:var(--f-display);margin:0;line-height:1.3;text-wrap:bala
 p{margin:0}
 a{color:inherit}
 img{max-width:100%}
-.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
 button,input{font:inherit}
 :focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 section[id],.order{scroll-margin-top:90px}
@@ -358,6 +358,43 @@ footer .copy{border-top:1px solid rgba(255,255,255,.12);text-align:center;font-s
 body.on-product footer{padding-bottom:84px}
 @media (min-width:921px){body.on-product footer{padding-bottom:0}}
 
+/* packs */
+.tagline svg{width:16px;height:16px;vertical-align:-3px;margin-left:4px}
+.packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pack{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:linear-gradient(180deg,#FFFBEA,#fff 55%);border:2px solid #FFE7A3;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.pack:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.pack .save{position:absolute;top:14px;left:14px;z-index:2;background:var(--red);color:#fff;font-weight:800;font-size:.85rem;padding:4px 12px;border-radius:999px;box-shadow:0 4px 0 #A83232;transform:rotate(-4deg)}
+.pack .pimg{height:210px;display:flex;align-items:flex-end;justify-content:center;padding:22px 18px 8px;background:radial-gradient(70% 55% at 50% 92%,rgba(255,197,46,.35),transparent 70%)}
+.pack .pimg img{max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 14px 12px rgba(0,0,0,.22));transition:transform .3s}
+.pack:hover .pimg img{transform:scale(1.05)}
+.pack .pbd{padding:12px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pack h3{font-size:1.15rem}
+.pack .its{color:var(--muted);font-size:.9rem;font-weight:600;line-height:1.5}
+.pack .its i{font-style:normal;color:var(--green);font-weight:900}
+.pack .pp{display:flex;align-items:baseline;gap:12px;margin-top:auto}
+.pack .pp s{color:var(--muted);font-weight:700;font-size:.95rem}
+.pack .pp b{font-family:var(--f-display);font-size:1.7rem;color:var(--green-2)}
+.pack .pp b small{font-size:.5em}
+.pc .ship{display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:800;color:var(--green-2)}
+.pc .ship svg{width:15px;height:15px;flex:none}
+.pc .ship s{color:var(--muted);font-weight:700}
+.tagp .was{display:block;font-size:.4em;line-height:1;opacity:.7;text-align:center}
+.upsell{display:flex;align-items:center;gap:12px;margin-top:16px;padding:10px 14px;border-radius:16px;background:#FFF8DD;border:2px dashed #F4C542;text-decoration:none;color:var(--ink);transition:background .2s}
+.upsell:hover{background:#FFF1BF}
+.upsell img{width:74px;height:56px;object-fit:contain;flex:none}
+.upsell .ut{display:grid;gap:2px;flex:1;min-width:0}
+.upsell b{display:flex;align-items:center;gap:6px;color:var(--leaf);font-size:.95rem;line-height:1.4}
+.upsell b svg{width:18px;height:18px;color:var(--red);flex:none}
+.upsell small{color:var(--muted);font-weight:700;font-size:.82rem}
+.upsell>svg{width:20px;height:20px;color:var(--green);flex:none}
+.shipline{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.92rem;padding:0 4px;color:var(--muted)}
+.shipline span{display:flex;align-items:center;gap:6px}
+.shipline svg{width:17px;height:17px;color:var(--green)}
+.shipline b{color:var(--green-2)}
+.lead b{color:var(--leaf)}
+@media (max-width:920px){.packs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.packs{grid-template-columns:1fr;gap:16px}.pack .pimg{height:170px}}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -366,10 +403,10 @@ body.on-product footer{padding-bottom:84px}
 
 <div class="strip" role="region" aria-label="إعلانات">
   <div class="wrap"><div class="rot" id="rot" aria-live="polite">
-    <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>التوصيل لجميع مدن المغرب</span>
-    <span><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>طلب أو سؤال؟ واتساب: <b class="num">0631 312 155</b></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>الثمن مكتوب على كل منتج</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg>جديد: مطحنة أملو بالحجر للتعاونيات</span>
+    <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>توصيل <b>مجاني</b> لجميع المدن من <b class="num">500</b> درهم</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19M6.5 15h4"/></svg>الدفع <b>عند الاستلام</b> فجميع المدن</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>باكات التوفير: وفّر <b>حتى 310 درهم</b></span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>طلب أو سؤال؟ واتساب: <b class="num">+212 6 31 31 21 55</b></span>
   </div></div>
 </div>
 
@@ -379,7 +416,7 @@ body.on-product footer{padding-bottom:84px}
       <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#2E9B3A"/><circle cx="33" cy="15" r="5" fill="#FFC52E"/><path d="M5 32 17 15l7 9 5-6 14 14Z" fill="#fff"/><path d="M3 34c8-4 34-4 42 0v4c-8 8-34 8-42 0Z" fill="#7A5230"/><path d="M4 34c9-3.5 31-3.5 40 0" stroke="#6CC04A" stroke-width="4" fill="none"/></svg>
       <span><b>أطلس</b><small>معدات فلاحية · معدات التعاونيات</small></span>
     </a>
-    <nav class="nav" aria-label="القائمة"><a href="#products">المنتجات</a><a href="#compare">علاش ماكينة؟</a><a href="#how">كيفاش تطلب</a><a href="#faq">أسئلة</a></nav>
+    <nav class="nav" aria-label="القائمة"><a href="#products">المنتجات</a><a href="#packs">باكات التوفير</a><a href="#how">كيفاش تطلب</a><a href="#faq">أسئلة</a></nav>
     <a class="btn btn-green" href="#products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 8h-12Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg><span class="t">تسوّق دابا</span></a>
   </div>
 </header>
@@ -391,17 +428,14 @@ body.on-product footer{padding-bottom:84px}
 
 <footer>
   <div class="wrap">
-    <div><h4>أطلس | معدات التعاونيات</h4><p>معدات فلاحية ومعدات التعاونيات والصناعات الغذائية. منتجات مجرّبة، ثمن واضح، والتوصيل لجميع مدن المغرب.</p></div>
+    <div><h4>أطلس | معدات التعاونيات</h4><p>معدات فلاحية، معدات التعاونيات، الورشة والدار. منتجات مجرّبة بثمن واضح، التوصيل مجاني والدفع عند الاستلام فجميع مدن المغرب.</p></div>
     <div><h4>الأصناف</h4><div id="footCats"></div></div>
     <div><h4>تابعنا وتواصل معنا</h4>
       <div class="soc">
         <a class="fb" href="https://www.facebook.com/share/1EWZoo4RHN/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22Z"/></svg></a>
         <a class="ig" href="https://www.instagram.com/atlas_proo/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
         <a class="wa" href="https://wa.me/212631312155" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
-      </div>
-      <a href="https://wa.me/212631312155" target="_blank" rel="noopener">واتساب: <span class="num">+212 631 312 155</span></a>
-      <a href="https://www.instagram.com/atlas_proo/" target="_blank" rel="noopener">إنستغرام: <span class="num">@atlas_proo</span></a>
-      <a href="https://www.facebook.com/share/1EWZoo4RHN/" target="_blank" rel="noopener">فيسبوك: أطلس | معدات التعاونيات</a></div>
+      </div></div>
   </div>
   <div class="copy">© <span class="num">2026</span> أطلس — جميع الحقوق محفوظة</div>
 </footer>
@@ -676,6 +710,43 @@ P.push({id:"sprayer16",cat:"tools",price:350,badge:"16 لتر",name:"رشاشة 
   about:["رشاشة الظهر 16 لتر من Jadever: كتحطها على ظهرك بالحزام، وكتضخ بيد وكترش بالأخرى.","كتجي مع لانس (Lance) وبزاف ديال البوزات باش تبدّل شكل الرش حسب الخدمة.","ماشي محتاجة لا بنزين لا ضو، ساهلة فالاستعمال وفالتنقية."],
   faq:[["واش كتصلح للمبيدات؟","إيه، للمبيدات، الأدوية والسماد السائل. ديما لبس الگانطوات والماسك ونقيها من بعد الخدمة."],["شنو البوزات اللي معاها؟","كتجي مع مجموعة ديال البوزات باش تختار رش رقيق ولا عريض."],["واش ثقيلة على الظهر؟","16 لتر عامرة كتكون ثقيلة شوية، ولكن الحزام كيوزّع الثقل. تقدر تعمرها نص إلا بغيتي."]]});
 
+const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
+/* Packs: two products that go together, sold for less than the two apart */
+const PACKS=[
+  {id:"pack-ghrasa",items:["hafara","sprayer16"],price:2390,name:"باك الغراسة: حفّارة + رشاشة",hook:"حفر الثقب ورش الدوا، بباك واحد",
+   lead:"كتحفر الثقب ديال الأشجار بالحفّارة بالعجلة، ومن بعد كتعالج وتسمّد بالرشاشة ديال الظهر. كلشي اللي محتاج للغراسة فباك واحد وبثمن أقل.",
+   uses:["غرس الأشجار","تحضير ثقوب السياج","رش الدوا والسماد","الجرادي والضيعات"]},
+  {id:"pack-jarda",items:["tondeuse","hachach"],price:4290,name:"باك الجردة: طندوزة + آلة قطع الأعشاب",hook:"العشب مقصوص والحواشي نقيين",
+   lead:"الطندوزة كتقص العشب فالبلايص الواسعة، وآلة قطع الأعشاب كتوصل للحواشي، تحت الشجر وجنب الحيوط. جوج ماكينات بالبنزين لجردة نقية.",
+   uses:["الجرادي والفيلات","الحواشي وتحت الشجر","تنقية الأراضي","الملاعب والمساحات الخضراء"]},
+  {id:"pack-ma",items:["generator","qgd"],price:3390,name:"باك الماء بلا ضو: مولّد + مضخة البير",hook:"طلّع الماء من البير حتى فين ما كاينش الضو",
+   lead:"المولّد Jadever ديال 3 كيلوفولت كيعطيك الضو فين ما كان، ومضخة البير QGD كتطلّع الماء من العمق. حل كامل للسقي فالعروبية بلا كهرباء.",
+   uses:["السقي فالعروبية","عمارة الصهاريج","الضيعات بلا ضو","الماء للدار والكسيبة"]},
+  {id:"pack-warsha",items:["welder","grinder"],price:2090,name:"باك الورشة: ماكينة اللحام + ديسكو",hook:"قطع ولحّم فالورشة ولا فالضيعة",
+   lead:"ماكينة اللحام Jadever ‏160A مع الديسكو بالبطارية: كتقطع الحديد وكتنقيه بالديسكو، وكتلحّمو. الباك اللي محتاجو كل حداد ولا فلاح كيصاوب بيدو.",
+   uses:["الحدادة والتلحيم","إصلاح الماكينات","البيبان والسياجات","الورشة والضيعة"]},
+  {id:"pack-garage",items:["compressor","jack3t"],price:4190,name:"باك الگاراج: كومبريسور + كريك روليت",hook:"الهوا والرفع، الأساسيات ديال كل گاراج",
+   lead:"الكومبريسور Jadever ديال 50 لتر للنفخ، الصباغة والأدوات بالهوا، مع الكريك روليت ديال 3 طن باش ترفع الطوموبيلات بسهولة. جوج أساسيات فباك واحد.",
+   uses:["الگاراجات والميكانيك","نفخ الروايض","الصباغة بالهوا","رفع الطوموبيلات"]},
+  {id:"pack-gaz",items:["engine7","carbu"],price:1350,name:"باك المحرك بالغاز: محرك 7 خيل + كاربيراتور الغاز",hook:"محرك كيخدم بالبنزين ولا بالبوطة",
+   lead:"المحرك ديال 7 خيل مع كاربيراتور الغاز: كتركب الكاربيراتور وكيولي المحرك كيخدم بالبنزين ولا بالبوطة، وكتنقص مصاريف الوقود.",
+   uses:["المضخات والموتوبومب","الماكينات الفلاحية","تبديل المحركات القديمة","توفير مصاريف البنزين"]}
+];
+PACKS.forEach(k=>{
+  const it=k.items.map(id=>P.find(p=>p.id===id));
+  const old=it.reduce((a,p)=>a+p.price,0);
+  P.push(Object.assign({cat:"packs",old,badge:"وفّر "+(old-k.price)+" درهم",
+    imgs:it.flatMap(p=>[p.id+"-cut"].concat(p.imgs.slice(0,1))),
+    bens:[["وفّر "+(old-k.price)+" درهم","على الثمن ديالهم بوحدهم","tag"],["جوج منتجات","كيكمّلو بعضياتهم","gift"],["توصيل مجاني","والدفع عند الاستلام","truck"]],
+    specs:it.map(p=>[p.name,money(p.price)+" درهم"]).concat([["الثمن ديالهم بوحدهم",money(old)+" درهم"],["ثمن الباك",money(k.price)+" درهم"]]),
+    box:it.map(p=>p.name+" (كامل بالإكسسوارات ديالو)"),
+    about:[k.lead].concat(it.map(p=>p.name+": "+p.lead)),
+    faq:[["واش نقدر نشري غير واحد منهم؟","إيه، كل منتج عندو الصفحة ديالو وتقدر تشريه بوحدو. الباك هو اللي فيه التخفيض."],["واش المنتجات فالباك هوما نفسهم اللي فالصفحات ديالهم؟","إيه، نفس المنتجات بالضبط، بنفس المواصفات والإكسسوارات."],["واش التوصيل مجاني؟","إيه، التوصيل مجاني لجميع المدن والدفع عند الاستلام."]]
+  },k));
+});
+CATS.push({id:"packs",name:"باكات التوفير",cover:"pack-garage",c:"#FFF3C4"});
+const FREE=500, freeShip=v=>v>=FREE, PR=()=>P.filter(p=>p.cat!=="packs");
+
 const ic=(n,sw=2.2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${({
   check:'<path d="m4 12 5 5L20 6"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>',
   truck:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
@@ -692,11 +763,11 @@ const ic=(n,sw=2.2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
   auto:'<path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/>', coin:'<circle cx="12" cy="12" r="8"/><path d="M14.5 9.5c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6.5V8M12 16v1.5"/>',
   cart:'<path d="M6 6h15l-1.5 8h-12Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/>',
   form:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>', leaf:'<path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15Z"/><path d="M5 19 13 11"/>',
-  play:'<path d="M8 5v14l11-7Z" fill="currentColor"/>', star:'<path d="m12 3 2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.8Z"/>'
+  play:'<path d="M8 5v14l11-7Z" fill="currentColor"/>', card:'<rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19M6.5 15h4"/>',
+  gift:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9S10.5 4 7.5 4.5 7 9 12 9Zm0 0s1.5-5 4.5-4.5S17 9 12 9Z"/>', star:'<path d="m12 3 2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1L3.2 9.4l6.1-.8Z"/>'
 })[n]}</svg>`;
 
 const catName=id=>(CATS.find(c=>c.id===id)||{}).name||"";
-const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const app=document.getElementById("app");
 
@@ -704,12 +775,15 @@ function pcard(p){
   return `<div class="pc"><a href="#p-${p.id}">
     <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}</div>
     <div class="bd"><span class="k">${catName(p.cat)}</span><h3>${esc(p.name)}</h3><p class="hk">${esc(p.hook)}</p>
+    <p class="ship">${p.old?`<s><span class="num">${money(p.old)}</span> درهم</s> · `:""}${freeShip(p.price)?`${ic("truck")}توصيل مجاني`:`${ic("card")}الدفع عند الاستلام`}</p>
     <span class="btn btn-sun">${ic("cart")}اطلب الآن</span></div></a></div>`;
 }
 const FAQ=[
   ["كيفاش ندير الطلب؟","اختار المنتج، عمّر الاسم والهاتف والمدينة فالفورمولير، ومن بعد كيتحل ليك الواتساب بالطلب ديالك واجد. كنأكدو معاك كاع التفاصيل فالواتساب."],
-  ["واش التوصيل لجميع المدن؟","إيه، التوصيل متوفر لجميع مدن المغرب. المدة كنحددوها معاك حسب المدينة ملي نأكدو الطلب."],
-  ["واش الثمن اللي فالسيت هو الثمن النهائي؟","الثمن المكتوب على كل منتج هو الثمن ديالو. أي تفصيل على التوصيل كنقولوه ليك بوضوح قبل ما تأكد."],
+  ["واش التوصيل مجاني؟","إيه، التوصيل مجاني لجميع مدن المغرب لأي طلب من 500 درهم وفوق. المدة كنحددوها معاك حسب المدينة ملي نأكدو الطلب."],
+  ["واش نخلّص قبل ما توصلني السلعة؟","لا، الدفع عند الاستلام: كتخلّص ملي توصلك السلعة لعندك."],
+  ["شنو هوما باكات التوفير؟","جوج منتجات كيتشراو مع بعض (بحال الكومبريسور والكريك، ولا المولّد ومضخة البير) بثمن أقل من الثمن ديالهم بوحدهم."],
+  ["واش الثمن اللي فالسيت هو الثمن النهائي؟","إيه، الثمن المكتوب على كل منتج هو الثمن اللي غادي تخلّص، بلا مصاريف مخبّية."],
   ["ما عرفتش شنو يناسبني، شنو ندير؟","صيفط لنا فالواتساب شنو الخدمة اللي بغيتي دير (مساحة الأرض، عمق البير، نوع الإنتاج...) ونعاونوك تختار المنتج المناسب قبل ما تشري."],
   ["واش نقدر نطلب أكثر من وحدة؟","إيه، بدّل الكمية فالفورمولير والمجموع كيتحسب بوحدو. للتعاونيات والطلبات الكبيرة تواصل معنا مباشرة فالواتساب."]
 ];
@@ -722,17 +796,17 @@ function homeView(){
     <div class="sun"></div><div class="hills">${HILLS}</div>
     <div class="wrap">
       <div>
-        <span class="pill"><i>${ic("leaf")}</i>معدات فلاحية ومعدات التعاونيات</span>
-        <h1>خدم أرضك <span class="hl">بنص المجهود</span>،<br>وربّح الوقت والفلوس</h1>
-        <p class="lead">حفّارات، مضخات، آلات الحراثة وقطع الأعشاب، ومطحنة أملو للتعاونيات. منتجات مجرّبة بثمن واضح، كتوصلك حتى لباب الدار فأي مدينة.</p>
+        <span class="pill"><i>${ic("leaf")}</i>الفلاحة · التعاونيات · الورشة</span>
+        <h1>معدات <span class="hl">مضمونة</span><br>لأرضك، لمشروعك ولورشتك</h1>
+        <p class="lead">مضخات الماء، حفّارات، آلات الحراثة والعشب، مطحنة أملو، مولّدات، كومبريسورات وعدّة. منتجات مجرّبة بثمن واضح، <b>التوصيل مجاني</b> (من 500 درهم) و<b>الدفع عند الاستلام</b> فجميع مدن المغرب.</p>
         <div class="cta-row">
           <a class="btn btn-sun" href="#products">${ic("cart")}شوف المنتجات والأثمنة</a>
           <a class="btn btn-white" href="https://wa.me/${WA}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#25A55A"><use href="#i-wa"/></svg>نصيحة مجانية</a>
         </div>
-        <div class="proof"><span>${ic("truck")}التوصيل لجميع المدن</span><span>${ic("tag")}الثمن مكتوب</span><span>${ic("chat")}تأكيد فالواتساب</span></div>
+        <div class="proof"><span>${ic("truck")}توصيل مجاني</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}تأكيد فالواتساب</span></div>
       </div>
       <div class="show" id="show">
-        <div class="ring" id="ring">${P.map(p=>`<a class="it" href="#p-${p.id}" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${src(p.id+"-cut")}" alt=""></a>`).join("")}</div>
+        <div class="ring" id="ring">${PR().map(p=>`<a class="it" href="#p-${p.id}" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${src(p.id+"-cut")}" alt=""></a>`).join("")}</div>
         <div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>
         <div class="arrows"><button type="button" id="nx" aria-label="التالي">${ic("next",2.6)}</button><button type="button" id="pv" aria-label="السابق">${ic("prev",2.6)}</button></div>
         <a class="cap" id="cap" href="#"><b id="capName"></b><span class="pz"><span class="num" id="capPrice"></span> درهم</span></a>
@@ -741,8 +815,8 @@ function homeView(){
   </section>
 
   <div class="benefits"><div class="wrap"><div class="grid4">
-    <div class="bcard"><span class="ico3d">${ic("truck")}</span><div><b>التوصيل لجميع المدن</b><small>كنوصلو حتى لعندك</small></div></div>
-    <div class="bcard"><span class="ico3d sun">${ic("tag")}</span><div><b>ثمن واضح</b><small>مكتوب على كل منتج</small></div></div>
+    <div class="bcard"><span class="ico3d">${ic("truck")}</span><div><b>التوصيل مجاني</b><small>لجميع المدن، من 500 درهم</small></div></div>
+    <div class="bcard"><span class="ico3d sun">${ic("card")}</span><div><b>الدفع عند الاستلام</b><small>خلّص ملي توصلك السلعة</small></div></div>
     <div class="bcard"><span class="ico3d">${ic("shield")}</span><div><b>منتجات مجرّبة</b><small>Jadever، Top Star...</small></div></div>
     <div class="bcard"><span class="ico3d sun">${ic("chat")}</span><div><b>نصيحة قبل الشراء</b><small>نعاونوك تختار</small></div></div>
   </div></div></div>
@@ -750,7 +824,7 @@ function homeView(){
   <section class="s" id="cats">
     <div class="wrap">
       <div class="head"><span class="tagline">الأصناف</span><h2 class="h2">شنو <span class="g">كتقلّب</span> عليه؟</h2></div>
-      <div class="cats">${CATS.map(c=>{const n=P.filter(p=>p.cat===c.id).length;return `<a class="cat" style="--c:${c.c}" href="#c-${c.id}"><img src="${src(c.cover+"-cut")}" alt="" loading="lazy"><b>${c.name}</b><small><span class="num">${n}</span> ${n>1?"منتجات":"منتج"}</small></a>`}).join("")}</div>
+      <div class="cats">${CATS.filter(c=>c.id!=="packs").map(c=>{const n=P.filter(p=>p.cat===c.id).length;return `<a class="cat" style="--c:${c.c}" href="#c-${c.id}"><img src="${src(c.cover+"-cut")}" alt="" loading="lazy"><b>${c.name}</b><small><span class="num">${n}</span> ${n>1?"منتجات":"منتج"}</small></a>`}).join("")}</div>
     </div>
   </section>
 
@@ -758,25 +832,19 @@ function homeView(){
     <div class="wrap">
       <div class="head"><span class="tagline">المنتجات</span><h2 class="h2">كاع المنتجات <span class="g">بالثمن</span></h2><p class="sub">كل منتج عندو صفحتو بالتصاور الحقيقية والمواصفات، والطلب كياخد دقيقة.</p></div>
       <div class="chips" role="group" aria-label="الأصناف"><button class="chip" type="button" data-c="" aria-pressed="true">الكل</button>${CATS.map(c=>`<button class="chip" type="button" data-c="${c.id}" aria-pressed="false">${c.name}</button>`).join("")}</div>
-      <div class="grid" id="grid">${P.map(pcard).join("")}</div>
+      <div class="grid" id="grid">${PR().map(pcard).join("")}</div>
     </div>
   </section>
 
-  <section class="s" id="compare" style="padding-top:20px">
+  <section class="s" id="packs" style="padding-top:20px">
     <div class="wrap">
-      <div class="head"><span class="tagline">علاش ماكينة؟</span><h2 class="h2">اليد العاملة غالية؟ <span class="g">الماكينة كتخلّص راسها</span></h2><p class="sub">كل نهار كتخدم فيه باليد هو نهار ديال الفلوس والتعب. قارن بوحدك:</p></div>
-      <div class="cmp">
-        <div class="col bad"><h3>${ic("x",3)} بلا ماكينة</h3><ul>
-          <li>${ic("x",3)}الحفر باليد كياخد نهارات وبزاف ديال الخدامة</li>
-          <li>${ic("x",3)}مصاريف اليد العاملة كتزيد كل موسم</li>
-          <li>${ic("x",3)}الحراثة والتنظيف كيتعطّلو وكيفوتك الوقت</li>
-          <li>${ic("x",3)}أملو باليد: إنتاج قليل وتعب كبير</li></ul></div>
-        <div class="col good"><h3>${ic("check",3)} مع معدات أطلس</h3><ul>
-          <li>${ic("check",3)}الحفّارة كتحفر الثقب فدقايق، بخدام واحد</li>
-          <li>${ic("check",3)}كتشريها مرة وحدة وكتخدم معاك سنين</li>
-          <li>${ic("check",3)}كتوجد أرضك فالوقت المناسب</li>
-          <li>${ic("check",3)}مطحنة أملو: إنتاج كبير وقوام ناعم ديما</li></ul></div>
-      </div>
+      <div class="head"><span class="tagline">${ic("gift")}باكات التوفير</span><h2 class="h2">جوج منتجات كيكمّلو بعضياتهم، <span class="g">بثمن أقل</span></h2><p class="sub">جمعنا ليك المنتجات اللي كيتشراو مع بعض. خود الباك ووفّر الفلوس، والتوصيل مجاني والدفع عند الاستلام.</p></div>
+      <div class="packs">${P.filter(p=>p.cat==="packs").map(pk=>`<a class="pack" href="#p-${pk.id}">
+        <span class="save">وفّر <b class="num">${money(pk.old-pk.price)}</b> درهم</span>
+        <div class="pimg"><img src="${src(pk.id+"-cut")}" alt="${esc(pk.name)}" loading="lazy"></div>
+        <div class="pbd"><h3>${esc(pk.name)}</h3><p class="its">${pk.items.map(id=>esc(P.find(x=>x.id===id).name)).join(" <i>+</i> ")}</p>
+          <div class="pp"><s><span class="num">${money(pk.old)}</span> درهم</s><b><span class="num">${money(pk.price)}</span> <small>درهم</small></b></div>
+          <span class="btn btn-sun btn-block">${ic("cart")}خود الباك</span></div></a>`).join("")}</div>
     </div>
   </section>
 
@@ -826,7 +894,7 @@ function homeView(){
 function lazyVideo(){const v=document.querySelector(".phone video");if(!v)return;const go=()=>{if(!v.src){v.src=v.dataset.src;v.play().catch(()=>{});}};if(!("IntersectionObserver" in window)){go();return}const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){go();io.disconnect();}},{rootMargin:"300px"});io.observe(v);}
 function filter(c){
   document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));
-  document.getElementById("grid").innerHTML=(c?P.filter(p=>p.cat===c):P).map(pcard).join(""); bindTilt();
+  document.getElementById("grid").innerHTML=(c?P.filter(p=>p.cat===c):PR()).map(pcard).join(""); bindTilt();
 }
 
 /* 3D showroom ring */
@@ -834,7 +902,7 @@ let ringRAF=0;
 function startRing(){
   cancelAnimationFrame(ringRAF);
   const ring=document.getElementById("ring"); if(!ring) return;
-  const items=[...ring.children], n=items.length, step=2*Math.PI/n;
+  const RP=PR(), items=[...ring.children], n=items.length, step=2*Math.PI/n;
   const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
   let theta=0, target=0, last=performance.now(), hold=0, paused=false;
   const show=document.getElementById("show");
@@ -858,7 +926,7 @@ function startRing(){
       el.style.filter=ak>0.5?`blur(${Math.min(2,(ak-0.5)*2).toFixed(1)}px) saturate(.85)`:"none";
     });
     const f=((Math.round(-theta/step)%n)+n)%n;
-    if(f!==front){front=f;const p=P[f];document.getElementById("capName").textContent=p.name;document.getElementById("capPrice").textContent=money(p.price);document.getElementById("cap").href="#p-"+p.id;}
+    if(f!==front){front=f;const p=RP[f];document.getElementById("capName").textContent=p.name;document.getElementById("capPrice").textContent=money(p.price);document.getElementById("cap").href="#p-"+p.id;}
     if(document.getElementById("ring")===ring) ringRAF=requestAnimationFrame(frame);
   }
   ringRAF=requestAnimationFrame(frame);
@@ -866,7 +934,7 @@ function startRing(){
 
 function productView(p){
   try{if(window.fbq)fbq("track","ViewContent",{content_name:p.name,content_ids:[p.id],content_type:"product",value:p.price,currency:"MAD"})}catch(_){}
-  const others=P.filter(x=>x.cat===p.cat&&x.id!==p.id).concat(P.filter(x=>x.cat!==p.cat)).slice(0,4);
+  const others=(p.items?P.filter(x=>p.items.includes(x.id)).concat(P.filter(x=>x.cat==="packs"&&x.id!==p.id)):P.filter(x=>x.cat==="packs"&&x.items.includes(p.id)).concat(P.filter(x=>x.cat===p.cat&&x.id!==p.id)).concat(PR().filter(x=>x.cat!==p.cat))).slice(0,4);
   const media=[{t:"c",k:p.id+"-cut"}].concat(p.imgs.map(k=>({t:"i",k}))).concat(p.video?[{t:"v",k:p.video}]:[]);
   app.innerHTML=`
   <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
@@ -881,8 +949,9 @@ function productView(p){
           <span class="hook">${esc(p.hook)}</span>
           <h1>${esc(p.name)}</h1>
           <p class="lead">${esc(p.lead)}</p>
-          <div class="prow"><span class="tagp"><span class="num">${money(p.price)}</span><small>درهم</small></span>
-            <div class="dl"><span>${ic("truck")}التوصيل لجميع المدن</span><span>${ic("chat")}تأكيد الطلب فالواتساب</span></div></div>
+          <div class="prow"><span class="tagp">${p.old?`<s class="was"><span class="num">${money(p.old)}</span></s>`:""}<span class="num">${money(p.price)}</span><small>درهم</small></span>
+            <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل مجاني من 500 درهم"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}تأكيد الطلب فالواتساب</span></div></div>
+          ${(()=>{const pk=P.find(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pk)return "";const o=P.find(x=>x.id===pk.items.find(i=>i!==p.id));return `<a class="upsell" href="#p-${pk.id}"><img src="${src(pk.id+"-cut")}" alt=""><span class="ut"><b>${ic("gift")}${esc(pk.name.split(":")[0])}: وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi> درهم</b><small>مع ${esc(o.name)} · <bdi class="num">${money(pk.price)}</bdi> درهم بلاصة <s><bdi class="num">${money(pk.old)}</bdi></s></small></span>${ic("prev",2.6)}</a>`})()}
           <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
 
           <div class="order" id="order">
@@ -896,6 +965,8 @@ function productView(p){
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
                 <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
               </div>
+              <div class="shipline"><span>${ic("truck")}التوصيل</span><b id="f-ship">${freeShip(p.price)?"مجاني":"حسب المدينة (مجاني من 500 درهم)"}</b></div>
+              <div class="shipline"><span>${ic("card")}الدفع</span><b>عند الاستلام</b></div>
               <div class="total"><span>المجموع</span><b><span class="num" id="f-total">${money(p.price)}</span> <small style="font-size:.55em">درهم</small></b></div>
               <div class="err" id="f-err" role="alert"></div>
               <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
@@ -906,7 +977,7 @@ function productView(p){
               <h2>الطلب ديالك واجد!</h2>
               <p>بقات خطوة وحدة: صيفط الطلب فالواتساب باش نأكدوه معاك.</p>
               <a class="btn btn-wa btn-block" id="waLink" target="_blank" rel="noopener" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>صيفط الطلب فالواتساب</a>
-              <p class="note">إلا ما تحلّش الواتساب، صيفط لنا على <span class="num">+212 631 312 155</span></p>
+              <p class="note">إلا ما تحلّش الواتساب، صيفط لنا على <span class="num">+212 6 31 31 21 55</span></p>
             </div>
           </div>
         </div>
@@ -926,8 +997,9 @@ function productView(p){
         ${p.box?`<div class="box"><h2>شنو كاين فالكارطون</h2><ul class="boxlist">${p.box.map(b=>`<li>${ic("check",3)}${esc(b)}</li>`).join("")}</ul></div>`:""}
         <div class="box"><h2>مناسب لـ</h2><div class="uses">${p.uses.map(u=>`<span class="tag">${ic("check",3)}${esc(u)}</span>`).join("")}</div></div>
         <div class="box"><h2>علاش تشريها من أطلس؟</h2><ul class="trustlist">
-          <li><span class="ico3d">${ic("truck")}</span>التوصيل لجميع مدن المغرب</li>
-          <li><span class="ico3d sun">${ic("tag")}</span>الثمن واضح، بلا مفاجآت</li>
+          <li><span class="ico3d">${ic("truck")}</span>التوصيل مجاني لجميع المدن (من 500 درهم)</li>
+          <li><span class="ico3d sun">${ic("card")}</span>الدفع عند الاستلام، بلا ما تخلّص مسبقاً</li>
+          <li><span class="ico3d">${ic("tag")}</span>الثمن واضح، بلا مفاجآت</li>
           <li><span class="ico3d">${ic("chat")}</span>نصيحة وجواب سريع فالواتساب</li></ul>
           <a class="btn btn-sun btn-block" href="#order" data-scroll style="margin-top:18px">${ic("cart")}اطلب الآن</a></div>
         <div class="box ask"><h2>عندك سؤال آخر؟</h2><p>صيفط لنا السؤال ديالك فالواتساب ونجاوبوك دغيا.</p>
@@ -956,7 +1028,7 @@ function productView(p){
   view.addEventListener("pointermove",e=>{const pr=document.getElementById("prod");if(!pr||e.pointerType!=="mouse")return;const r=view.getBoundingClientRect();pr.style.setProperty("--gx",(((e.clientX-r.left)/r.width-.5)*24)+"deg");pr.style.setProperty("--gy",(-((e.clientY-r.top)/r.height-.5)*14)+"deg")});
 
   let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
-  app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));qo.textContent=qty;tot.textContent=money(qty*p.price)});
+  app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));qo.textContent=qty;tot.textContent=money(qty*p.price);document.getElementById("f-ship").textContent=freeShip(qty*p.price)?"مجاني":"حسب المدينة (مجاني من 500 درهم)"});
   let icSent=false;document.getElementById("orderForm").addEventListener("focusin",()=>{if(icSent)return;icSent=true;try{if(window.fbq)fbq("track","InitiateCheckout",{content_name:p.name,value:p.price,currency:"MAD"})}catch(_){}});
   document.getElementById("orderForm").addEventListener("submit",e=>{
     e.preventDefault();
@@ -970,9 +1042,12 @@ function productView(p){
     const msg=[
       "السلام عليكم، بغيت نطلب من أطلس:","",
       "🛒 المنتج: "+p.name,
+      ...(p.items?["📦 فيه: "+p.items.map(id=>P.find(x=>x.id===id).name).join(" + ")]:[]),
       "🔢 الكمية: "+qty,
       "💰 الثمن: "+p.price+" درهم",
-      "💵 المجموع: "+(qty*p.price)+" درهم","",
+      "💵 المجموع: "+(qty*p.price)+" درهم",
+      "🚚 التوصيل: "+(freeShip(qty*p.price)?"مجاني":"حسب المدينة"),
+      "💳 الدفع: عند الاستلام","",
       "👤 الاسم: "+name,
       "📞 الهاتف: "+tel,
       "📍 المدينة: "+city
@@ -998,7 +1073,7 @@ function bindTilt(){
 
 const SECTIONS=["products","compare","how","faq","cats","coop"];
 function setSticky(p){document.body.classList.toggle("on-product",!!p);const s=document.getElementById("sticky");s.hidden=!p;
-  if(p)document.getElementById("stickyPrice").innerHTML=`<span class="num">${money(p.price)}</span> <small>درهم · التوصيل لجميع المدن</small>`}
+  if(p)document.getElementById("stickyPrice").innerHTML=`<span class="num">${money(p.price)}</span> <small>درهم · ${freeShip(p.price)?"توصيل مجاني":"الدفع عند الاستلام"}</small>`}
 let view="";
 function route(){
   const h=decodeURIComponent(location.hash.slice(1));
