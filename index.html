@@ -418,6 +418,32 @@ body.on-product footer{padding-bottom:84px}
 @media (max-width:600px){.packs{grid-template-columns:1fr;gap:16px}.pack .pimg{height:170px}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* real video reels */
+.reels{background:linear-gradient(180deg,#0F2414,#173A1E);color:#fff;border-radius:0}
+.reels .h2,.reels .sub{color:#fff}.reels .sub{opacity:.85}.reels .h2 .g{color:var(--sun)}
+.reels .tagline{background:var(--red);color:#fff}.reels .tagline svg{width:16px;height:16px}
+.rl{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rl::-webkit-scrollbar{display:none}
+.reel{position:relative;flex:0 0 clamp(190px,23%,250px);aspect-ratio:9/16;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#000;box-shadow:0 18px 30px -18px rgba(0,0,0,.8);outline:3px solid rgba(255,255,255,.08);transition:transform .25s}
+.reel:hover{transform:translateY(-4px)}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rlive{position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-weight:800;font-size:.74rem;padding:3px 10px;border-radius:999px}
+.rlive i{width:8px;height:8px;border-radius:50%;background:#FF3B30;box-shadow:0 0 0 0 rgba(255,59,48,.7);animation:rpulse 1.6s infinite}
+@keyframes rpulse{70%{box-shadow:0 0 0 7px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
+.rcap{position:absolute;inset:auto 0 0 0;padding:44px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));display:grid;gap:6px}
+.rcap b{font-size:.95rem;line-height:1.35}
+.rp{font-weight:900;color:var(--sun);font-size:1.05rem}
+.rgo{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--sun);color:var(--sun-ink);font-weight:900;border-radius:12px;padding:7px 10px;font-size:.88rem}
+.rgo svg{width:16px;height:16px}
+.rnav{display:flex;gap:10px;justify-content:center}
+.rnav button{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
+.rnav button:hover{background:rgba(255,255,255,.22)}
+@media (max-width:600px){.reel{flex-basis:62%}.rnav{display:none}}
+.vtag{position:absolute;bottom:12px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:4px;background:var(--red);color:#fff;font-weight:800;font-size:.72rem;padding:3px 9px 3px 8px;border-radius:999px;box-shadow:0 4px 10px -4px rgba(0,0,0,.4)}
+.vtag svg{width:12px;height:12px}
+.vlive{position:absolute;top:12px;right:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-weight:800;font-size:.8rem;padding:4px 12px;border-radius:999px;z-index:2}
+.vlive svg{width:14px;height:14px}
+.thumbs .lbl.vl{background:var(--red);color:#fff}
 </style>
 </head>
 <body>
@@ -481,6 +507,7 @@ const WA="212631312155";
 const IMG = (window.ATLAS_IMG||{});
 const src = k => IMG[k] || ("img/"+k+".webp");
 const VID = IMG["amlou-demo-mp4"] || "img/amlou-demo.mp4";
+const vsrc = k => IMG[k+"-mp4"] || ("img/"+k+".mp4");
 const CATS=[
   {id:"hfr",name:"الحفر والغرس",cover:"hafara",c:"#FFF1D6"},
   {id:"pumps",name:"المضخات",cover:"vidange15",c:"#DDF0FF"},
@@ -495,19 +522,19 @@ const CATS=[
 const P=[
   {id:"amlou",cat:"coop",price:2800,badge:"فيديو حقيقي",name:"مطحنة أملو بالحجر HD-140",hook:"صايب أملو فالدار ولا لمشروعك بسهولة",
    lead:"مطحنة احترافية بأحجار الطحن، كتعطيك أملو بقوام ناعم ومتجانس بحال التقليدي. الاختيار المثالي للتعاونيات والمشاريع اللي باغية إنتاج احترافي ونتيجة مضمونة.",
-   imgs:["amlou-1","amlou-2","amlou-3"],video:"amlou-demo",
+   imgs:["amlou-1","amlou-2","amlou-3"],vids:["amlou-demo"],
    bens:[["طحن بالحجر","قوام ناعم بحال التقليدي","stone"],["1500 واط","محرك قوي للخدمة اليومية","bolt"],["حتى 140 كلغ/س","إنتاج كبير حسب المادة","gauge"]],
    specs:[["الموديل","HD-140"],["القوة","1500W · 220V"],["سرعة المحرك","1400 دورة فالدقيقة"],["الإنتاج","حتى 140 كلغ فالساعة (حسب المادة)"],["الطحن","أحجار طحن + قمع كبير من الستانلس"],["الاستعمال","منزلي، تعاونيات ومشاريع"]],
    uses:["أملو","اللوز والكركاع","السمسم","الفول السوداني","التوابل والقهوة"]},
   {id:"harrata",cat:"till",price:15000,badge:"ديزل · بالشونيات",name:"آلة الحراثة بمحرك ديزل",hook:"وجد أرضك للموسم الفلاحي بكل سهولة",
    lead:"باغي توفّر الوقت والمجهود وتنقّص مصاريف اليد العاملة؟ آلة حراثة بمحرك مازوط اقتصادي، فوق الشونيات (Chenilles) باش تبقى ثابتة فالأرض، وكتجي مع تجهيزات لعدة خدمات.",
-   imgs:["harrata-1","harrata-2"],
+   imgs:["harrata-1","harrata-2"],vids:["v-harrata-1","v-harrata-2"],
    bens:[["محرك ديزل","اقتصادية فالمازوط","fuel"],["بالشونيات","Chenilles: ثابتة فالأرض الصعيبة","tracks"],["4 تجهيزات","حراثة، تنظيف، تسوية، سماد","tools"]],
    specs:[["المحرك","ديزل (مازوط)"],["الحركة","شونيات (Chenilles)"],["التجهيزات","محراث، مشط تنظيف، خطّاط، موزّع السماد"],["الخدمة","حراثة وتحضير التربة"]],
    uses:["الفلاحين","أصحاب الأراضي","الضيعات","الخضر والأشجار"]},
   {id:"hafara",cat:"hfr",price:2200,badge:"بالعجلة",name:"حفّارة التربة بالعجلة",hook:"بغيتي تحفر وتغرس بلا مجهود كبير؟",
    lead:"مع حفّارة التربة بالعجلة، سهّل على راسك أشغال الحفر وخدم أرضك بطريقة عملية. العجلة كتشيل عليك الثقل، ونتا غير وجّه.",
-   imgs:["hafara-2","hafara-1"],
+   imgs:["hafara-2","hafara-1"],vids:["v-hafara-1","v-hafara-2"],
    bens:[["3 CV","محرك 63cc قوي","bolt"],["بالعجلة","سهلة فالتنقل","wheel"],["جوج ميشات","15 سم و20 سم","tools"]],
    specs:[["المحرك","63cc · 3 CV"],["الوقود","بنزين مخلوط مع الزيت (Mélange 2 temps)"],["ميشات الحفر","15 سم و20 سم"],["الهيكل","معدني بعجلة ومقبضين"]],
    uses:["غرس الأشجار","ثقوب الأعمدة","السياجات","الأشغال الفلاحية"]},
@@ -519,7 +546,7 @@ const P=[
    uses:["غرس الأشجار","تركيب الأعمدة","السياجات","أشغال الحفر"]},
   {id:"hachach",cat:"cut",price:1100,badge:"كاملة بالإكسسوارات",name:"آلة قطع الأعشاب بالبنزين 52cc",hook:"الأعشاب والأحراش غلبوك؟ الحل عندنا",
    lead:"آلة عملية للفلاحة وتنظيف الأراضي، كتجمع ليك عدة استعمالات فمنتج واحد: من قص الربيع حتى جمع الفصة.",
-   imgs:["hachach-1","hachach-2","hachach-3"],
+   imgs:["hachach-1","hachach-2","hachach-3"],vids:["v-hachach-1"],
    bens:[["متعددة","ديسكات + كاج الفصة","tools"],["مريحة","حزام ومقبض مزدوج","hand"],["52cc","للأعشاب الكثيفة","bolt"]],
    specs:[["المحرك","52cc · جوج أشواط"],["الوقود","بنزين مخلوط مع الزيت (Mélange)"],["الشفرات","ديسك مثلث + ديسك بالأسنان"],["الإكسسوارات","كاج الفصة، واقي، حزام الكتف، قرعة الخلط"],["المقبض","مزدوج"]],
    uses:["تنظيف الأراضي","الحدائق","حواف الطرق","حصاد الفصة"]},
@@ -648,7 +675,7 @@ P.push(
   faq:[["واش كتخدم بالصباغة الما (Eau)؟","إيه، مع الصباغة بالما والصباغة الزيتية. إلا كانت غليظة بزاف، رققها شوية حسب التوصيات ديال الصباغة."],["واش خاصها كومبريسور؟","لا، Airless كتخدم بوحدها بالضغط ديال المضخة."],["كيفاش كنتقّيها؟","من بعد الخدمة دوّز فيها الما (للصباغة بالما) ولا الديليون (للزيتية) حتى يخرج نقي."]]},
  {id:"chainsaw",cat:"tools",price:1800,badge:"2 بطاريات 21V",name:"منشار الخشب بالبطارية 21V",hook:"قطع الخشب بلا بنزين وبلا سلك",
   lead:"منشار خشب كهربائي (Tronçonneuse sans fil) كيخدم بالبطارية 21V، كيجي بجوج ديال البطاريات: خفيف، ساكت، وبلا بنزين.",
-  imgs:["chainsaw-1","chainsaw-2"],
+  imgs:["chainsaw-1","chainsaw-2"],vids:["v-chainsaw-1"],
   bens:[["2 بطاريات","خدمة أطول","bolt"],["21V","بلا سلك","auto"],["خفيف","مريح فاليد","hand"]],
   specs:[["الجهد","21V"],["البطاريات","2 بطاريات"],["النوع","منشار بالسلسلة (Chaîne)"],["الاستعمال","تقليم الأشجار وقطع الخشب"]],
   uses:["تقليم الأشجار","الحطب","الجرادي","الأشغال الصغيرة"],
@@ -668,7 +695,7 @@ P.push(
 P.push(
  {id:"compressor",cat:"garage",price:2800,badge:"50 لتر · 2 حصان",name:"كومبريسور Jadever ‏50 لتر",hook:"الهوا المضغوط للورشة والضيعة",
   lead:"كومبريسور (Compresseur d'air) من Jadever بخزان 50 لتر ومحرك 2 حصان: لنفخ العجلات، الصباغة بالبيستولي، تنقية الماكينات والعدة الهوائية.",
-  imgs:["compressor-1","compressor-2"],
+  imgs:["compressor-1","compressor-2"],vids:["v-compressor-1"],
   bens:[["50 لتر","خزان كبير","gauge"],["2 حصان","محرك قوي 220V","bolt"],["بالزيت","كيعيش ويبرد مزيان","shield"]],
   specs:[["الماركة","Jadever"],["الخزان","50 لتر (13.2 Gal)"],["القوة","2 HP"],["الكهرباء","220V"],["النوع","بالزيت (Oil lubricated) · جوج سيلاندر"],["الحركة","عجلات + مقبض"]],
   uses:["نفخ العجلات","الصباغة بالبيستولي","العدة الهوائية","تنقية الماكينات"],
@@ -802,9 +829,10 @@ const catName=id=>(CATS.find(c=>c.id===id)||{}).name||"";
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const app=document.getElementById("app");
 
+const REELS=[["v-harrata-1","harrata"],["v-hafara-1","hafara"],["v-hachach-1","hachach"],["amlou-demo","amlou"],["v-chainsaw-1","chainsaw"],["v-harrata-2","harrata"]];
 function pcard(p){
   return `<div class="pc"><a href="#p-${p.id}">
-    <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}</div>
+    <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}${p.vids?`<span class="vtag">${ic("play")}فيديو</span>`:""}</div>
     <div class="bd"><span class="k">${catName(p.cat)}</span><h3>${esc(p.name)}</h3><p class="hk">${esc(p.hook)}</p>
     <p class="ship">${p.old?`<s><span class="num">${money(p.old)}</span> درهم</s> · `:""}${freeShip(p.price)?`${ic("truck")}توصيل مجاني`:`${ic("card")}الدفع عند الاستلام`}</p>
     <span class="btn btn-sun">${ic("cart")}اطلب الآن</span></div></a></div>`;
@@ -851,6 +879,14 @@ function homeView(){
     <div class="bcard"><span class="ico3d">${ic("chat")}</span><div><b>نصيحة قبل الشراء</b><small>نعاونوك تختار المناسب</small></div></div>
     <a class="bcard" href="#packs" style="text-decoration:none;color:inherit"><span class="ico3d sun">${ic("gift")}</span><div><b>العروض</b><small>جوج منتجات بثمن أقل</small></div></a>
   </div></div></div>
+
+  <section class="s reels" id="videos">
+    <div class="wrap">
+      <div class="head"><span class="tagline">${ic("play")}فيديوهات حقيقية</span><h2 class="h2">شوف المنتجات <span class="g">خدّامة</span> قبل ما تشري</h2><p class="sub">ماشي غير تصاور: هادي فيديوهات حقيقية ديال الماكينات وهي خدامة فالأرض والورشة.</p></div>
+      <div class="rl" id="rl">${REELS.map(r=>{const p=P.find(x=>x.id===r[1]);return `<a class="reel" href="#p-${p.id}"><video data-src="${vsrc(r[0])}" poster="${src(r[0])}" muted loop playsinline preload="none"></video><span class="rlive"><i></i>فيديو حقيقي</span><span class="rcap"><b>${esc(p.name)}</b><span class="rp"><span class="num">${money(p.price)}</span> درهم</span><span class="rgo">شوف المنتج ${ic("cart")}</span></span></a>`}).join("")}</div>
+      <div class="rnav"><button type="button" data-d="1" aria-label="السابق">›</button><button type="button" data-d="-1" aria-label="التالي">‹</button></div>
+    </div>
+  </section>
 
   <section class="s" id="cats">
     <div class="wrap">
@@ -920,8 +956,13 @@ function homeView(){
     <div class="cta-row"><a class="btn btn-sun" href="https://wa.me/${WA}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
   </div></section>`;
   document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>filter(b.dataset.c));
-  bindTilt(); startRing(); lazyVideo();
+  bindTilt(); startRing(); lazyVideo(); reels();
 }
+function reels(){const box=document.getElementById("rl");if(!box)return;const vs=[...box.querySelectorAll("video")];
+  const play=v=>{if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})};
+  if(!("IntersectionObserver" in window)){vs.slice(0,2).forEach(play);return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&e.intersectionRatio>.55)play(v);else if(v.src)v.pause()}),{threshold:[0,.55,1]});vs.forEach(v=>io.observe(v));
+  document.querySelectorAll(".rnav button").forEach(b=>b.onclick=()=>{const w=box.querySelector(".reel").offsetWidth+16;box.scrollBy({left:+b.dataset.d*w*(document.dir==="rtl"?-1:1)*-1,behavior:"smooth"})});}
 function lazyVideo(){const v=document.querySelector(".phone video");if(!v)return;const go=()=>{if(!v.src){v.src=v.dataset.src;v.play().catch(()=>{});}};if(!("IntersectionObserver" in window)){go();return}const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){go();io.disconnect();}},{rootMargin:"300px"});io.observe(v);}
 function filter(c){
   document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));
@@ -966,7 +1007,7 @@ function startRing(){
 function productView(p){
   try{if(window.fbq)fbq("track","ViewContent",{content_name:p.name,content_ids:[p.id],content_type:"product",value:p.price,currency:"MAD"})}catch(_){}
   const others=(p.items?P.filter(x=>p.items.includes(x.id)).concat(P.filter(x=>x.cat==="packs"&&x.id!==p.id)):P.filter(x=>x.cat==="packs"&&x.items.includes(p.id)).concat(P.filter(x=>x.cat===p.cat&&x.id!==p.id)).concat(PR().filter(x=>x.cat!==p.cat))).slice(0,4);
-  const media=[{t:"c",k:p.id+"-cut"}].concat(p.imgs.map(k=>({t:"i",k}))).concat(p.video?[{t:"v",k:p.video}]:[]);
+  const media=[{t:"c",k:p.id+"-cut"}].concat((p.vids||[]).map(k=>({t:"v",k}))).concat(p.imgs.map(k=>({t:"i",k})));
   app.innerHTML=`
   <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
     <div class="wrap" style="position:relative;z-index:1">
@@ -974,7 +1015,7 @@ function productView(p){
       <div class="pgrid">
         <div class="stage">
           <div class="view" id="view"></div>
-          <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
+          <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
         </div>
         <div class="pinfo">
           <span class="hook">${esc(p.hook)}</span>
@@ -1050,7 +1091,7 @@ function productView(p){
   function show(i){
     const m=media[i];
     if(m.t==="c") view.innerHTML=`<span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span><img class="prod" id="prod" src="${src(m.k)}" alt="${esc(p.name)}"><div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>`;
-    else if(m.t==="v") view.innerHTML=`<video class="photo" src="${VID}" poster="${src(m.k)}" autoplay muted loop playsinline controls></video>`;
+    else if(m.t==="v") view.innerHTML=`<video class="photo" src="${vsrc(m.k)}" poster="${src(m.k)}" autoplay muted loop playsinline controls></video><span class="vlive">${ic("play")}فيديو حقيقي</span>`;
     else view.innerHTML=`<img class="photo" src="${src(m.k)}" alt="${esc(p.name)}">`;
     app.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
   }
