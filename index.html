@@ -536,13 +536,13 @@ const P=[
    uses:["الفلاحين","أصحاب الأراضي","الضيعات","الخضر والأشجار"]},
   {id:"hafara",cat:"hfr",price:2200,badge:"بالعجلة",name:"حفّارة التربة بالعجلة",hook:"بغيتي تحفر وتغرس بلا مجهود كبير؟",
    lead:"مع حفّارة التربة بالعجلة، سهّل على راسك أشغال الحفر وخدم أرضك بطريقة عملية. العجلة كتشيل عليك الثقل، ونتا غير وجّه.",
-   imgs:["hafara-2","hafara-1"],vids:["v-hafara-1","v-hafara-2","v-hafara-3"],
+   imgs:["hafara-2","hafara-1"],vids:["v-hafara-1","v-hafara-2"],
    bens:[["3 CV","محرك 63cc قوي","bolt"],["بالعجلة","سهلة فالتنقل","wheel"],["جوج ميشات","15 سم و20 سم","tools"]],
    specs:[["المحرك","63cc · 3 CV"],["الوقود","بنزين مخلوط مع الزيت (Mélange 2 temps)"],["ميشات الحفر","15 سم و20 سم"],["الهيكل","معدني بعجلة ومقبضين"]],
    uses:["غرس الأشجار","ثقوب الأعمدة","السياجات","الأشغال الفلاحية"]},
   {id:"ed630",cat:"hfr",price:2000,badge:"ميشة 80 سم",name:"مثقاب الأرض بالبنزين ED630",hook:"اليد العاملة غالية والحفر باليد كياخد الوقت؟",
    lead:"مع مثقاب الأرض بالبنزين، سهّل الخدمة ديالك: خدم بسرعة أكبر، بمجهود أقل، ووفّر مصاريف اليد العاملة.",
-   imgs:["ed630-1","ed630-4","ed630-5","ed630-2","ed630-3"],
+   imgs:["ed630-1","ed630-4","ed630-5","ed630-2","ed630-3"],vids:["v-ed630-1"],
    bens:[["63cc","محرك Top Star","bolt"],["عمق 80 سم","للأشجار والأعمدة","gauge"],["جوج ميشات","20 سم و30 سم","tools"]],
    specs:[["المحرك","63cc · Top Star ED630"],["الوقود","بنزين (Essence)"],["طول الميشة","80 سم"],["عرض الميشات","20 سم و30 سم"],["المقبض","مزدوج مع زر التشغيل"]],
    uses:["غرس الأشجار","تركيب الأعمدة","السياجات","أشغال الحفر"]},
@@ -806,7 +806,7 @@ const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
 /* Packs: two products that go together, sold for less than the two apart */
 const PACKS=[
   {id:"pack-lavage",items:["generator","washer","vacuum"],price:5200,name:"عرض اللافاج: مولّد + نيتوايور + أسبيراتور",hook:"مشروع لافاج متنقل كامل، تخدم فين ما بغيتي",
-   lead:"كلشي اللي محتاج باش تبدا مشروع ديال غسيل الطوموبيلات: المولّد Jadever كيعطيك الضو فين ما كنتي، النيتوايور DINGQI كيغسل بالضغط العالي، والأسبيراتور COMET كينقي الداخل. وفّر 200 درهم.",
+   lead:"كلشي اللي محتاج باش تبدا مشروع ديال غسيل الطوموبيلات: المولّد Jadever كيعطيك الضو فين ما كنتي، النيتوايور DINGQI كيغسل بالضغط العالي، والأسبيراتور COMET كينقي الداخل. وفّر 600 درهم على الثمن ديالهم بوحدهم.",
    uses:["مشروع لافاج متنقل","غسيل الطوموبيلات فالدار","الكراجات والمحطات","الضيعات والماكينات"]},
   {id:"pack-ghrasa",items:["hafara","sprayer16"],price:2390,name:"عرض الغراسة: حفّارة + رشاشة",hook:"حفر الثقب ورش الدوا، فعرض واحد",
    lead:"كتحفر الثقب ديال الأشجار بالحفّارة بالعجلة، ومن بعد كتعالج وتسمّد بالرشاشة ديال الظهر. كلشي اللي محتاج للغراسة فعرض واحد وبثمن أقل.",
@@ -833,7 +833,7 @@ PACKS.forEach(k=>{
   P.push(Object.assign({cat:"packs",old,badge:"وفّر "+(old-k.price)+" درهم",
     imgs:it.flatMap(p=>[p.id+"-cut"].concat(p.imgs.slice(0,1))),
     bens:[["وفّر "+(old-k.price)+" درهم","على الثمن ديالهم بوحدهم","tag"],[(it.length===2?"جوج منتجات":it.length+" منتجات"),"كيكمّلو بعضياتهم","gift"],["توصيل مجاني","والدفع عند الاستلام","truck"]],
-    specs:it.map(p=>[p.name,money(p.price)+" درهم"]).concat([["الثمن ديالهم بوحدهم",money(old)+" درهم"],["ثمن العرض",money(k.price)+" درهم"]]),
+    specs:[["المحتوى",it.length+" منتجات: "+it.map(p=>p.name.split(" ")[0]).join(" + ")]].concat(it.map(p=>[p.name,p.specs.filter(x=>!/الماركة/.test(x[0])).slice(0,4).map(x=>x[1]).join(" · ")])),
     box:it.map(p=>p.name+" (كامل بالإكسسوارات ديالو)"),
     about:[k.lead].concat(it.map(p=>p.name+": "+p.lead)),
     faq:[["واش نقدر نشري غير واحد منهم؟","إيه، كل منتج عندو الصفحة ديالو وتقدر تشريه بوحدو. العرض هو اللي فيه التخفيض."],["واش المنتجات فالعرض هوما نفسهم اللي فالصفحات ديالهم؟","إيه، نفس المنتجات بالضبط، بنفس المواصفات والإكسسوارات."],["واش التوصيل مجاني؟","إيه، التوصيل مجاني لجميع المدن والدفع عند الاستلام."]]
@@ -866,8 +866,8 @@ const catName=id=>(CATS.find(c=>c.id===id)||{}).name||"";
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const app=document.getElementById("app");
 
-const REELS=[["v-harrata-1t","harrata"],["v-gen-dmax","gen-dmax"],["v-hafara-3","hafara"],["v-hafara-1","hafara"],["v-hachach-1","hachach"],["amlou-demo","amlou"],["v-chainsaw-1","chainsaw"],["v-reaper120-1","reaper120"],["v-compressor-1","compressor"]];
-const SPOTS=[["amlou-demo","amlou","مطحنة أملو","شوف بعينيك: كتحط اللوز والكركاع فوق، وكيخرج أملو ناعم من التحت. ماكينة وحدة كتبدا بيها مشروع مربح."],["v-harrata-1t","harrata","آلة الحراثة"],["v-reaper120-1","reaper120","الحصّادة 7 خيل"],["v-hafara-3","hafara","الحفّارة"],["v-gen-dmax","gen-dmax","المولّد Delta Max"],["v-hachach-1","hachach","آلة قطع الأعشاب"],["v-chainsaw-1","chainsaw","منشار الخشب"],["v-compressor-1","compressor","الكومبريسور"]];
+const REELS=[["v-harrata-1t","harrata"],["v-gen-dmax","gen-dmax"],["v-ed630-1","ed630"],["v-hafara-1","hafara"],["v-hachach-1","hachach"],["amlou-demo","amlou"],["v-chainsaw-1","chainsaw"],["v-reaper120-1","reaper120"],["v-compressor-1","compressor"]];
+const SPOTS=[["amlou-demo","amlou","مطحنة أملو","شوف بعينيك: كتحط اللوز والكركاع فوق، وكيخرج أملو ناعم من التحت. ماكينة وحدة كتبدا بيها مشروع مربح."],["v-harrata-1t","harrata","آلة الحراثة"],["v-reaper120-1","reaper120","الحصّادة 7 خيل"],["v-ed630-1","ed630","مثقاب الأرض ED630"],["v-gen-dmax","gen-dmax","المولّد Delta Max"],["v-hachach-1","hachach","آلة قطع الأعشاب"],["v-chainsaw-1","chainsaw","منشار الخشب"],["v-compressor-1","compressor","الكومبريسور"]];
 function spotHTML(i){const x=SPOTS[i],p=P.find(y=>y.id===x[1]);
   return `<div style="position:relative">
           <div class="phone"><video data-src="${vsrc(x[0])}" poster="${src(x[0])}" muted loop playsinline preload="none"></video><span class="live">فيديو حقيقي</span></div>
