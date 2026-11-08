@@ -1090,15 +1090,15 @@ function productView(p){
               <div class="total"><span>المجموع</span><b><span class="num" id="f-total">${money(p.price+shipFee(p.price))}</span> <small style="font-size:.55em">درهم</small></b></div>
               <div class="err" id="f-err" role="alert"></div>
               <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
-              <p class="note">ملي تأكد، كيتحل ليك الواتساب بالطلب ديالك واجد.</p>
+              <p class="note">ملي تأكد، كيوصلنا الطلب ديالك نيشان وكنعيطو ليك باش نأكدو التوصيل.</p>
             </form>
             <div class="done" id="orderDone" hidden>
               <div class="ok">${ic("check",3)}</div>
-              <h2>الطلب ديالك واجد!</h2>
-              <p>بقات خطوة وحدة: صيفط الطلب فالواتساب باش نأكدوه معاك.</p>
+              <h2 id="doneTitle">توصلنا بالطلب ديالك!</h2>
+              <p id="doneText">شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت على الرقم اللي عطيتينا باش نأكدو معاك الطلب والتوصيل.</p>
               <div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div>
-              <a class="btn btn-wa btn-block" id="waLink" target="_blank" rel="noopener" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>صيفط الطلب فالواتساب</a>
-              <p class="note">إلا ما تحلّش الواتساب، صيفط لنا على <span class="num">+212 6 31 31 21 55</span></p>
+              <a class="btn btn-wa btn-block" id="waLink" target="_blank" rel="noopener" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg><span id="waTxt">عندك سؤال؟ هضر معانا فالواتساب</span></a>
+              <p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p>
             </div>
           </div>
         </div>
@@ -1183,12 +1183,29 @@ function productView(p){
       "المرجو تأكيد الطلب، شكراً 🙏"
     ].map(l=>RLM+l).join("\n");
     const url="https://api.whatsapp.com/send?phone="+WA+"&text="+encodeURIComponent(msg);
-    $("waLink").href=url; $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false;
-    try{if(window.fbq)fbq("track","Lead",Object.assign(pxd(p,qty*p.price+shipFee(qty*p.price)),{num_items:qty}))}catch(_){}
-    try{const w=window.open(url,"_blank");if(!w&&!/claude/.test(location.host))setTimeout(function(){location.href=url},700)}catch(_){}
+    const total=qty*p.price+shipFee(qty*p.price), btn=e.target.querySelector('button[type=submit]');
+    const order={ref,name,phone:tel,city,product:clean(p.name),qty,price:p.price,ship:shipFee(qty*p.price),total,source:orderSource()+" | "+p.id};
+    const done=ok=>{
+      $("waLink").href=url; $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false;
+      if(!ok){$("doneTitle").textContent="بقات خطوة وحدة!";$("doneText").textContent="صيفط لينا الطلب فالواتساب باش نأكدوه معاك.";$("waTxt").textContent="صيفط الطلب فالواتساب";}
+      try{if(window.fbq)fbq("track","Lead",Object.assign(pxd(p,total),{num_items:qty}))}catch(_){}
+      $("orderDone").scrollIntoView({behavior:"smooth",block:"center"});
+      if(!ok){try{const w=window.open(url,"_blank");if(!w)setTimeout(function(){location.href=url},700)}catch(_){}}
+    };
+    btn.disabled=true; btn.textContent="كنصيفطو الطلب...";
+    sendOrder(order).then(()=>done(true),()=>done(false));
   });
   app.querySelectorAll("[data-scroll]").forEach(a=>a.addEventListener("click",goOrder));
   bindTilt();
+}
+const ORDER_URL="https://script.google.com/macros/s/AKfycbyccOLqdqZBBMxa30dZX7qz6ECnj7OvZmAw_ulYDeqZaSVZvyOpaKCZcbg8c0L-CV29xg/exec";
+function orderSource(){try{return sessionStorage.getItem("atlas_src")||"site"}catch(_){return "site"}}
+(function(){try{const q=new URLSearchParams(location.search);const v=q.get("utm_campaign")||q.get("utm_source")||(q.get("fbclid")?"facebook-ad":"");if(v)sessionStorage.setItem("atlas_src",v);else if(!sessionStorage.getItem("atlas_src")&&/facebook|instagram/i.test(document.referrer))sessionStorage.setItem("atlas_src","facebook")}catch(_){}})();
+function sendOrder(o){
+  if(!/^https:/.test(ORDER_URL))return Promise.reject();
+  const body=JSON.stringify(o);
+  const t=new Promise((_,rej)=>setTimeout(rej,9000));
+  return Promise.race([fetch(ORDER_URL,{method:"POST",mode:"no-cors",body,keepalive:true}),t]);
 }
 function goOrder(e){e.preventDefault();const o=document.getElementById("order");if(o){o.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>document.getElementById("f-name")?.focus({preventScroll:true}),500)}}
 document.getElementById("stickyBtn").addEventListener("click",goOrder);
