@@ -1184,7 +1184,7 @@ function productView(p){
     ].map(l=>RLM+l).join("\n");
     const url="https://api.whatsapp.com/send?phone="+WA+"&text="+encodeURIComponent(msg);
     const total=qty*p.price+shipFee(qty*p.price), btn=e.target.querySelector('button[type=submit]');
-    const order={ref,name,phone:tel,city,product:clean(p.name),qty,price:p.price,ship:shipFee(qty*p.price),total,source:orderSource()+" | "+p.id,pid:p.id,fbc:fbIds().fbc,fbp:fbIds().fbp};
+    const order={ref,name,phone:tel,city,product:clean(p.name),qty,price:p.price,ship:shipFee(qty*p.price),total,source:orderSource()+" | "+p.id,pid:p.id,fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const done=ok=>{
       $("waLink").href=url; $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false;
       if(!ok){$("doneTitle").textContent="بقات خطوة وحدة!";$("doneText").textContent="صيفط لينا الطلب فالواتساب باش نأكدوه معاك.";$("waTxt").textContent="صيفط الطلب فالواتساب";}
