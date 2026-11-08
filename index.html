@@ -455,7 +455,7 @@ body.on-product footer{padding-bottom:84px}
   <div class="wrap"><div class="rot" id="rot" aria-live="polite">
     <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>التوصيل <b>مجاني</b> لجميع المدن ابتداءً من <b class="num">500</b> درهم</span>
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19M6.5 15h4"/></svg>الدفع <b>عند الاستلام</b> فجميع المدن</span>
-    <span><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>طلب أو سؤال؟ واتساب: <b class="num">+212 6 31 31 21 55</b></span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال؟ واتساب: <b class="num">+212 6 31 31 21 55</b></span>
   </div></div>
 </div>
 
@@ -889,7 +889,7 @@ function pcard(p){
     <span class="btn btn-sun">${ic("cart")}اطلب الآن</span></div></a></div>`;
 }
 const FAQ=[
-  ["كيفاش ندير الطلب؟","اختار المنتج، عمّر الاسم والهاتف والمدينة فالفورمولير، ومن بعد كيتحل ليك الواتساب بالطلب ديالك واجد. كنأكدو معاك كاع التفاصيل فالواتساب."],
+  ["كيفاش ندير الطلب؟","اختار المنتج، عمّر الاسم والهاتف والمدينة فالفورمولير، وكليكي على تأكيد الطلب. كيوصلنا الطلب ديريكت وكنعيطو ليك باش نأكدو معاك كاع التفاصيل."],
   ["واش التوصيل مجاني؟","التوصيل مجاني لجميع مدن المغرب لأي طلب من 500 درهم وفوق، واللي تحت 500 درهم التوصيل ديالو 30 درهم فقط. المدة كنحددوها معاك حسب المدينة ملي نأكدو الطلب."],
   ["واش نخلّص قبل ما توصلني السلعة؟","لا، الدفع عند الاستلام: كتخلّص ملي توصلك السلعة لعندك."],
   ["شنو هوما العروض؟","جوج منتجات كيتشراو مع بعض (بحال الكومبريسور والكريك، ولا المولّد ومضخة البير) بثمن أقل من الثمن ديالهم بوحدهم."],
@@ -980,7 +980,7 @@ function homeView(){
       <ol class="steps">
         <li><span class="ico3d">${ic("cart")}</span><h3>اختار المنتج</h3><p>شوف التصاور الحقيقية، الثمن والمواصفات.</p></li>
         <li><span class="ico3d sun">${ic("form")}</span><h3>عمّر الفورمولير</h3><p>الاسم، الهاتف والمدينة. المجموع كيبان ليك دغيا.</p></li>
-        <li><span class="ico3d">${ic("chat")}</span><h3>أكد فالواتساب</h3><p>كيتحل ليك الواتساب بالطلب واجد، كنأكدو ونصيفطو.</p></li>
+        <li><span class="ico3d">${ic("chat")}</span><h3>كنعيطو ليك</h3><p>كيوصلنا الطلب ديريكت، كنعيطو ليك نأكدو معاك ونصيفطو.</p></li>
       </ol>
     </div>
   </section>
@@ -1077,10 +1077,10 @@ function productView(p){
           <div class="order" id="order">
             <span class="rib">اطلب دابا</span>
             <h2>عمّر المعلومات ديالك</h2>
-            <p class="sm">كنتاصلو بيك فالواتساب باش نأكدو الطلب والتوصيل.</p>
+            <p class="sm">كنعيطو ليك باش نأكدو الطلب والتوصيل.</p>
             <form class="f" id="orderForm" novalidate>
               <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
-              <label for="f-phone">رقم الهاتف (واتساب)<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
+              <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
               <div class="two">
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
                 <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
@@ -1120,10 +1120,8 @@ function productView(p){
           <li><span class="ico3d">${ic("truck")}</span>التوصيل مجاني لجميع المدن (من 500 درهم)، وتحت 500 درهم غير 30 درهم</li>
           <li><span class="ico3d sun">${ic("card")}</span>الدفع عند الاستلام، بلا ما تخلّص مسبقاً</li>
           <li><span class="ico3d">${ic("tag")}</span>الثمن واضح، بلا مفاجآت</li>
-          <li><span class="ico3d">${ic("chat")}</span>نصيحة وجواب سريع فالواتساب</li></ul>
+          <li><span class="ico3d">${ic("chat")}</span>كنعيطو ليك ونأكدو معاك قبل الإرسال</li></ul>
           <a class="btn btn-sun btn-block" href="#order" data-scroll style="margin-top:18px">${ic("cart")}اطلب الآن</a></div>
-        <div class="box ask"><h2>عندك سؤال آخر؟</h2><p>صيفط لنا السؤال ديالك فالواتساب ونجاوبوك دغيا.</p>
-          <a class="btn btn-wa btn-block" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=${WA}&text=${encodeURIComponent("السلام عليكم، عندي سؤال على: "+p.name)}"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
       </div>
     </div>
   </section>
