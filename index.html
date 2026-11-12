@@ -460,6 +460,31 @@ body.on-product footer{padding-bottom:84px}
 .depbox[hidden]{display:none}.depbox .dh{display:flex;align-items:center;gap:8px;font-size:1rem;color:#5A3D00}.depbox .dh svg{width:22px;height:22px;color:#B07A00;flex:none}
 .depbox ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}.depbox li{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.88rem}.depbox li svg{width:16px;height:16px;color:var(--green);flex:none}
 #f-dep[hidden]{display:none}
+
+.cgrid{grid-template-areas:"items order" "sug order"}
+.c-items{grid-area:items}.c-order{grid-area:order;position:sticky;top:90px}.c-sug{grid-area:sug}
+@media(max-width:860px){.cgrid{grid-template-areas:"items" "order" "sug"}.c-order{position:static}}
+.bundlebar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:linear-gradient(135deg,#FFF8DD,#FFEFB5);border:2px solid #F4C542;font-weight:700;margin-bottom:16px}
+.bundlebar.soft{background:var(--mint);border-color:#BFE3B8}.bundlebar svg{width:24px;height:24px;color:#B07A00;flex:none}.bundlebar.soft svg{color:var(--green)}
+.recap{display:grid;gap:2px;margin:6px 0 10px;border-radius:14px;background:#F7FAF6;padding:8px 12px}
+.recap .rl{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem}.recap .rl:last-child{border-bottom:0}
+.recap .rl span{display:flex;align-items:center;gap:6px;min-width:0}.recap .rl svg{width:17px;height:17px;color:var(--green);flex:none}.recap .rl b{white-space:nowrap}
+.recap .save{color:#B23A3A}.recap .save svg{color:#D99A00}
+.offt{font-style:normal;background:#D64545;color:#fff;border-radius:999px;padding:0 8px;font-size:.75rem;margin-inline-start:4px}
+.ci-t s{color:var(--muted);font-weight:600;font-size:.82rem}
+.addmore{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border:2px dashed var(--line);border-radius:14px;color:var(--leaf);font-weight:800;text-decoration:none}.addmore svg{width:18px;height:18px}
+.sg s{color:var(--muted);font-size:.78rem;font-weight:600}
+.vars{margin-top:16px;display:grid;gap:8px}.vh{display:flex;align-items:center;gap:6px;font-weight:800}.vh svg{width:20px;height:20px;color:var(--green)}
+.vrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vopt{position:relative;display:grid;gap:2px;padding:12px 14px 12px 40px;border-radius:16px;border:2px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);box-shadow:0 3px 0 #E3EBE1}
+.vopt b{font-size:1rem}.vopt span{color:var(--leaf);font-weight:800}.vopt.on{border-color:var(--green);background:var(--mint);box-shadow:0 3px 0 var(--green)}
+.vopt .vr{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;border:2px solid #9BCB91;display:grid;place-items:center;background:#fff}
+.vopt.on .vr{background:var(--green);border-color:var(--green)}.vopt .vr svg{width:13px;height:13px;color:#fff}
+.ao-h{align-items:flex-start}.ao-gift{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#FFC52E,#F4A300);display:grid;place-items:center;flex:none}.ao-gift svg{width:22px!important;height:22px!important;color:#fff!important}
+.ao-h b{display:block;font-size:1.02rem}.ao-h small{display:block}
+.addons{background:linear-gradient(180deg,#FFFBEA,#FFF6D6);border:2px solid #F4C542;border-style:solid}
+.ao{grid-template-columns:auto auto 1fr auto}.ao-p{color:var(--leaf);font-weight:800;font-size:.9rem}.ao-p s{color:var(--muted);font-weight:600;font-size:.78rem}
+.ao-off{font-style:normal;background:#D64545;color:#fff;border-radius:10px;padding:4px 8px;font-weight:900;font-size:.85rem;white-space:nowrap}
 .upsell{display:flex;align-items:center;gap:12px;margin-top:16px;padding:10px 14px;border-radius:16px;background:#FFF8DD;border:2px dashed #F4C542;text-decoration:none;color:var(--ink);transition:background .2s}
 .upsell:hover{background:#FFF1BF}
 .upsell img{width:74px;height:56px;object-fit:contain;flex:none}
@@ -635,18 +660,12 @@ const P=[
    bens:[["12V","كتخدم بالبطارية","bolt"],["50 ل/د","صبيب مزيان","drop"],["خفيفة","سهلة فالحمل","hand"]],
    specs:[["الجهد","12V DC · 5.4A"],["الصبيب","50 لتر فالدقيقة"],["قطر المخرج","25 مم (1 بوصة)"],["الموديل","BL2512 · My Mill Motor"]],
    uses:["السقي الصغير","القوارب","الخزانات والبراميل"]},
-  {id:"carbu",cat:"parts",price:300,badge:"6.5 حتى 8 خيل",name:"كاربيراتور الغاز (6.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
+  {id:"carbu",cat:"parts",price:300,vars:[["carbu","6.5 حتى 8 خيل"],["carbu15","13 حتى 15 خيل"]],badge:"6.5 حتى 8 خيل",name:"كاربيراتور الغاز (6.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
    lead:"كاربيراتور مزدوج (بنزين + غاز) للمحركات من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل): نفس المحرك، مصاريف أقل.",
    imgs:["carbu-vs","carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
    bens:[["مزدوج","بنزين ولا غاز","fuel"],["6.5 → 8 خيل","للمحركات الشائعة","bolt"],["توفير","مصاريف أقل","coin"]],
    specs:[["المحركات","من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل)"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
-   uses:["المولدات","المضخات بالمحرك","المحركات الفلاحية"]},
-  {id:"carbu15",cat:"parts",price:350,badge:"13 حتى 15 خيل",name:"كاربيراتور الغاز الكبير (13 حتى 15 خيل)",hook:"للمحركات الكبار: خدم بالغاز ووفّر",
-   lead:"كاربيراتور مزدوج (بنزين + غاز) كبير شوية، مخصّص للمحركات ديال 13 حتى 15 خيل: نفس المحرك، مصاريف أقل.",
-   imgs:["carbu-vs","carbu-3","carbu-4","carbu-5"],
-   bens:[["مزدوج","بنزين ولا غاز","fuel"],["13 → 15 خيل","للمحركات الكبار","bolt"],["توفير","مصاريف أقل","coin"]],
-   specs:[["المحركات","من 13 حتى 15 خيل"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
-   uses:["المولدات الكبار","المضخات بالمحرك الكبير","المحركات الفلاحية"]}
+   uses:["المولدات","المضخات بالمحرك","المحركات الفلاحية"]}
 ];
 
 const EXTRA={
@@ -871,6 +890,14 @@ P.push({id:"sprayer16",cat:"tools",price:350,badge:"16 لتر",name:"رشاشة 
 
 const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
 /* Packs: two products that go together, sold for less than the two apart */
+const VX=[
+  {id:"carbu15",cat:"parts",of:"carbu",vars:[["carbu","6.5 حتى 8 خيل"],["carbu15","13 حتى 15 خيل"]],price:350,badge:"13 حتى 15 خيل",name:"كاربيراتور الغاز الكبير (13 حتى 15 خيل)",hook:"للمحركات الكبار: خدم بالغاز ووفّر",
+   lead:"كاربيراتور مزدوج (بنزين + غاز) كبير شوية، مخصّص للمحركات ديال 13 حتى 15 خيل: نفس المحرك، مصاريف أقل.",
+   imgs:["carbu-vs","carbu-3","carbu-4","carbu-5"],
+   bens:[["مزدوج","بنزين ولا غاز","fuel"],["13 → 15 خيل","للمحركات الكبار","bolt"],["توفير","مصاريف أقل","coin"]],
+   specs:[["المحركات","من 13 حتى 15 خيل"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
+   uses:["المولدات الكبار","المضخات بالمحرك الكبير","المحركات الفلاحية"]}];
+const PF=f=>P.find(f)||VX.find(f);
 const PACKS=[
   {id:"pack-lavage",items:["generator","washer","vacuum"],price:5200,name:"عرض اللافاج: مولّد + نيتوايور + أسبيراتور",hook:"مشروع لافاج متنقل كامل، تخدم فين ما بغيتي",
    lead:"كلشي اللي محتاج باش تبدا مشروع ديال غسيل الطوموبيلات: المولّد Jadever كيعطيك الضو فين ما كنتي، النيتوايور DINGQI كيغسل بالضغط العالي، والأسبيراتور COMET كينقي الداخل. وفّر 600 درهم على الثمن ديالهم بوحدهم.",
@@ -895,7 +922,7 @@ const PACKS=[
    uses:["المضخات والموتوبومب","الماكينات الفلاحية","تبديل المحركات القديمة","توفير مصاريف البنزين"]}
 ];
 PACKS.forEach(k=>{
-  const it=k.items.map(id=>P.find(p=>p.id===id));
+  const it=k.items.map(id=>PF(p=>p.id===id));
   const old=it.reduce((a,p)=>a+p.price,0);
   P.push(Object.assign({cat:"packs",old,badge:"وفّر "+(old-k.price)+" درهم",
     imgs:it.flatMap(p=>[p.id+"-cut"].concat(p.imgs.slice(0,1))),
@@ -916,18 +943,19 @@ const COMP={engine7:["carbu","motopompe","qgd"],carbu:["engine7","motopompe","ge
  chainsaw:["grinder","hachach","sprayer16"],sprayer16:["hafara","hachach","pompe12v"],hachach:["sprayer16","chainsaw","tondeuse"],tondeuse:["hachach","sprayer16"],faucheuse:["hachach","sprayer16"],reaper:["hachach","sprayer16"],reaper120:["hachach","sprayer16"],
  hafara:["sprayer16","hachach","chainsaw"],ed630:["sprayer16","hachach","chainsaw"],harrata:["sprayer16","hachach","motopompe"],amlou:["generator"]};
 const RV_KEY="atlas_rv",rvGet=()=>{try{return JSON.parse(localStorage.getItem(RV_KEY)||"[]")}catch(_){return []}},rvAdd=id=>{try{const a=rvGet().filter(x=>x!==id);a.unshift(id);localStorage.setItem(RV_KEY,JSON.stringify(a.slice(0,8)))}catch(_){}};
-const rvHTML=skip=>{const it=rvGet().filter(id=>id!==skip).map(id=>P.find(x=>x.id===id)).filter(Boolean).slice(0,6);if(!it.length)return "";return `<section class="s rv" style="padding-top:10px"><div class="wrap"><div class="head"><span class="tagline">${ic("auto")}رجع ليهم</span><h2 class="h2">شفتيهم <span class="g">مؤخراً</span></h2></div><div class="rvrow">${it.map(x=>`<a class="rvc" href="#p-${x.id}"><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><b>${esc(x.name)}</b><span><bdi class="num">${money(x.price)}</bdi> درهم</span></a>`).join("")}</div></div></section>`};
+const rvHTML=skip=>{const it=rvGet().filter(id=>id!==skip).map(id=>PF(x=>x.id===id)).filter(Boolean).slice(0,6);if(!it.length)return "";return `<section class="s rv" style="padding-top:10px"><div class="wrap"><div class="head"><span class="tagline">${ic("auto")}رجع ليهم</span><h2 class="h2">شفتيهم <span class="g">مؤخراً</span></h2></div><div class="rvrow">${it.map(x=>`<a class="rvc" href="#p-${x.id}"><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><b>${esc(x.name)}</b><span><bdi class="num">${money(x.price)}</bdi> درهم</span></a>`).join("")}</div></div></section>`};
 const TOP=["carbu","hachach","hafara","pompe12v"];
 const CART_KEY="atlas_cart";let CART_MEM=null;
-const cartGet=()=>{let a=CART_MEM;try{a=JSON.parse(localStorage.getItem(CART_KEY)||"null")||CART_MEM||[]}catch(_){a=CART_MEM||[]}return a.filter(x=>P.find(p=>p.id===x.id)&&x.qty>0)};
+const cartGet=()=>{let a=CART_MEM;try{a=JSON.parse(localStorage.getItem(CART_KEY)||"null")||CART_MEM||[]}catch(_){a=CART_MEM||[]}return a.filter(x=>PF(p=>p.id===x.id)&&x.qty>0)};
 const cartSet=a=>{CART_MEM=a;try{localStorage.setItem(CART_KEY,JSON.stringify(a))}catch(_){}cartBadge()};
 const cartCount=()=>cartGet().reduce((a,x)=>a+x.qty,0);
 const cartBadge=()=>{const b=document.getElementById("cartN");if(!b)return;const n=cartCount();b.textContent=n;b.hidden=!n};
 const toast=(html)=>{const t=document.getElementById("toast");t.innerHTML=html;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,3800)};
-const cartAdd=(id,q=1)=>{const a=cartGet();const x=a.find(i=>i.id===id);if(x)x.qty=Math.min(50,x.qty+q);else a.push({id,qty:q});cartSet(a);const p=P.find(y=>y.id===id);
+const cartAdd=(id,q=1)=>{const a=cartGet();const x=a.find(i=>i.id===id);if(x)x.qty=Math.min(50,x.qty+q);else a.push({id,qty:q});cartSet(a);const p=PF(y=>y.id===id);
   try{if(window.fbq)fbq("track","AddToCart",pxd(p,p.price*q))}catch(_){}
   toast(`<span>${ic("check",3)}<b>تزاد للسلة:</b> ${esc(p.name)}</span><a href="#cart">كمّل الطلب (${cartCount()})</a>`)};
-const comps=p=>{const ids=(COMP[p.id]||[]).concat(p.items?[]:PR().filter(x=>x.cat===p.cat&&x.id!==p.id).sort((a,b)=>a.price-b.price).map(x=>x.id));const out=[];ids.forEach(id=>{const x=P.find(y=>y.id===id);if(x&&x.id!==p.id&&!out.includes(x)&&!(p.items||[]).includes(x.id))out.push(x)});return out};
+const OFF=v=>v>=1000?100:Math.max(20,Math.round(v*0.1/10)*10);
+const comps=p=>{const ids=(COMP[p.id]||[]).concat(p.items?[]:PR().filter(x=>x.cat===p.cat&&x.id!==p.id).sort((a,b)=>a.price-b.price).map(x=>x.id));const out=[];ids.forEach(id=>{const x=PF(y=>y.id===id);if(x&&x.id!==p.id&&!out.includes(x)&&!(p.items||[]).includes(x.id)&&!(p.vars||[]).some(v=>v[0]===x.id))out.push(x)});return out};
 
 const ic=(n,sw=2.2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${({
   check:'<path d="m4 12 5 5L20 6"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>',
@@ -956,7 +984,7 @@ const app=document.getElementById("app");
 
 const REELS=[["v-harrata-1t","harrata"],["v-gen-dmax","gen-dmax"],["v-ed630-1","ed630"],["v-hafara-1","hafara"],["v-hachach-1","hachach"],["amlou-demo","amlou"],["v-chainsaw-1","chainsaw"],["v-reaper120-1","reaper120"],["v-compressor-1","compressor"]];
 const SPOTS=[["amlou-demo","amlou","مطحنة أملو","شوف بعينيك: كتحط اللوز والكركاع فوق، وكيخرج أملو ناعم من التحت. ماكينة وحدة كتبدا بيها مشروع مربح."],["v-harrata-1t","harrata","آلة الحراثة"],["v-reaper120-1","reaper120","الحصّادة 7 خيل"],["v-ed630-1","ed630","مثقاب الأرض ED630"],["v-gen-dmax","gen-dmax","المولّد Delta Max"],["v-hachach-1","hachach","آلة قطع الأعشاب"],["v-chainsaw-1","chainsaw","منشار الخشب"],["v-compressor-1","compressor","الكومبريسور"]];
-function spotHTML(i){const x=SPOTS[i],p=P.find(y=>y.id===x[1]);
+function spotHTML(i){const x=SPOTS[i],p=PF(y=>y.id===x[1]);
   return `<div style="position:relative">
           <div class="phone"><video data-src="${vsrc(x[0])}" poster="${src(x[0])}" muted loop playsinline preload="none"></video><span class="live">فيديو حقيقي</span></div>
           <img class="cut" src="${src(p.id+"-cut")}" alt="">
@@ -970,7 +998,7 @@ function spotHTML(i){const x=SPOTS[i],p=P.find(y=>y.id===x[1]);
         </div>`;}
 function pcard(p){
   return `<div class="pc"><a href="#p-${p.id}">
-    <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}${p.vids?`<span class="vtag">${ic("play")}فيديو</span>`:""}</div>
+    <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span>${p.vars?'<small>من</small>':''}<b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}${p.vids?`<span class="vtag">${ic("play")}فيديو</span>`:""}</div>
     <div class="bd"><span class="k">${catName(p.cat)}</span><h3>${esc(p.name)}</h3><p class="hk">${esc(p.hook)}</p>
     <p class="ship">${p.old?`<s><span class="num">${money(p.old)}</span> درهم</s> · `:""}${freeShip(p.price)?`${ic("truck")}توصيل مجاني`:`${ic("truck")}التوصيل 30 درهم`}</p>
     <span class="pcbtns"><span class="btn btn-sun">اطلب الآن</span><button type="button" class="btn btn-green addc" data-add="${p.id}" aria-label="زيد للسلة">${ic("cart")}+</button></span></div></a></div>`;
@@ -987,7 +1015,7 @@ const FAQ=[
 const HILLS=`<svg viewBox="0 0 1440 190" preserveAspectRatio="none"><path d="M0 90 C240 30 420 40 640 80 S1080 140 1440 60 V190 H0Z" fill="#B9E39A"/><path d="M0 130 C300 80 520 100 760 125 S1180 150 1440 105 V190 H0Z" fill="#7FCB5B"/><g stroke="#5DAE3E" stroke-width="3" opacity=".55"><path d="M0 160 C400 140 900 150 1440 135"/><path d="M0 175 C400 158 900 168 1440 152"/></g><path d="M0 165 C380 150 900 165 1440 145 V190 H0Z" fill="#5FB240"/></svg>`;
 
 function homeView(){
-  const am=P.find(p=>p.id==="amlou");
+  const am=PF(p=>p.id==="amlou");
   app.innerHTML=`
   <section class="hero">
     <div class="sun"></div><div class="hills">${HILLS}</div>
@@ -1022,14 +1050,14 @@ function homeView(){
   <section class="s" id="top" style="padding-top:10px">
     <div class="wrap">
       <div class="head"><span class="tagline">${ic("star")}الكليان كيطلبوهم بزاف</span><h2 class="h2">الأكثر <span class="g">طلباً</span></h2></div>
-      <div class="grid">${TOP.map(id=>P.find(x=>x.id===id)).filter(Boolean).map(pcard).join("")}</div>
+      <div class="grid">${TOP.map(id=>PF(x=>x.id===id)).filter(Boolean).map(pcard).join("")}</div>
     </div>
   </section>
 
   <section class="s reels" id="videos">
     <div class="wrap">
       <div class="head"><span class="tagline">${ic("play")}فيديوهات حقيقية</span><h2 class="h2">شوف المنتجات <span class="g">خدّامة</span> قبل ما تشري</h2><p class="sub">ماشي غير تصاور: هادي فيديوهات حقيقية ديال الماكينات وهي خدامة فالأرض والورشة.</p></div>
-      <div class="rl" id="rl">${REELS.map(r=>{const p=P.find(x=>x.id===r[1]);return `<a class="reel" href="#p-${p.id}"><video data-src="${vsrc(r[0])}" poster="${src(r[0])}" muted loop playsinline preload="none"></video><span class="rlive"><i></i>فيديو حقيقي</span><span class="rcap"><b>${esc(p.name)}</b><span class="rp"><span class="num">${money(p.price)}</span> درهم</span><span class="rgo">شوف المنتج ${ic("cart")}</span></span></a>`}).join("")}</div>
+      <div class="rl" id="rl">${REELS.map(r=>{const p=PF(x=>x.id===r[1]);return `<a class="reel" href="#p-${p.id}"><video data-src="${vsrc(r[0])}" poster="${src(r[0])}" muted loop playsinline preload="none"></video><span class="rlive"><i></i>فيديو حقيقي</span><span class="rcap"><b>${esc(p.name)}</b><span class="rp"><span class="num">${money(p.price)}</span> درهم</span><span class="rgo">شوف المنتج ${ic("cart")}</span></span></a>`}).join("")}</div>
       <div class="rnav"><button type="button" data-d="1" aria-label="السابق">›</button><button type="button" data-d="-1" aria-label="التالي">‹</button></div>
     </div>
   </section>
@@ -1055,7 +1083,7 @@ function homeView(){
       <div class="packs">${P.filter(p=>p.cat==="packs").map(pk=>`<a class="pack" href="#p-${pk.id}">
         <span class="save">وفّر <b class="num">${money(pk.old-pk.price)}</b> درهم</span>
         <div class="pimg"><img src="${src(pk.id+"-cut")}" alt="${esc(pk.name)}" loading="lazy"></div>
-        <div class="pbd"><h3>${esc(pk.name)}</h3><p class="its">${pk.items.map(id=>esc(P.find(x=>x.id===id).name)).join(" <i>+</i> ")}</p>
+        <div class="pbd"><h3>${esc(pk.name)}</h3><p class="its">${pk.items.map(id=>esc(PF(x=>x.id===id).name)).join(" <i>+</i> ")}</p>
           <div class="pp"><s><span class="num">${money(pk.old)}</span> درهم</s><b><span class="num">${money(pk.price)}</span> <small>درهم</small></b></div>
           <span class="btn btn-sun btn-block">${ic("cart")}خود العرض</span></div></a>`).join("")}</div>
     </div>
@@ -1064,7 +1092,7 @@ function homeView(){
   <section class="s" id="coop" style="padding-top:10px">
     <div class="wrap">
       <div class="head"><span class="tagline">${ic("play")}شوف السلعة خدامة</span><h2 class="h2">فيديوهات حقيقية <span class="g">ديال المنتجات ديالنا</span></h2></div>
-      <div class="chips sptabs" role="tablist">${SPOTS.map((x,i)=>{const q=P.find(y=>y.id===x[1]);return `<button class="chip" type="button" role="tab" data-i="${i}" aria-pressed="${i===0}">${esc(x[2])}</button>`}).join("")}</div>
+      <div class="chips sptabs" role="tablist">${SPOTS.map((x,i)=>{const q=PF(y=>y.id===x[1]);return `<button class="chip" type="button" role="tab" data-i="${i}" aria-pressed="${i===0}">${esc(x[2])}</button>`}).join("")}</div>
       <div class="spot" id="spot"></div>
     </div>
   </section>
@@ -1149,36 +1177,40 @@ function startRing(){
 
 function cartView(){
   const a=cartGet();
-  const items=a.map(x=>({p:P.find(y=>y.id===x.id),qty:x.qty}));
-  const sub=items.reduce((s,x)=>s+x.p.price*x.qty,0),ship=items.length?shipFee(sub):0,total=sub+ship,dep=depOf(total);
+  const items=a.map(x=>({p:PF(y=>y.id===x.id),qty:x.qty})).sort((x,y)=>y.p.price-x.p.price);
+  items.forEach((x,i)=>x.off=i>0?OFF(x.p.price):0);
+  const gross=items.reduce((s,x)=>s+x.p.price*x.qty,0),off=items.reduce((s,x)=>s+x.off,0),sub=gross-off,ship=items.length?shipFee(sub):0,total=sub+ship,dep=depOf(total);
   const sug=[];items.forEach(x=>comps(x.p).forEach(c=>{if(!a.find(i=>i.id===c.id)&&!sug.includes(c))sug.push(c)}));
   app.innerHTML=`<section class="ptop cartpage"><div class="wrap">
     <div class="crumb"><a href="#home">الرئيسية</a><span>/</span><span>السلة</span></div>
     <h1 class="h2" style="margin:6px 0 18px">${ic("cart")} السلة ديالك ${items.length?`<small class="num">(${cartCount()})</small>`:""}</h1>
     ${!items.length?`<div class="box emptycart"><p>السلة خاوية. زيد المنتجات اللي بغيتي وطلبهم كاملين مرة وحدة.</p><a class="btn btn-sun" href="#products">${ic("cart")}شوف المنتجات</a></div>`:`
+    ${items.length>1?`<div class="bundlebar">${ic("gift")}<span><b>عرض الطلب المجموع:</b> كل منتج زايد على الأول كينقص من الثمن ديالو. وفّرتي <b class="num">${money(off)}</b> درهم</span></div>`:`<div class="bundlebar soft">${ic("gift")}<span>زيد منتج آخر للسلة وخود <b>تخفيض</b> على الثمن ديالو</span></div>`}
     <div class="cgrid">
-      <div style="display:grid;gap:14px;min-width:0">
-        <div class="box citems">${items.map(x=>`<div class="ci" data-id="${x.p.id}"><a href="#p-${x.p.id}"><img src="${src(x.p.id+"-cut")}" alt=""></a><div class="ci-t"><a href="#p-${x.p.id}"><b>${esc(x.p.name)}</b></a><span><bdi class="num">${money(x.p.price)}</bdi> درهم</span></div><div class="qty sm"><button type="button" data-q="1" aria-label="زيد">+</button><output class="num">${x.qty}</output><button type="button" data-q="-1" aria-label="نقّص">−</button></div><button type="button" class="rm" data-rm="${x.p.id}" aria-label="حيد">${ic("x")}</button></div>`).join("")}</div>
-        ${sug.length?`<div class="box"><h2 style="font-size:1.15rem">${ic("star")} زيد معاهم</h2><div class="sugrow">${sug.slice(0,6).map(c=>`<div class="sg"><a href="#p-${c.id}"><img src="${src(c.id+"-cut")}" alt="" loading="lazy"><b>${esc(c.name)}</b></a><span><bdi class="num">${money(c.price)}</bdi> درهم</span><button type="button" class="btn btn-green" data-add="${c.id}">${ic("cart")}زيد</button></div>`).join("")}</div></div>`:""}
-      </div>
-      <div class="order" id="order"><span class="rib">كمّل الطلب</span>
-        <h2>عمّر المعلومات ديالك</h2><p class="sm">طلب واحد لكاع المنتجات، وكنعيطو ليك باش نأكدو.</p>
+      <div class="box citems c-items">${items.map(x=>`<div class="ci" data-id="${x.p.id}"><a href="#p-${x.p.id}"><img src="${src(x.p.id+"-cut")}" alt=""></a><div class="ci-t"><a href="#p-${x.p.id}"><b>${esc(x.p.name)}</b></a><span><bdi class="num">${money(x.p.price-x.off)}</bdi> درهم${x.off?` <s><bdi class="num">${money(x.p.price)}</bdi></s> <em class="offt">−${x.off}</em>`:""}${x.qty>1?` <small class="num">× ${x.qty}</small>`:""}</span></div><div class="qty sm"><button type="button" data-q="1" aria-label="زيد">+</button><output class="num">${x.qty}</output><button type="button" data-q="-1" aria-label="نقّص">−</button></div><button type="button" class="rm" data-rm="${x.p.id}" aria-label="حيد">${ic("x")}</button></div>`).join("")}
+        <a class="addmore" href="#products">${ic("cart")}زيد منتجات أخرى</a></div>
+      <div class="order c-order" id="order"><span class="rib">كمّل الطلب</span>
+        <h2>الطلب ديالك</h2>
+        <div class="recap">${items.map(x=>`<div class="rl"><span>${esc(x.p.name)}${x.qty>1?` <small class="num">×${x.qty}</small>`:""}</span><b><bdi class="num">${money(x.p.price*x.qty)}</bdi> درهم</b></div>`).join("")}
+          ${off?`<div class="rl save"><span>${ic("gift")}تخفيض الطلب المجموع</span><b>−<bdi class="num">${money(off)}</bdi> درهم</b></div>`:""}
+          <div class="rl"><span>${ic("truck")}التوصيل</span><b>${ship?ship+" درهم":"مجاني"}</b></div>
+          <div class="rl"><span>${ic("card")}الدفع</span><b>${dep?"حجز "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
+        </div>
+        ${FREE-sub>0?`<div class="fsbar"><span>${ic("truck")}زيد غير <b class="num">${money(FREE-sub)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(sub/FREE*100)}%"></i></div>`:""}
+        ${dep?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${dep} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${dep} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:""}
+        <div class="total"><span>المجموع</span><b><span class="num">${money(total)}</span> <small style="font-size:.55em">درهم</small></b></div>
         <form class="f" id="cartForm" novalidate>
+          <p class="sm" style="margin:4px 0 0">عمّر المعلومات ديالك، وكنعيطو ليك باش نأكدو.</p>
           <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
           <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
-          <label for="f-email">الإيميل <small class="opt">(اختياري، باش توصلك رسالة التأكيد)</small><input id="f-email" type="email" inputmode="email" autocomplete="email" placeholder="exemple@gmail.com" dir="ltr" style="text-align:right"></label>
           <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
-          <div class="fsbar">${FREE-sub>0?`<span>${ic("truck")}زيد غير <b class="num">${money(FREE-sub)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`}</div>
-          <div class="shipline"><span>المنتجات</span><b><bdi class="num">${money(sub)}</bdi> درهم</b></div>
-          <div class="shipline"><span>${ic("truck")}التوصيل</span><b>${ship?ship+" درهم":"مجاني"}</b></div>
-          <div class="shipline"><span>${ic("card")}الدفع</span><b>${dep?"حجز "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
-          ${dep?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${dep} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${dep} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:""}
-          <div class="total"><span>المجموع</span><b><span class="num">${money(total)}</span> <small style="font-size:.55em">درهم</small></b></div>
+          <label for="f-email">الإيميل <small class="opt">(اختياري، باش توصلك رسالة التأكيد)</small><input id="f-email" type="email" inputmode="email" autocomplete="email" placeholder="exemple@gmail.com" dir="ltr" style="text-align:right"></label>
           <div class="err" id="f-err" role="alert"></div>
-          <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
+          <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب · <span class="num">${money(total)}</span> درهم</button>
         </form>
         <div class="done" id="orderDone" hidden><div class="ok">${ic("check",3)}</div><h2>توصلنا بالطلب ديالك!</h2><p>شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت باش نأكدو معاك الطلب والتوصيل.</p>${dep?`<p class="depnote">${ic("shield")}<span>باش نحجزو ليك السلعة باسمك، غادي نعيطو ليك ونعطيوك طريقة دفع <b>${dep} درهم ديال الحجز</b>. كتنقص من الثمن، والباقي عند الاستلام.</span></p>`:""}<div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div><p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p></div>
       </div>
+      ${sug.length?`<div class="box c-sug"><h2 style="font-size:1.15rem">${ic("star")} ممكن تحتاجهم معاهم <small class="sm">(كينقصو من الثمن إلا زدتيهم)</small></h2><div class="sugrow">${sug.slice(0,6).map(c=>`<div class="sg"><a href="#p-${c.id}"><img src="${src(c.id+"-cut")}" alt="" loading="lazy"><b>${esc(c.name)}</b></a><span><bdi class="num">${money(c.price-OFF(c.price))}</bdi> درهم <s><bdi class="num">${money(c.price)}</bdi></s></span><button type="button" class="btn btn-green" data-add="${c.id}">${ic("cart")}زيد</button></div>`).join("")}</div></div>`:""}
     </div>`}
   </div></section>`;
   app.querySelectorAll(".ci").forEach(r=>{const id=r.dataset.id;r.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const a=cartGet();const x=a.find(i=>i.id===id);x.qty=Math.min(50,Math.max(1,x.qty+ +b.dataset.q));cartSet(a);cartView()});});
@@ -1195,8 +1227,8 @@ function cartView(){
     err.textContent="";
     const tel=phone.replace(/^(\+212|00212)/,"0"),clean=t=>t.replace(/\u200f/g,""),d=new Date();
     const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
-    const order={ref,name,phone:tel,email,city,product:items.map(x=>clean(x.p.name)+(x.qty>1?" ×"+x.qty:"")).join(" + "),qty:cartCount(),price:sub,ship,total,source:orderSource()+" | cart",pid:items.map(x=>x.p.id).join(","),
-      note:"سلة: "+items.length+" منتجات"+(dep?" · تسبيق "+dep+" درهم قبل الإرسال":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+    const order={ref,name,phone:tel,email,city,product:items.map(x=>clean(x.p.name)+(x.qty>1?" ×"+x.qty:"")+(x.off?" (-"+x.off+")":"")).join(" + "),qty:cartCount(),price:sub,ship,total,source:orderSource()+" | cart",pid:items.map(x=>x.p.id).join(","),
+      note:"سلة: "+items.length+" منتجات"+(off?" · خصم "+off+" درهم":"")+(dep?" · تسبيق "+dep+" درهم قبل الإرسال":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const btn=f.querySelector('button[type=submit]'),bt=btn.textContent;btn.disabled=true;btn.textContent="كنصيفطو الطلب...";
     sendOrder(order).then(()=>{$("refNo").textContent=ref;f.hidden=true;$("orderDone").hidden=false;cartSet([]);
       try{if(window.fbq)fbq("track","Lead",{value:total,currency:"MAD",content_ids:items.map(x=>x.p.id),content_type:"product",num_items:order.qty})}catch(_){}
@@ -1224,7 +1256,8 @@ function productView(p){
           <p class="lead">${esc(p.lead)}</p>
           <div class="prow"><span class="tagp">${p.old?`<s class="was"><span class="num">${money(p.old)}</span></s>`:""}<span class="num">${money(p.price)}</span><small>درهم</small></span>
             <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل 30 درهم لجميع المدن"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}كنعيطو ليك للتأكيد</span></div>${needDep(p.price)?`<div class="depline">${ic("shield")}<span><b>احجزها بـ ${depOf(p.price)} درهم فقط</b> · كتنقص من الثمن، والباقي كتخلصو ملي توصلك</span></div>`:""}</div>
-          ${(()=>{const pks=P.filter(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pks.length)return "";return `<div class="packoffers"><div class="po-h">${ic("gift")}<b>عروض فيها هاد المنتج</b><span>وفّر كثر ملي تشري مجموعين</span></div>${pks.map(pk=>{const it=pk.items.map(i=>P.find(x=>x.id===i));return `<a class="pkcard" href="#p-${pk.id}"><span class="pk-imgs">${it.map(x=>`<img src="${src(x.id+"-cut")}" alt="" loading="lazy">`).join('<i>+</i>')}</span><span class="pk-t"><b>${esc(pk.name.split(":")[0])}</b><small>${it.map(x=>esc(x.name)).join(" + ")}</small><span class="pk-p"><bdi class="num">${money(pk.price)}</bdi> درهم <s><bdi class="num">${money(pk.old)}</bdi></s><em>وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi></em></span></span><span class="pk-go">شوف العرض${ic("prev",2.6)}</span></a>`}).join("")}</div>`})()}
+          ${(()=>{const pks=P.filter(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pks.length)return "";return `<div class="packoffers"><div class="po-h">${ic("gift")}<b>عروض فيها هاد المنتج</b><span>وفّر كثر ملي تشري مجموعين</span></div>${pks.map(pk=>{const it=pk.items.map(i=>PF(x=>x.id===i));return `<a class="pkcard" href="#p-${pk.id}"><span class="pk-imgs">${it.map(x=>`<img src="${src(x.id+"-cut")}" alt="" loading="lazy">`).join('<i>+</i>')}</span><span class="pk-t"><b>${esc(pk.name.split(":")[0])}</b><small>${it.map(x=>esc(x.name)).join(" + ")}</small><span class="pk-p"><bdi class="num">${money(pk.price)}</bdi> درهم <s><bdi class="num">${money(pk.old)}</bdi></s><em>وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi></em></span></span><span class="pk-go">شوف العرض${ic("prev",2.6)}</span></a>`}).join("")}</div>`})()}
+          ${p.vars?`<div class="vars"><span class="vh">${ic("bolt")}اختار الحجم على حساب الخيل ديال المحرك ديالك:</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <div class="cartrow"><button type="button" class="btn btn-green" data-add="${p.id}">${ic("cart")}زيد للسلة</button><a class="btn btn-white" href="#cart">شوف السلة<b class="num cartn2">${cartCount()}</b></a><small>زيد بزاف ديال المنتجات وطلبهم كاملين مرة وحدة</small></div>
           <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
 
@@ -1241,7 +1274,7 @@ function productView(p){
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
                 <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
               </div>
-              ${(()=>{const c=comps(p).slice(0,3);if(!c.length)return "";return `<div class="addons"><div class="ao-h">${ic("cart")}<b>زيد معاه فنفس الطلب</b><small>نفس التوصيل، بلا ما تعاود تطلب</small></div>${c.map(x=>`<label class="ao"><input type="checkbox" value="${x.id}"><span class="ao-box">${ic("check",3)}</span><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><span class="ao-t"><b>${esc(x.name)}</b><small><bdi class="num">+${money(x.price)}</bdi> درهم</small></span></label>`).join("")}</div>`})()}
+              ${(()=>{const c=comps(p).slice(0,3);if(!c.length)return "";return `<div class="addons"><div class="ao-h"><span class="ao-gift">${ic("gift")}</span><div><b>عرض خاص على هاد الطلب</b><small>زيد معاه ونقّصو ليك من الثمن، وكيوصلو مجموعين</small></div></div>${c.map(x=>`<label class="ao"><input type="checkbox" value="${x.id}"><span class="ao-box">${ic("check",3)}</span><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><span class="ao-t"><b>${esc(x.name)}</b><span class="ao-p"><bdi class="num">${money(x.price-OFF(x.price))}</bdi> درهم <s><bdi class="num">${money(x.price)}</bdi></s></span></span><em class="ao-off">−<bdi class="num">${OFF(x.price)}</bdi></em></label>`).join("")}</div>`})()}
               <div class="fsbar" id="fsbar"></div>
               <div class="shipline"><span>${ic("truck")}التوصيل</span><b id="f-ship">${freeShip(p.price)?"مجاني":"30 درهم"}</b></div>
               <div class="shipline"><span>${ic("card")}الدفع</span><b id="f-pay">عند الاستلام</b></div>
@@ -1298,7 +1331,7 @@ function productView(p){
   const view=document.getElementById("view");
   function show(i){
     const m=media[i];
-    if(m.t==="c") view.innerHTML=`<span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span><img class="prod" id="prod" src="${src(m.k)}" alt="${esc(p.name)}"><div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>`;
+    if(m.t==="c") view.innerHTML=`<span class="sticker"><span>${p.vars?'<small>من</small>':''}<b class="num">${money(p.price)}</b><small>درهم</small></span></span><img class="prod" id="prod" src="${src(m.k)}" alt="${esc(p.name)}"><div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>`;
     else if(m.t==="v") view.innerHTML=`<video class="photo" src="${vsrc(m.k)}" poster="${src(m.k)}" autoplay muted loop playsinline controls></video><span class="vlive">${ic("play")}فيديو حقيقي</span>`;
     else view.innerHTML=`<img class="photo" src="${src(m.k)}" alt="${esc(p.name)}">`;
     app.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
@@ -1308,13 +1341,13 @@ function productView(p){
   view.addEventListener("pointermove",e=>{const pr=document.getElementById("prod");if(!pr||e.pointerType!=="mouse")return;const r=view.getBoundingClientRect();pr.style.setProperty("--gx",(((e.clientX-r.left)/r.width-.5)*24)+"deg");pr.style.setProperty("--gy",(-((e.clientY-r.top)/r.height-.5)*14)+"deg")});
 
   let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
-  const addSel=()=>[...app.querySelectorAll('.ao input:checked')].map(i=>P.find(x=>x.id===i.value)).filter(Boolean);
-  const calc=()=>{const ad=addSel();const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0);return {ad,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
+  const addSel=()=>[...app.querySelectorAll('.ao input:checked')].map(i=>PF(x=>x.id===i.value)).filter(Boolean);
+  const calc=()=>{const ad=addSel();const off=ad.reduce((a,x)=>a+OFF(x.price),0);const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0)-off;return {ad,off,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
   const recalc=()=>{const c=calc();qo.textContent=qty;tot.textContent=money(c.total);document.getElementById("f-ship").textContent=freeShip(c.sub)?"مجاني":SHIP+" درهم";
     const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}زيد غير <b class="num">${money(left)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`;
     const dp=needDep(c.total);document.getElementById("f-pay").textContent=dp?"حجز "+depOf(c.total)+" درهم + الباقي عند الاستلام":"عند الاستلام";const fd=document.getElementById("f-dep");fd.hidden=!dp;fd.innerHTML=dp?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${depOf(c.total)} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${depOf(c.total)} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:"";};
   app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));recalc()});
-  app.querySelectorAll(".ao input").forEach(i=>i.onchange=()=>{i.closest(".ao").classList.toggle("on",i.checked);recalc();try{if(i.checked&&window.fbq)fbq("track","AddToCart",pxd(P.find(x=>x.id===i.value),P.find(x=>x.id===i.value).price))}catch(_){}});
+  app.querySelectorAll(".ao input").forEach(i=>i.onchange=()=>{i.closest(".ao").classList.toggle("on",i.checked);recalc();try{if(i.checked&&window.fbq)fbq("track","AddToCart",pxd(PF(x=>x.id===i.value),PF(x=>x.id===i.value).price))}catch(_){}});
   recalc();
   let icSent=false;document.getElementById("orderForm").addEventListener("focusin",()=>{if(icSent)return;icSent=true;try{if(window.fbq)fbq("track","InitiateCheckout",pxd(p,p.price))}catch(_){}});
   document.getElementById("orderForm").addEventListener("submit",e=>{
@@ -1331,9 +1364,9 @@ function productView(p){
     const clean=t=>t.replace(/\u200f/g,""),d=new Date();
     const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
     const c=calc(),total=c.total,btn=e.target.querySelector('button[type=submit]'),dep=needDep(total);
-    const pname=clean(p.name)+(qty>1?" ×"+qty:"")+c.ad.map(x=>" + "+clean(x.name)).join("");
+    const pname=clean(p.name)+(qty>1?" ×"+qty:"")+c.ad.map(x=>" + "+clean(x.name)+" (-"+OFF(x.price)+")").join("");
     const order={ref,name,phone:tel,email,city,product:pname,qty,price:p.price,ship:c.ship,total,source:orderSource()+" | "+p.id,pid:[p.id].concat(c.ad.map(x=>x.id)).join(","),
-      note:(dep?"تسبيق "+depOf(total)+" درهم قبل الإرسال":"")+(c.ad.length?(dep?" · ":"")+"زاد: "+c.ad.map(x=>clean(x.name)+" ("+x.price+")").join(" + "):""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+      note:(dep?"تسبيق "+depOf(total)+" درهم قبل الإرسال":"")+(c.ad.length?(dep?" · ":"")+"زاد: "+c.ad.map(x=>clean(x.name)+" ("+(x.price-OFF(x.price))+" بلاصة "+x.price+")").join(" + ")+" · خصم "+c.off+" درهم":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const done=ok=>{
       if(!ok){btn.disabled=false;btn.textContent=btnTxt;let er=e.target.querySelector(".senderr");if(!er){er=document.createElement("p");er.className="note senderr";er.style.color="#c0392b";btn.after(er)}er.textContent="ما قدرناش نصيفطو الطلب، تأكد من الأنترنيت وعاود كليكي مرة أخرى.";return;}
       $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false; $("doneDep").hidden=!dep;$("doneDepv").textContent=depOf(total)||100;
@@ -1380,7 +1413,7 @@ function route(){
   const h=decodeURIComponent(location.hash.slice(1));
   if(h==="order")return;
   if(h==="cart"){cancelAnimationFrame(ringRAF);setSticky(null);cartView();view="cart";document.title="السلة | أطلس";scrollTo(0,0);return}
-  if(h.startsWith("p-")){const p=P.find(x=>x.id===h.slice(2));if(p){cancelAnimationFrame(ringRAF);productView(p);setSticky(p);view=h;document.title=p.name+" | أطلس";scrollTo(0,0);return}}
+  if(h.startsWith("p-")){const p=PF(x=>x.id===h.slice(2));if(p){cancelAnimationFrame(ringRAF);productView(p);setSticky(p);view=h;document.title=p.name+" | أطلس";scrollTo(0,0);return}}
   document.title="أطلس للمعدات الفلاحية";setSticky(null);
   if(view!=="home"){homeView();view="home"}
   if(h.startsWith("c-")){filter(h.slice(2));document.getElementById("products").scrollIntoView();return}
@@ -1392,6 +1425,7 @@ function route(){
 document.querySelectorAll("footer .fi").forEach(e=>{e.innerHTML=ic({ICTRUCK:"truck",ICCARD:"card",ICSHIELD:"shield",ICCHAT:"chat"}[e.textContent.trim()])});
 document.getElementById("footCats").innerHTML=CATS.map(c=>`<a href="#c-${c.id}">${c.name}</a>`).join("");
 addEventListener("hashchange",route);
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest("[data-var]");if(!a)return;e.preventDefault();const k=a.dataset.var,p=PF(x=>x.id===k);if(!p)return;const y=scrollY;history.replaceState(null,"","#p-"+k);view="p-"+k;productView(p);setSticky(p);document.title=p.name+" | أطلس";scrollTo(0,y)});
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-add]");if(!b)return;e.preventDefault();e.stopPropagation();cartAdd(b.dataset.add);document.querySelectorAll(".cartn2").forEach(x=>x.textContent=cartCount());if(view==="cart")cartView()},true);
 cartBadge();
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]');if(a&&a.id!=="waLink"){try{if(window.fbq)fbq("track","Contact")}catch(_){}}});
