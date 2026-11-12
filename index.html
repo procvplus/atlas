@@ -456,6 +456,10 @@ body.on-product footer{padding-bottom:84px}
 .sg{flex:0 0 150px;display:grid;gap:6px;border:1px solid var(--line);border-radius:16px;padding:10px;background:#fff}.sg a{color:var(--ink);text-decoration:none;display:grid;gap:4px}.sg img{width:100%;height:80px;object-fit:contain}.sg b{font-size:.82rem;line-height:1.35}.sg span{color:var(--leaf);font-weight:800;font-size:.9rem}.sg .btn{padding:8px;font-size:.88rem}
 .emptycart{text-align:center;display:grid;gap:14px;justify-items:center}
 .cartnote{display:flex;align-items:center;gap:8px;margin:-4px 0 12px;padding:9px 12px;border-radius:14px;background:var(--mint);color:var(--leaf);text-decoration:none;font-weight:700;font-size:.88rem}.cartnote svg{width:18px;height:18px;flex:none}.cartnote span{flex:1}
+.depbox{border-radius:16px;background:linear-gradient(135deg,#FFF8DD,#FFF1BF);border:2px solid #F4C542;padding:12px 14px;display:grid;gap:6px}
+.depbox[hidden]{display:none}.depbox .dh{display:flex;align-items:center;gap:8px;font-size:1rem;color:#5A3D00}.depbox .dh svg{width:22px;height:22px;color:#B07A00;flex:none}
+.depbox ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}.depbox li{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.88rem}.depbox li svg{width:16px;height:16px;color:var(--green);flex:none}
+#f-dep[hidden]{display:none}
 .upsell{display:flex;align-items:center;gap:12px;margin-top:16px;padding:10px 14px;border-radius:16px;background:#FFF8DD;border:2px dashed #F4C542;text-decoration:none;color:var(--ink);transition:background .2s}
 .upsell:hover{background:#FFF1BF}
 .upsell img{width:74px;height:56px;object-fit:contain;flex:none}
@@ -1167,13 +1171,13 @@ function cartView(){
           <div class="fsbar">${FREE-sub>0?`<span>${ic("truck")}زيد غير <b class="num">${money(FREE-sub)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`}</div>
           <div class="shipline"><span>المنتجات</span><b><bdi class="num">${money(sub)}</bdi> درهم</b></div>
           <div class="shipline"><span>${ic("truck")}التوصيل</span><b>${ship?ship+" درهم":"مجاني"}</b></div>
-          <div class="shipline"><span>${ic("card")}الدفع</span><b>${dep?"تسبيق "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
-          ${dep?`<p class="depnote">${ic("shield")}<span>الطلبات اللي فوق ${money(DEP_MIN)} درهم كنطلبو فيها <b>تسبيق ${dep} درهم</b> باش نتأكدو أن الطلب جدي. كيتنقص من المجموع، وكنعيطو ليك ونعطيوك طريقة الخلاص. الباقي كتخلصو عند الاستلام.</span></p>`:""}
+          <div class="shipline"><span>${ic("card")}الدفع</span><b>${dep?"حجز "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
+          ${dep?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${dep} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${dep} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:""}
           <div class="total"><span>المجموع</span><b><span class="num">${money(total)}</span> <small style="font-size:.55em">درهم</small></b></div>
           <div class="err" id="f-err" role="alert"></div>
           <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
         </form>
-        <div class="done" id="orderDone" hidden><div class="ok">${ic("check",3)}</div><h2>توصلنا بالطلب ديالك!</h2><p>شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت باش نأكدو معاك الطلب والتوصيل.</p>${dep?`<p class="depnote">${ic("shield")}<span>حيت الطلب ديالك فوق ${money(DEP_MIN)} درهم، غادي نعطيوك فالتيليفون طريقة خلاص <b>التسبيق ديال ${dep} درهم</b>، والباقي عند الاستلام.</span></p>`:""}<div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div><p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p></div>
+        <div class="done" id="orderDone" hidden><div class="ok">${ic("check",3)}</div><h2>توصلنا بالطلب ديالك!</h2><p>شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت باش نأكدو معاك الطلب والتوصيل.</p>${dep?`<p class="depnote">${ic("shield")}<span>باش نحجزو ليك السلعة باسمك، غادي نعيطو ليك ونعطيوك طريقة دفع <b>${dep} درهم ديال الحجز</b>. كتنقص من الثمن، والباقي عند الاستلام.</span></p>`:""}<div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div><p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p></div>
       </div>
     </div>`}
   </div></section>`;
@@ -1219,7 +1223,7 @@ function productView(p){
           <h1>${esc(p.name)}</h1>
           <p class="lead">${esc(p.lead)}</p>
           <div class="prow"><span class="tagp">${p.old?`<s class="was"><span class="num">${money(p.old)}</span></s>`:""}<span class="num">${money(p.price)}</span><small>درهم</small></span>
-            <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل 30 درهم لجميع المدن"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}كنعيطو ليك للتأكيد</span></div>${needDep(p.price)?`<div class="depline">${ic("shield")}<span><b>تسبيق ${depOf(p.price)} درهم فقط</b> باش نأكدو الطلب، والباقي كتخلصو عند الاستلام</span></div>`:""}</div>
+            <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل 30 درهم لجميع المدن"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}كنعيطو ليك للتأكيد</span></div>${needDep(p.price)?`<div class="depline">${ic("shield")}<span><b>احجزها بـ ${depOf(p.price)} درهم فقط</b> · كتنقص من الثمن، والباقي كتخلصو ملي توصلك</span></div>`:""}</div>
           ${(()=>{const pks=P.filter(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pks.length)return "";return `<div class="packoffers"><div class="po-h">${ic("gift")}<b>عروض فيها هاد المنتج</b><span>وفّر كثر ملي تشري مجموعين</span></div>${pks.map(pk=>{const it=pk.items.map(i=>P.find(x=>x.id===i));return `<a class="pkcard" href="#p-${pk.id}"><span class="pk-imgs">${it.map(x=>`<img src="${src(x.id+"-cut")}" alt="" loading="lazy">`).join('<i>+</i>')}</span><span class="pk-t"><b>${esc(pk.name.split(":")[0])}</b><small>${it.map(x=>esc(x.name)).join(" + ")}</small><span class="pk-p"><bdi class="num">${money(pk.price)}</bdi> درهم <s><bdi class="num">${money(pk.old)}</bdi></s><em>وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi></em></span></span><span class="pk-go">شوف العرض${ic("prev",2.6)}</span></a>`}).join("")}</div>`})()}
           <div class="cartrow"><button type="button" class="btn btn-green" data-add="${p.id}">${ic("cart")}زيد للسلة</button><a class="btn btn-white" href="#cart">شوف السلة<b class="num cartn2">${cartCount()}</b></a><small>زيد بزاف ديال المنتجات وطلبهم كاملين مرة وحدة</small></div>
           <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
@@ -1241,7 +1245,7 @@ function productView(p){
               <div class="fsbar" id="fsbar"></div>
               <div class="shipline"><span>${ic("truck")}التوصيل</span><b id="f-ship">${freeShip(p.price)?"مجاني":"30 درهم"}</b></div>
               <div class="shipline"><span>${ic("card")}الدفع</span><b id="f-pay">عند الاستلام</b></div>
-              <p class="depnote" id="f-dep" hidden>${ic("shield")}<span>الطلبات اللي فوق ${money(DEP_MIN)} درهم كنطلبو فيها <b>تسبيق <bdi class="num" id="f-depv">100</bdi> درهم</b> باش نتأكدو أن الطلب جدي. كنعيطو ليك ونعطيوك طريقة الخلاص، والباقي كتخلصو عند الاستلام.</span></p>
+              <div id="f-dep" hidden></div>
               <div class="total"><span>المجموع</span><b><span class="num" id="f-total">${money(p.price+shipFee(p.price))}</span> <small style="font-size:.55em">درهم</small></b></div>
               <div class="err" id="f-err" role="alert"></div>
               <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
@@ -1251,7 +1255,7 @@ function productView(p){
               <div class="ok">${ic("check",3)}</div>
               <h2 id="doneTitle">توصلنا بالطلب ديالك!</h2>
               <p id="doneText">شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت على الرقم اللي عطيتينا باش نأكدو معاك الطلب والتوصيل.</p>
-              <p class="depnote" id="doneDep" hidden>${ic("shield")}<span>حيت الطلب ديالك فوق ${money(DEP_MIN)} درهم، غادي نعطيوك فالتيليفون طريقة خلاص <b>التسبيق ديال <bdi class="num" id="doneDepv">100</bdi> درهم</b>، والباقي عند الاستلام.</span></p>
+              <p class="depnote" id="doneDep" hidden>${ic("shield")}<span>باش نحجزو ليك السلعة باسمك، غادي نعيطو ليك ونعطيوك طريقة دفع <b><bdi class="num" id="doneDepv">100</bdi> درهم ديال الحجز</b>. كتنقص من الثمن، والباقي عند الاستلام.</span></p>
               <div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div>
               <p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p>
             </div>
@@ -1274,7 +1278,7 @@ function productView(p){
         <div class="box"><h2>مناسب لـ</h2><div class="uses">${p.uses.map(u=>`<span class="tag">${ic("check",3)}${esc(u)}</span>`).join("")}</div></div>
         <div class="box"><h2>علاش تشريها من أطلس؟</h2><ul class="trustlist">
           <li><span class="ico3d">${ic("truck")}</span>التوصيل مجاني لجميع المدن (من 500 درهم)، وتحت 500 درهم غير 30 درهم</li>
-          <li><span class="ico3d sun">${ic("card")}</span>${needDep(p.price)?`تسبيق ${depOf(p.price)} درهم فقط، والباقي عند الاستلام`:"الدفع عند الاستلام، بلا ما تخلّص مسبقاً"}</li>
+          <li><span class="ico3d sun">${ic("card")}</span>${needDep(p.price)?`احجز بـ ${depOf(p.price)} درهم فقط (كتنقص من الثمن)، والباقي عند الاستلام`:"الدفع عند الاستلام، بلا ما تخلّص مسبقاً"}</li>
           <li><span class="ico3d">${ic("tag")}</span>الثمن واضح، بلا مفاجآت</li>
           <li><span class="ico3d">${ic("chat")}</span>كنعيطو ليك ونأكدو معاك قبل الإرسال</li></ul>
           <a class="btn btn-sun btn-block" href="#order" data-scroll style="margin-top:18px">${ic("cart")}اطلب الآن</a></div>
@@ -1308,7 +1312,7 @@ function productView(p){
   const calc=()=>{const ad=addSel();const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0);return {ad,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
   const recalc=()=>{const c=calc();qo.textContent=qty;tot.textContent=money(c.total);document.getElementById("f-ship").textContent=freeShip(c.sub)?"مجاني":SHIP+" درهم";
     const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}زيد غير <b class="num">${money(left)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`;
-    const dp=needDep(c.total);document.getElementById("f-pay").textContent=dp?"تسبيق "+depOf(c.total)+" درهم + الباقي عند الاستلام":"عند الاستلام";document.getElementById("f-depv").textContent=depOf(c.total)||100;document.getElementById("f-dep").hidden=!dp;};
+    const dp=needDep(c.total);document.getElementById("f-pay").textContent=dp?"حجز "+depOf(c.total)+" درهم + الباقي عند الاستلام":"عند الاستلام";const fd=document.getElementById("f-dep");fd.hidden=!dp;fd.innerHTML=dp?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${depOf(c.total)} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${depOf(c.total)} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:"";};
   app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));recalc()});
   app.querySelectorAll(".ao input").forEach(i=>i.onchange=()=>{i.closest(".ao").classList.toggle("on",i.checked);recalc();try{if(i.checked&&window.fbq)fbq("track","AddToCart",pxd(P.find(x=>x.id===i.value),P.find(x=>x.id===i.value).price))}catch(_){}});
   recalc();
