@@ -662,7 +662,7 @@ const P=[
    uses:["السقي الصغير","القوارب","الخزانات والبراميل"]},
   {id:"carbu",cat:"parts",price:300,vars:[["carbu","6.5 حتى 8 خيل"],["carbu15","13 حتى 15 خيل"]],badge:"6.5 حتى 8 خيل",name:"كاربيراتور الغاز (6.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
    lead:"كاربيراتور مزدوج (بنزين + غاز) للمحركات من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل): نفس المحرك، مصاريف أقل.",
-   imgs:["carbu-vs","carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
+   imgs:["carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
    bens:[["مزدوج","بنزين ولا غاز","fuel"],["6.5 → 8 خيل","للمحركات الشائعة","bolt"],["توفير","مصاريف أقل","coin"]],
    specs:[["المحركات","من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل)"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
    uses:["المولدات","المضخات بالمحرك","المحركات الفلاحية"]}
@@ -893,7 +893,7 @@ const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
 const VX=[
   {id:"carbu15",cat:"parts",of:"carbu",vars:[["carbu","6.5 حتى 8 خيل"],["carbu15","13 حتى 15 خيل"]],price:350,badge:"13 حتى 15 خيل",name:"كاربيراتور الغاز الكبير (13 حتى 15 خيل)",hook:"للمحركات الكبار: خدم بالغاز ووفّر",
    lead:"كاربيراتور مزدوج (بنزين + غاز) كبير شوية، مخصّص للمحركات ديال 13 حتى 15 خيل: نفس المحرك، مصاريف أقل.",
-   imgs:["carbu-vs","carbu-3","carbu-4","carbu-5"],
+   imgs:["carbu-vs"],nocut:1,
    bens:[["مزدوج","بنزين ولا غاز","fuel"],["13 → 15 خيل","للمحركات الكبار","bolt"],["توفير","مصاريف أقل","coin"]],
    specs:[["المحركات","من 13 حتى 15 خيل"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
    uses:["المولدات الكبار","المضخات بالمحرك الكبير","المحركات الفلاحية"]}];
@@ -1245,7 +1245,7 @@ function productView(p){
   rvAdd(p.id);
   try{if(window.fbq)fbq("track","ViewContent",pxd(p,p.price))}catch(_){}
   const others=[...new Set((p.items?P.filter(x=>p.items.includes(x.id)).concat(P.filter(x=>x.cat==="packs"&&x.id!==p.id)):comps(p).concat(P.filter(x=>x.cat==="packs"&&x.items.includes(p.id))).concat(P.filter(x=>x.cat===p.cat&&x.id!==p.id)).concat(PR().filter(x=>x.cat!==p.cat))))].filter(x=>x.id!==p.id).slice(0,8);
-  const media=[{t:"c",k:p.id+"-cut"}].concat((p.vids||[]).map(k=>({t:"v",k}))).concat(p.imgs.map(k=>({t:"i",k})));
+  const media=(p.nocut?[]:[{t:"c",k:p.id+"-cut"}]).concat((p.vids||[]).map(k=>({t:"v",k}))).concat(p.imgs.map(k=>({t:"i",k})));
   app.innerHTML=`
   <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
     <div class="wrap" style="position:relative;z-index:1">
