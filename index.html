@@ -943,7 +943,7 @@ PACKS.forEach(k=>{
 });
 CATS.push({id:"packs",name:"العروض",cover:"pack-garage",c:"#FFF3C4"});
 const FREE=500, SHIP=30, freeShip=v=>v>=FREE, shipFee=v=>freeShip(v)?0:SHIP, PR=()=>P.filter(p=>p.cat!=="packs");
-const DEP_MIN=2000, depOf=v=>v>=5000?200:v>=DEP_MIN?100:0, needDep=v=>depOf(v)>0;
+const DEP_MIN=2500, depOf=v=>v>=5000?200:v>=DEP_MIN?100:0, needDep=v=>depOf(v)>0;
 const COMP={engine7:["carbu","motopompe","qgd"],carbu:["engine7","motopompe","gen-dmax"],carbu15:["carbu","generator","motopompe"],motopompe:["carbu","sprayer16","pompe12v"],
  qgd:["generator","pompe12v","qb60"],qb60:["pompe12v","qgd","generator"],surfpump:["generator","qb60","pompe12v"],wqd:["generator","vidange075","pompe12v"],vidange15:["generator","pompe12v","wqd"],vidange075:["generator","pompe12v","wqd"],pompe12v:["qb60","qgd","sprayer16"],
  generator:["qgd","welder","washer"],"gen-dmax":["carbu","qgd","welder"],welder:["grinder","socket","generator"],grinder:["welder","socket","chainsaw"],socket:["jack32","grinder","jack3t"],
