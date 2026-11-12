@@ -402,6 +402,60 @@ body.on-product footer{padding-bottom:84px}
 .pc .ship svg{width:15px;height:15px;flex:none}
 .pc .ship s{color:var(--muted);font-weight:700}
 .tagp .was{display:block;font-size:.4em;line-height:1;opacity:.7;text-align:center}
+
+.depline{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:10px 12px;border-radius:14px;background:#FFF8DD;border:1.5px solid #F4C542;font-size:.92rem;line-height:1.6}
+.depline svg,.depnote svg{width:22px;height:22px;flex:none;color:#B07A00;margin-top:2px}
+.depnote{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:#FFF8DD;border:1.5px solid #F4C542;font-size:.88rem;line-height:1.65;font-weight:600;color:var(--ink);margin:4px 0}
+.depnote[hidden]{display:none}
+.f small.opt{font-weight:600;color:var(--muted);font-size:.8rem}
+.packoffers{margin-top:16px;display:grid;gap:10px}
+.po-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.po-h svg{width:22px;height:22px;color:#D99A00}.po-h b{font-size:1.05rem}.po-h span{color:var(--muted);font-weight:600;font-size:.88rem}
+.pkcard{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:12px;border-radius:18px;background:linear-gradient(135deg,#FFF8DD,#FFF1BF);border:2px solid #F4C542;text-decoration:none;color:var(--ink);box-shadow:0 5px 0 #E7B523;transition:transform .15s}
+.pkcard:hover{transform:translateY(-2px)}
+.pk-imgs{display:flex;align-items:center;gap:2px}.pk-imgs img{width:58px;height:58px;object-fit:contain;background:#fff;border-radius:12px;padding:4px}.pk-imgs i{font-style:normal;font-weight:800;color:#B07A00}
+.pk-t{display:grid;gap:2px;min-width:0}.pk-t b{font-size:1rem}.pk-t small{color:var(--muted);font-weight:600;font-size:.8rem;line-height:1.5}
+.pk-p{font-weight:800;color:var(--leaf);display:flex;gap:8px;align-items:center;flex-wrap:wrap}.pk-p s{color:var(--muted);font-weight:600;font-size:.85rem}.pk-p em{font-style:normal;background:var(--red,#D64545);color:#fff;border-radius:999px;padding:1px 9px;font-size:.78rem}
+.pk-go{display:flex;align-items:center;gap:4px;font-weight:800;color:var(--leaf);font-size:.88rem;white-space:nowrap}.pk-go svg{width:18px;height:18px}
+@media(max-width:560px){.pkcard{grid-template-columns:1fr}.pk-go{justify-content:flex-start}}
+.addons{border:2px dashed #BFE3B8;border-radius:18px;padding:12px;display:grid;gap:8px;background:#F7FCF5}
+.ao-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.ao-h svg{width:20px;height:20px;color:var(--green)}.ao-h small{color:var(--muted);font-weight:600}
+.ao{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;background:#fff;border:2px solid var(--line);cursor:pointer;transition:border-color .15s,background .15s}
+.ao input{position:absolute;opacity:0;pointer-events:none}
+.ao-box{width:26px;height:26px;border-radius:8px;border:2px solid #9BCB91;display:grid;place-items:center;background:#fff}.ao-box svg{width:16px;height:16px;color:#fff;opacity:0}
+.ao.on{border-color:var(--green);background:var(--mint)}.ao.on .ao-box{background:var(--green);border-color:var(--green)}.ao.on .ao-box svg{opacity:1}
+.ao img{width:48px;height:48px;object-fit:contain}
+.ao-t{display:grid;min-width:0}.ao-t b{font-size:.9rem;line-height:1.4}.ao-t small{color:var(--leaf);font-weight:800}
+.fsbar{position:relative;border-radius:12px;background:#EEF6EC;padding:8px 12px 12px;font-size:.88rem;font-weight:700;overflow:hidden}
+.fsbar span{display:flex;align-items:center;gap:6px}.fsbar svg{width:18px;height:18px;color:var(--green)}
+.fsbar i{position:absolute;left:0;right:0;bottom:0;height:5px;background:#D7EBD2}.fsbar i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--green);border-radius:0 4px 4px 0}
+[dir=rtl] .fsbar i::after,.fsbar i::after{inset:0 0 0 auto;border-radius:4px 0 0 4px}
+.fsbar .ok{color:var(--leaf)}
+
+.rvrow{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
+.rvc{flex:0 0 150px;scroll-snap-align:start;display:grid;gap:4px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.rvc img{width:100%;height:100px;object-fit:contain}.rvc b{font-size:.85rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.rvc span{color:var(--leaf);font-weight:800;font-size:.9rem}
+
+.hcart{position:relative}.cartn{position:absolute;top:-8px;left:-8px;min-width:22px;height:22px;border-radius:11px;background:var(--red,#D64545);color:#fff;font-size:.78rem;display:grid;place-items:center;padding:0 6px;box-shadow:0 2px 0 #9E2C2C}
+.cartn[hidden]{display:none}
+.toast{position:fixed;z-index:80;left:50%;transform:translateX(-50%);bottom:90px;width:min(560px,calc(100% - 32px));background:var(--leaf,#145A22);color:#fff;border-radius:16px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);font-weight:700;font-size:.9rem;animation:tin .25s ease}
+.toast[hidden]{display:none}.toast svg{width:18px;height:18px;vertical-align:-3px;margin-left:4px}.toast a{background:var(--sun);color:var(--sun-ink);text-decoration:none;font-weight:900;border-radius:10px;padding:6px 12px;white-space:nowrap}
+@keyframes tin{from{opacity:0;transform:translate(-50%,10px)}}
+.pcbtns{display:flex;gap:8px}.pcbtns .btn-sun{flex:1}.pcbtns .addc{padding-inline:12px;flex:none}.pcbtns .addc svg{width:18px;height:18px}
+.cartrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}.cartrow .btn{flex:1;min-width:150px}.cartrow small{width:100%;color:var(--muted);font-weight:600;font-size:.85rem}
+.cartrow .cartn2{background:var(--mint);color:var(--leaf);border-radius:999px;padding:0 8px;margin-inline-start:6px;font-size:.85rem}
+.cgrid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:start}@media(max-width:860px){.cgrid{grid-template-columns:1fr}}
+.citems{display:grid;gap:10px}
+.cartpage h1 svg{width:30px;height:30px;vertical-align:-5px}
+.cartpage .box{min-width:0;max-width:100%;overflow:hidden}.cartpage .box h2 svg{width:22px;height:22px;vertical-align:-4px}.cgrid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}@media(max-width:860px){.cgrid{grid-template-columns:minmax(0,1fr)}}
+.cgrid>*{min-width:0}
+.ci{display:grid;grid-template-columns:64px minmax(0,1fr) auto;grid-template-areas:"img t rm" "img q q";align-items:center;gap:6px 10px;padding:10px;border-radius:16px;border:1px solid var(--line);background:#fff}
+.ci>a{grid-area:img}.ci img{width:64px;height:64px;object-fit:contain}.ci-t{grid-area:t;display:grid;gap:2px;min-width:0}.ci-t a{color:var(--ink);text-decoration:none}.ci-t b{font-size:.92rem;line-height:1.4}.ci-t span{color:var(--leaf);font-weight:800}
+.ci .qty{grid-area:q;width:130px;justify-self:start}.qty.sm button{width:38px;height:36px;font-size:1.2rem}.qty.sm output{font-size:1.05rem}
+.rm{grid-area:rm;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;display:grid;place-items:center}.rm svg{width:16px;height:16px}
+.sugrow{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.sg{flex:0 0 150px;display:grid;gap:6px;border:1px solid var(--line);border-radius:16px;padding:10px;background:#fff}.sg a{color:var(--ink);text-decoration:none;display:grid;gap:4px}.sg img{width:100%;height:80px;object-fit:contain}.sg b{font-size:.82rem;line-height:1.35}.sg span{color:var(--leaf);font-weight:800;font-size:.9rem}.sg .btn{padding:8px;font-size:.88rem}
+.emptycart{text-align:center;display:grid;gap:14px;justify-items:center}
+.cartnote{display:flex;align-items:center;gap:8px;margin:-4px 0 12px;padding:9px 12px;border-radius:14px;background:var(--mint);color:var(--leaf);text-decoration:none;font-weight:700;font-size:.88rem}.cartnote svg{width:18px;height:18px;flex:none}.cartnote span{flex:1}
 .upsell{display:flex;align-items:center;gap:12px;margin-top:16px;padding:10px 14px;border-radius:16px;background:#FFF8DD;border:2px dashed #F4C542;text-decoration:none;color:var(--ink);transition:background .2s}
 .upsell:hover{background:#FFF1BF}
 .upsell img{width:74px;height:56px;object-fit:contain;flex:none}
@@ -466,13 +520,14 @@ body.on-product footer{padding-bottom:84px}
       <span><b>أطلس</b><small>معدات فلاحية · معدات التعاونيات</small></span>
     </a>
     <nav class="nav" aria-label="القائمة"><a href="#products">المنتجات</a><a href="#packs">العروض</a><a href="#how">كيفاش تطلب</a><a href="#faq">أسئلة</a></nav>
-    <a class="btn btn-green" href="#products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 8h-12Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg><span class="t">تسوّق دابا</span></a>
+    <a class="btn btn-green hcart" href="#cart" aria-label="السلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 8h-12Z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg><span class="t">السلة</span><b class="cartn num" id="cartN" hidden>0</b></a>
   </div>
 </header>
 
 <main id="app"></main>
 
 <a class="wafloat" href="https://wa.me/212631312155" target="_blank" rel="noopener" aria-label="تواصل معنا فالواتساب"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
+<div class="toast" id="toast" hidden></div>
 <div class="sticky" id="sticky" hidden><span class="p" id="stickyPrice"></span><a class="btn btn-sun" href="#order" id="stickyBtn">اطلب الآن</a></div>
 
 <footer>
@@ -576,15 +631,15 @@ const P=[
    bens:[["12V","كتخدم بالبطارية","bolt"],["50 ل/د","صبيب مزيان","drop"],["خفيفة","سهلة فالحمل","hand"]],
    specs:[["الجهد","12V DC · 5.4A"],["الصبيب","50 لتر فالدقيقة"],["قطر المخرج","25 مم (1 بوصة)"],["الموديل","BL2512 · My Mill Motor"]],
    uses:["السقي الصغير","القوارب","الخزانات والبراميل"]},
-  {id:"carbu",cat:"parts",price:300,badge:"0.5 حتى 8 خيل",name:"كاربيراتور الغاز (0.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
-   lead:"كاربيراتور مزدوج (بنزين + غاز) للمحركات الصغار والمتوسطين من 0.5 حتى 8 خيل (بحال 6.5 HP): نفس المحرك، مصاريف أقل.",
-   imgs:["carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
-   bens:[["مزدوج","بنزين ولا غاز","fuel"],["0.5 → 8 خيل","للمحركات الشائعة","bolt"],["توفير","مصاريف أقل","coin"]],
-   specs:[["المحركات","من 0.5 حتى 8 خيل (بحال 5.5 و6.5 HP)"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
+  {id:"carbu",cat:"parts",price:300,badge:"6.5 حتى 8 خيل",name:"كاربيراتور الغاز (6.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
+   lead:"كاربيراتور مزدوج (بنزين + غاز) للمحركات من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل): نفس المحرك، مصاريف أقل.",
+   imgs:["carbu-vs","carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
+   bens:[["مزدوج","بنزين ولا غاز","fuel"],["6.5 → 8 خيل","للمحركات الشائعة","bolt"],["توفير","مصاريف أقل","coin"]],
+   specs:[["المحركات","من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل)"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
    uses:["المولدات","المضخات بالمحرك","المحركات الفلاحية"]},
   {id:"carbu15",cat:"parts",price:350,badge:"13 حتى 15 خيل",name:"كاربيراتور الغاز الكبير (13 حتى 15 خيل)",hook:"للمحركات الكبار: خدم بالغاز ووفّر",
    lead:"كاربيراتور مزدوج (بنزين + غاز) كبير شوية، مخصّص للمحركات ديال 13 حتى 15 خيل: نفس المحرك، مصاريف أقل.",
-   imgs:["carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
+   imgs:["carbu-vs","carbu-3","carbu-4","carbu-5"],
    bens:[["مزدوج","بنزين ولا غاز","fuel"],["13 → 15 خيل","للمحركات الكبار","bolt"],["توفير","مصاريف أقل","coin"]],
    specs:[["المحركات","من 13 حتى 15 خيل"],["الوقود","بنزين + غاز (Dual fuel)"],["مع الكاربيراتور","الخراطيم ديالو"]],
    uses:["المولدات الكبار","المضخات بالمحرك الكبير","المحركات الفلاحية"]}
@@ -612,10 +667,10 @@ const EXTRA={
   faq:[["واش كتطلع الما من البير؟","إيه، إلا كان مستوى الما ماشي تحت من 8 متر على المضخة. إلا كان البير أعمق، خاصك مضخة غاطسة."],["واش كتخدم أوتوماتيك؟","QB60 كتشعل وتطفي يدوياً. إلا بغيتيها أوتوماتيك كيتزاد ليها جهاز ديال الضغط (Pressostat)."],["شحال كتجيب ديال الما؟","حتى 35 لتر فالدقيقة. كلما كان العلو كبير كينقص الصبيب."],["واش للما السخون؟","لا، للما النقي العادي. ما تشفطش بيها ما فيه الرملة ولا الوسخ."],["واش خاصها تعمير قبل التشغيل؟","إيه، أول مرة عمّر الجسم ديالها والتيو ديال الشفط بالما قبل ما تشعلها، باش ما تدورش ناشفة."]]},
  pompe12v:{about:["مضخة غاطسة صغيرة كتخدم بالتيار المستمر 12V: كتربطها مع بطارية الطوموبيل، بطارية عادية ولا نظام شمسي 12V.","مناسبة فين ما كاينش الضو: الجرادي، القوارب، تفريغ البراميل والخزانات.","خفيفة، كتحطها فالما وتربط الخيوط وصافي."],
   faq:[["واش كتخدم بالبلاكة الشمسية؟","إيه، مع نظام 12V (لوحة شمسية + منظم + بطارية)."],["واش كتخدم بالضو ديال الدار 220V؟","لا، خاصها 12V DC. تقدر تستعمل محوّل (Alimentation) 12V يعطي على الأقل 6A."],["شحال كتجيب ديال الما؟","حوالي 50 لتر فالدقيقة كأقصى صبيب."],["واش كتغطس فالما؟","إيه، مضخة غاطسة: خاصها تكون داخل الما ملي كتخدم."]]},
- carbu:{about:["كاربيراتور مزدوج (Dual fuel) للمحركات من 0.5 حتى 8 خيل (بحال 5.5 و6.5 HP): كيخلي المحرك يخدم بالغاز ولا بالبنزين.","مناسب للمحركات الشائعة ديال المولدات الكهربائية والمضخات بالمحرك.","كيتركب بلاصة الكاربيراتور القديم، وكيجي مع الخراطيم ديالو."],
-  faq:[["واش كيناسب المحرك ديالي؟","مناسب للمحركات من 0.5 حتى 8 خيل اللي كتكون فالمولدات والمضخات. إلا المحرك ديالك 13 حتى 15 خيل، خود الكاربيراتور الكبير."],["واش كيخدم بالبوطة ديال الدار؟","إيه، بالغاز مع ريكولاتور مناسب، وتقدر ترجع للبنزين فأي وقت."],["واش صعيب فالتركيب؟","كيتركب بلاصة القديم بنفس البولونات. أي ميكانيسيان كيركبو فدقايق."]]},
+ carbu:{about:["كاربيراتور مزدوج (Dual fuel) للمحركات من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل): كيخلي المحرك يخدم بالغاز ولا بالبنزين.","مناسب للمحركات الشائعة ديال المولدات الكهربائية والمضخات بالمحرك.","كيتركب بلاصة الكاربيراتور القديم، وكيجي مع الخراطيم ديالو."],
+  faq:[["واش كيناسب المحرك ديالي؟","مناسب للمحركات من 6.5 حتى 8 خيل اللي كتكون فالمولدات والمضخات. إلا المحرك ديالك 13 حتى 15 خيل، خود الكاربيراتور الكبير."],["واش كيخدم بالبوطة ديال الدار؟","إيه، بالغاز مع ريكولاتور مناسب، وتقدر ترجع للبنزين فأي وقت."],["واش صعيب فالتركيب؟","كيتركب بلاصة القديم بنفس البولونات. أي ميكانيسيان كيركبو فدقايق."]]},
  carbu15:{about:["كاربيراتور مزدوج (Dual fuel) أكبر شوية، مخصّص للمحركات ديال 13 حتى 15 خيل: كيخلي المحرك يخدم بالغاز ولا بالبنزين.","مناسب للمولدات والمضخات اللي فيهم محرك كبير.","كيتركب بلاصة الكاربيراتور القديم، وكيجي مع الخراطيم ديالو."],
-  faq:[["واش كيناسب المحرك ديالي؟","مناسب للمحركات من 13 حتى 15 خيل. إلا المحرك ديالك صغير (0.5 حتى 8 خيل)، خود الكاربيراتور العادي ب 300 درهم."],["واش كيخدم بالبوطة ديال الدار؟","إيه، بالغاز مع ريكولاتور مناسب، وتقدر ترجع للبنزين فأي وقت."],["واش صعيب فالتركيب؟","كيتركب بلاصة القديم بنفس البولونات. أي ميكانيسيان كيركبو فدقايق."]]}
+  faq:[["واش كيناسب المحرك ديالي؟","مناسب للمحركات من 13 حتى 15 خيل. إلا المحرك ديالك 6.5 حتى 8 خيل، خود الكاربيراتور العادي ب 300 درهم."],["واش كيخدم بالبوطة ديال الدار؟","إيه، بالغاز مع ريكولاتور مناسب، وتقدر ترجع للبنزين فأي وقت."],["واش صعيب فالتركيب؟","كيتركب بلاصة القديم بنفس البولونات. أي ميكانيسيان كيركبو فدقايق."]]}
 };
 P.forEach(p=>Object.assign(p,EXTRA[p.id]||{}));
 P.push(
@@ -849,6 +904,26 @@ PACKS.forEach(k=>{
 });
 CATS.push({id:"packs",name:"العروض",cover:"pack-garage",c:"#FFF3C4"});
 const FREE=500, SHIP=30, freeShip=v=>v>=FREE, shipFee=v=>freeShip(v)?0:SHIP, PR=()=>P.filter(p=>p.cat!=="packs");
+const DEP_MIN=3000, depOf=v=>v>=10000?200:v>=DEP_MIN?100:0, needDep=v=>depOf(v)>0;
+const COMP={engine7:["carbu","motopompe","qgd"],carbu:["engine7","motopompe","gen-dmax"],carbu15:["carbu","generator","motopompe"],motopompe:["carbu","sprayer16","pompe12v"],
+ qgd:["generator","pompe12v","qb60"],qb60:["pompe12v","qgd","generator"],surfpump:["generator","qb60","pompe12v"],wqd:["generator","vidange075","pompe12v"],vidange15:["generator","pompe12v","wqd"],vidange075:["generator","pompe12v","wqd"],pompe12v:["qb60","qgd","sprayer16"],
+ generator:["qgd","welder","washer"],"gen-dmax":["carbu","qgd","welder"],welder:["grinder","socket","generator"],grinder:["welder","socket","chainsaw"],socket:["jack32","grinder","jack3t"],
+ jack3t:["socket","jack32","compressor"],jack32:["socket","jack3t","jack50"],jack50:["socket","jack3t","jack32"],compressor:["jack3t","socket","sprayer"],washer:["vacuum","generator","compressor"],vacuum:["washer","generator"],sprayer:["compressor","grinder"],
+ chainsaw:["grinder","hachach","sprayer16"],sprayer16:["hafara","hachach","pompe12v"],hachach:["sprayer16","chainsaw","tondeuse"],tondeuse:["hachach","sprayer16"],faucheuse:["hachach","sprayer16"],reaper:["hachach","sprayer16"],reaper120:["hachach","sprayer16"],
+ hafara:["sprayer16","hachach","chainsaw"],ed630:["sprayer16","hachach","chainsaw"],harrata:["sprayer16","hachach","motopompe"],amlou:["generator"]};
+const RV_KEY="atlas_rv",rvGet=()=>{try{return JSON.parse(localStorage.getItem(RV_KEY)||"[]")}catch(_){return []}},rvAdd=id=>{try{const a=rvGet().filter(x=>x!==id);a.unshift(id);localStorage.setItem(RV_KEY,JSON.stringify(a.slice(0,8)))}catch(_){}};
+const rvHTML=skip=>{const it=rvGet().filter(id=>id!==skip).map(id=>P.find(x=>x.id===id)).filter(Boolean).slice(0,6);if(!it.length)return "";return `<section class="s rv" style="padding-top:10px"><div class="wrap"><div class="head"><span class="tagline">${ic("auto")}رجع ليهم</span><h2 class="h2">شفتيهم <span class="g">مؤخراً</span></h2></div><div class="rvrow">${it.map(x=>`<a class="rvc" href="#p-${x.id}"><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><b>${esc(x.name)}</b><span><bdi class="num">${money(x.price)}</bdi> درهم</span></a>`).join("")}</div></div></section>`};
+const TOP=["carbu","hachach","hafara","pompe12v"];
+const CART_KEY="atlas_cart";let CART_MEM=null;
+const cartGet=()=>{let a=CART_MEM;try{a=JSON.parse(localStorage.getItem(CART_KEY)||"null")||CART_MEM||[]}catch(_){a=CART_MEM||[]}return a.filter(x=>P.find(p=>p.id===x.id)&&x.qty>0)};
+const cartSet=a=>{CART_MEM=a;try{localStorage.setItem(CART_KEY,JSON.stringify(a))}catch(_){}cartBadge()};
+const cartCount=()=>cartGet().reduce((a,x)=>a+x.qty,0);
+const cartBadge=()=>{const b=document.getElementById("cartN");if(!b)return;const n=cartCount();b.textContent=n;b.hidden=!n};
+const toast=(html)=>{const t=document.getElementById("toast");t.innerHTML=html;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,3800)};
+const cartAdd=(id,q=1)=>{const a=cartGet();const x=a.find(i=>i.id===id);if(x)x.qty=Math.min(50,x.qty+q);else a.push({id,qty:q});cartSet(a);const p=P.find(y=>y.id===id);
+  try{if(window.fbq)fbq("track","AddToCart",pxd(p,p.price*q))}catch(_){}
+  toast(`<span>${ic("check",3)}<b>تزاد للسلة:</b> ${esc(p.name)}</span><a href="#cart">كمّل الطلب (${cartCount()})</a>`)};
+const comps=p=>{const ids=(COMP[p.id]||[]).concat(p.items?[]:PR().filter(x=>x.cat===p.cat&&x.id!==p.id).sort((a,b)=>a.price-b.price).map(x=>x.id));const out=[];ids.forEach(id=>{const x=P.find(y=>y.id===id);if(x&&x.id!==p.id&&!out.includes(x)&&!(p.items||[]).includes(x.id))out.push(x)});return out};
 
 const ic=(n,sw=2.2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${({
   check:'<path d="m4 12 5 5L20 6"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>',
@@ -894,7 +969,7 @@ function pcard(p){
     <div class="st"><img src="${src(p.id+"-cut")}" alt="${esc(p.name)}" loading="lazy"><span class="sticker"><span><b class="num">${money(p.price)}</b><small>درهم</small></span></span>${p.badge?`<span class="badge">${esc(p.badge)}</span>`:""}${p.vids?`<span class="vtag">${ic("play")}فيديو</span>`:""}</div>
     <div class="bd"><span class="k">${catName(p.cat)}</span><h3>${esc(p.name)}</h3><p class="hk">${esc(p.hook)}</p>
     <p class="ship">${p.old?`<s><span class="num">${money(p.old)}</span> درهم</s> · `:""}${freeShip(p.price)?`${ic("truck")}توصيل مجاني`:`${ic("truck")}التوصيل 30 درهم`}</p>
-    <span class="btn btn-sun">${ic("cart")}اطلب الآن</span></div></a></div>`;
+    <span class="pcbtns"><span class="btn btn-sun">اطلب الآن</span><button type="button" class="btn btn-green addc" data-add="${p.id}" aria-label="زيد للسلة">${ic("cart")}+</button></span></div></a></div>`;
 }
 const FAQ=[
   ["كيفاش ندير الطلب؟","اختار المنتج، عمّر الاسم والهاتف والمدينة فالفورمولير، وكليكي على تأكيد الطلب. كيوصلنا الطلب ديريكت وكنعيطو ليك باش نأكدو معاك كاع التفاصيل."],
@@ -938,6 +1013,14 @@ function homeView(){
     <div class="bcard"><span class="ico3d">${ic("chat")}</span><div><b>نصيحة قبل الشراء</b><small>نعاونوك تختار المناسب</small></div></div>
     <a class="bcard" href="#packs" style="text-decoration:none;color:inherit"><span class="ico3d sun">${ic("gift")}</span><div><b>العروض</b><small>جوج منتجات بثمن أقل</small></div></a>
   </div></div></div>
+
+  ${rvHTML("")}
+  <section class="s" id="top" style="padding-top:10px">
+    <div class="wrap">
+      <div class="head"><span class="tagline">${ic("star")}الكليان كيطلبوهم بزاف</span><h2 class="h2">الأكثر <span class="g">طلباً</span></h2></div>
+      <div class="grid">${TOP.map(id=>P.find(x=>x.id===id)).filter(Boolean).map(pcard).join("")}</div>
+    </div>
+  </section>
 
   <section class="s reels" id="videos">
     <div class="wrap">
@@ -1060,9 +1143,67 @@ function startRing(){
   ringRAF=requestAnimationFrame(frame);
 }
 
+function cartView(){
+  const a=cartGet();
+  const items=a.map(x=>({p:P.find(y=>y.id===x.id),qty:x.qty}));
+  const sub=items.reduce((s,x)=>s+x.p.price*x.qty,0),ship=items.length?shipFee(sub):0,total=sub+ship,dep=depOf(total);
+  const sug=[];items.forEach(x=>comps(x.p).forEach(c=>{if(!a.find(i=>i.id===c.id)&&!sug.includes(c))sug.push(c)}));
+  app.innerHTML=`<section class="ptop cartpage"><div class="wrap">
+    <div class="crumb"><a href="#home">الرئيسية</a><span>/</span><span>السلة</span></div>
+    <h1 class="h2" style="margin:6px 0 18px">${ic("cart")} السلة ديالك ${items.length?`<small class="num">(${cartCount()})</small>`:""}</h1>
+    ${!items.length?`<div class="box emptycart"><p>السلة خاوية. زيد المنتجات اللي بغيتي وطلبهم كاملين مرة وحدة.</p><a class="btn btn-sun" href="#products">${ic("cart")}شوف المنتجات</a></div>`:`
+    <div class="cgrid">
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="box citems">${items.map(x=>`<div class="ci" data-id="${x.p.id}"><a href="#p-${x.p.id}"><img src="${src(x.p.id+"-cut")}" alt=""></a><div class="ci-t"><a href="#p-${x.p.id}"><b>${esc(x.p.name)}</b></a><span><bdi class="num">${money(x.p.price)}</bdi> درهم</span></div><div class="qty sm"><button type="button" data-q="1" aria-label="زيد">+</button><output class="num">${x.qty}</output><button type="button" data-q="-1" aria-label="نقّص">−</button></div><button type="button" class="rm" data-rm="${x.p.id}" aria-label="حيد">${ic("x")}</button></div>`).join("")}</div>
+        ${sug.length?`<div class="box"><h2 style="font-size:1.15rem">${ic("star")} زيد معاهم</h2><div class="sugrow">${sug.slice(0,6).map(c=>`<div class="sg"><a href="#p-${c.id}"><img src="${src(c.id+"-cut")}" alt="" loading="lazy"><b>${esc(c.name)}</b></a><span><bdi class="num">${money(c.price)}</bdi> درهم</span><button type="button" class="btn btn-green" data-add="${c.id}">${ic("cart")}زيد</button></div>`).join("")}</div></div>`:""}
+      </div>
+      <div class="order" id="order"><span class="rib">كمّل الطلب</span>
+        <h2>عمّر المعلومات ديالك</h2><p class="sm">طلب واحد لكاع المنتجات، وكنعيطو ليك باش نأكدو.</p>
+        <form class="f" id="cartForm" novalidate>
+          <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
+          <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
+          <label for="f-email">الإيميل <small class="opt">(اختياري، باش توصلك رسالة التأكيد)</small><input id="f-email" type="email" inputmode="email" autocomplete="email" placeholder="exemple@gmail.com" dir="ltr" style="text-align:right"></label>
+          <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
+          <div class="fsbar">${FREE-sub>0?`<span>${ic("truck")}زيد غير <b class="num">${money(FREE-sub)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`}</div>
+          <div class="shipline"><span>المنتجات</span><b><bdi class="num">${money(sub)}</bdi> درهم</b></div>
+          <div class="shipline"><span>${ic("truck")}التوصيل</span><b>${ship?ship+" درهم":"مجاني"}</b></div>
+          <div class="shipline"><span>${ic("card")}الدفع</span><b>${dep?"تسبيق "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
+          ${dep?`<p class="depnote">${ic("shield")}<span>الطلبات اللي فوق ${money(DEP_MIN)} درهم كنطلبو فيها <b>تسبيق ${dep} درهم</b> باش نتأكدو أن الطلب جدي. كيتنقص من المجموع، وكنعيطو ليك ونعطيوك طريقة الخلاص. الباقي كتخلصو عند الاستلام.</span></p>`:""}
+          <div class="total"><span>المجموع</span><b><span class="num">${money(total)}</span> <small style="font-size:.55em">درهم</small></b></div>
+          <div class="err" id="f-err" role="alert"></div>
+          <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
+        </form>
+        <div class="done" id="orderDone" hidden><div class="ok">${ic("check",3)}</div><h2>توصلنا بالطلب ديالك!</h2><p>شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت باش نأكدو معاك الطلب والتوصيل.</p>${dep?`<p class="depnote">${ic("shield")}<span>حيت الطلب ديالك فوق ${money(DEP_MIN)} درهم، غادي نعطيوك فالتيليفون طريقة خلاص <b>التسبيق ديال ${dep} درهم</b>، والباقي عند الاستلام.</span></p>`:""}<div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div><p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p></div>
+      </div>
+    </div>`}
+  </div></section>`;
+  app.querySelectorAll(".ci").forEach(r=>{const id=r.dataset.id;r.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const a=cartGet();const x=a.find(i=>i.id===id);x.qty=Math.min(50,Math.max(1,x.qty+ +b.dataset.q));cartSet(a);cartView()});});
+  app.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{cartSet(cartGet().filter(i=>i.id!==b.dataset.rm));cartView()});
+  const f=document.getElementById("cartForm");if(!f)return;
+  let icSent=false;f.addEventListener("focusin",()=>{if(icSent)return;icSent=true;try{if(window.fbq)fbq("track","InitiateCheckout",{value:total,currency:"MAD",content_ids:items.map(x=>x.p.id),content_type:"product",num_items:cartCount()})}catch(_){}});
+  f.addEventListener("submit",e=>{e.preventDefault();
+    const $=id=>document.getElementById(id),err=$("f-err");
+    const name=$("f-name").value.trim(),phone=$("f-phone").value.replace(/[^\d+]/g,""),city=$("f-city").value.trim(),email=($("f-email").value||"").trim();
+    if(name.length<3){err.textContent="كتب الاسم الكامل ديالك.";$("f-name").focus();return}
+    if(!/^(\+?212|00212|0)[5-7]\d{8}$/.test(phone)){err.textContent="كتب رقم هاتف مغربي صحيح، مثال: 0612345678";$("f-phone").focus();return}
+    if(city.length<2){err.textContent="كتب المدينة ديالك.";$("f-city").focus();return}
+    if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){err.textContent="الإيميل ماشي صحيح، صححو ولا خليه خاوي.";$("f-email").focus();return}
+    err.textContent="";
+    const tel=phone.replace(/^(\+212|00212)/,"0"),clean=t=>t.replace(/\u200f/g,""),d=new Date();
+    const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
+    const order={ref,name,phone:tel,email,city,product:items.map(x=>clean(x.p.name)+(x.qty>1?" ×"+x.qty:"")).join(" + "),qty:cartCount(),price:sub,ship,total,source:orderSource()+" | cart",pid:items.map(x=>x.p.id).join(","),
+      note:"سلة: "+items.length+" منتجات"+(dep?" · تسبيق "+dep+" درهم قبل الإرسال":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+    const btn=f.querySelector('button[type=submit]'),bt=btn.textContent;btn.disabled=true;btn.textContent="كنصيفطو الطلب...";
+    sendOrder(order).then(()=>{$("refNo").textContent=ref;f.hidden=true;$("orderDone").hidden=false;cartSet([]);
+      try{if(window.fbq)fbq("track","Lead",{value:total,currency:"MAD",content_ids:items.map(x=>x.p.id),content_type:"product",num_items:order.qty})}catch(_){}
+      $("orderDone").scrollIntoView({behavior:"smooth",block:"center"})},
+     ()=>{btn.disabled=false;btn.textContent=bt;err.textContent="ما قدرناش نصيفطو الطلب، تأكد من الأنترنيت وعاود كليكي مرة أخرى."});
+  });
+}
 function productView(p){
+  rvAdd(p.id);
   try{if(window.fbq)fbq("track","ViewContent",pxd(p,p.price))}catch(_){}
-  const others=(p.items?P.filter(x=>p.items.includes(x.id)).concat(P.filter(x=>x.cat==="packs"&&x.id!==p.id)):P.filter(x=>x.cat==="packs"&&x.items.includes(p.id)).concat(P.filter(x=>x.cat===p.cat&&x.id!==p.id)).concat(PR().filter(x=>x.cat!==p.cat))).slice(0,4);
+  const others=[...new Set((p.items?P.filter(x=>p.items.includes(x.id)).concat(P.filter(x=>x.cat==="packs"&&x.id!==p.id)):comps(p).concat(P.filter(x=>x.cat==="packs"&&x.items.includes(p.id))).concat(P.filter(x=>x.cat===p.cat&&x.id!==p.id)).concat(PR().filter(x=>x.cat!==p.cat))))].filter(x=>x.id!==p.id).slice(0,8);
   const media=[{t:"c",k:p.id+"-cut"}].concat((p.vids||[]).map(k=>({t:"v",k}))).concat(p.imgs.map(k=>({t:"i",k})));
   app.innerHTML=`
   <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
@@ -1078,23 +1219,29 @@ function productView(p){
           <h1>${esc(p.name)}</h1>
           <p class="lead">${esc(p.lead)}</p>
           <div class="prow"><span class="tagp">${p.old?`<s class="was"><span class="num">${money(p.old)}</span></s>`:""}<span class="num">${money(p.price)}</span><small>درهم</small></span>
-            <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل 30 درهم لجميع المدن"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}تأكيد الطلب فالواتساب</span></div></div>
-          ${(()=>{const pk=P.find(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pk)return "";const o=P.find(x=>x.id===pk.items.find(i=>i!==p.id));return `<a class="upsell" href="#p-${pk.id}"><img src="${src(pk.id+"-cut")}" alt=""><span class="ut"><b>${ic("gift")}${esc(pk.name.split(":")[0])}: وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi> درهم</b><small>مع ${esc(o.name)} · <bdi class="num">${money(pk.price)}</bdi> درهم بلاصة <s><bdi class="num">${money(pk.old)}</bdi></s></small></span>${ic("prev",2.6)}</a>`})()}
+            <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل 30 درهم لجميع المدن"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}كنعيطو ليك للتأكيد</span></div>${needDep(p.price)?`<div class="depline">${ic("shield")}<span><b>تسبيق ${depOf(p.price)} درهم فقط</b> باش نأكدو الطلب، والباقي كتخلصو عند الاستلام</span></div>`:""}</div>
+          ${(()=>{const pks=P.filter(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pks.length)return "";return `<div class="packoffers"><div class="po-h">${ic("gift")}<b>عروض فيها هاد المنتج</b><span>وفّر كثر ملي تشري مجموعين</span></div>${pks.map(pk=>{const it=pk.items.map(i=>P.find(x=>x.id===i));return `<a class="pkcard" href="#p-${pk.id}"><span class="pk-imgs">${it.map(x=>`<img src="${src(x.id+"-cut")}" alt="" loading="lazy">`).join('<i>+</i>')}</span><span class="pk-t"><b>${esc(pk.name.split(":")[0])}</b><small>${it.map(x=>esc(x.name)).join(" + ")}</small><span class="pk-p"><bdi class="num">${money(pk.price)}</bdi> درهم <s><bdi class="num">${money(pk.old)}</bdi></s><em>وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi></em></span></span><span class="pk-go">شوف العرض${ic("prev",2.6)}</span></a>`}).join("")}</div>`})()}
+          <div class="cartrow"><button type="button" class="btn btn-green" data-add="${p.id}">${ic("cart")}زيد للسلة</button><a class="btn btn-white" href="#cart">شوف السلة<b class="num cartn2">${cartCount()}</b></a><small>زيد بزاف ديال المنتجات وطلبهم كاملين مرة وحدة</small></div>
           <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
 
           <div class="order" id="order">
             <span class="rib">اطلب دابا</span>
             <h2>عمّر المعلومات ديالك</h2>
             <p class="sm">كنعيطو ليك باش نأكدو الطلب والتوصيل.</p>
+            ${cartCount()?`<a class="cartnote" href="#cart">${ic("cart")}<span>عندك <b class="num">${cartCount()}</b> منتجات فالسلة. بغيتي تطلبهم كاملين مرة وحدة؟</span><b>السلة</b></a>`:""}
             <form class="f" id="orderForm" novalidate>
               <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
               <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
+              <label for="f-email">الإيميل <small class="opt">(اختياري، باش توصلك رسالة التأكيد)</small><input id="f-email" type="email" inputmode="email" autocomplete="email" placeholder="exemple@gmail.com" dir="ltr" style="text-align:right"></label>
               <div class="two">
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
                 <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
               </div>
+              ${(()=>{const c=comps(p).slice(0,3);if(!c.length)return "";return `<div class="addons"><div class="ao-h">${ic("cart")}<b>زيد معاه فنفس الطلب</b><small>نفس التوصيل، بلا ما تعاود تطلب</small></div>${c.map(x=>`<label class="ao"><input type="checkbox" value="${x.id}"><span class="ao-box">${ic("check",3)}</span><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><span class="ao-t"><b>${esc(x.name)}</b><small><bdi class="num">+${money(x.price)}</bdi> درهم</small></span></label>`).join("")}</div>`})()}
+              <div class="fsbar" id="fsbar"></div>
               <div class="shipline"><span>${ic("truck")}التوصيل</span><b id="f-ship">${freeShip(p.price)?"مجاني":"30 درهم"}</b></div>
-              <div class="shipline"><span>${ic("card")}الدفع</span><b>عند الاستلام</b></div>
+              <div class="shipline"><span>${ic("card")}الدفع</span><b id="f-pay">عند الاستلام</b></div>
+              <p class="depnote" id="f-dep" hidden>${ic("shield")}<span>الطلبات اللي فوق ${money(DEP_MIN)} درهم كنطلبو فيها <b>تسبيق <bdi class="num" id="f-depv">100</bdi> درهم</b> باش نتأكدو أن الطلب جدي. كنعيطو ليك ونعطيوك طريقة الخلاص، والباقي كتخلصو عند الاستلام.</span></p>
               <div class="total"><span>المجموع</span><b><span class="num" id="f-total">${money(p.price+shipFee(p.price))}</span> <small style="font-size:.55em">درهم</small></b></div>
               <div class="err" id="f-err" role="alert"></div>
               <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب</button>
@@ -1104,6 +1251,7 @@ function productView(p){
               <div class="ok">${ic("check",3)}</div>
               <h2 id="doneTitle">توصلنا بالطلب ديالك!</h2>
               <p id="doneText">شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت على الرقم اللي عطيتينا باش نأكدو معاك الطلب والتوصيل.</p>
+              <p class="depnote" id="doneDep" hidden>${ic("shield")}<span>حيت الطلب ديالك فوق ${money(DEP_MIN)} درهم، غادي نعطيوك فالتيليفون طريقة خلاص <b>التسبيق ديال <bdi class="num" id="doneDepv">100</bdi> درهم</b>، والباقي عند الاستلام.</span></p>
               <div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div>
               <p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p>
             </div>
@@ -1126,7 +1274,7 @@ function productView(p){
         <div class="box"><h2>مناسب لـ</h2><div class="uses">${p.uses.map(u=>`<span class="tag">${ic("check",3)}${esc(u)}</span>`).join("")}</div></div>
         <div class="box"><h2>علاش تشريها من أطلس؟</h2><ul class="trustlist">
           <li><span class="ico3d">${ic("truck")}</span>التوصيل مجاني لجميع المدن (من 500 درهم)، وتحت 500 درهم غير 30 درهم</li>
-          <li><span class="ico3d sun">${ic("card")}</span>الدفع عند الاستلام، بلا ما تخلّص مسبقاً</li>
+          <li><span class="ico3d sun">${ic("card")}</span>${needDep(p.price)?`تسبيق ${depOf(p.price)} درهم فقط، والباقي عند الاستلام`:"الدفع عند الاستلام، بلا ما تخلّص مسبقاً"}</li>
           <li><span class="ico3d">${ic("tag")}</span>الثمن واضح، بلا مفاجآت</li>
           <li><span class="ico3d">${ic("chat")}</span>كنعيطو ليك ونأكدو معاك قبل الإرسال</li></ul>
           <a class="btn btn-sun btn-block" href="#order" data-scroll style="margin-top:18px">${ic("cart")}اطلب الآن</a></div>
@@ -1134,10 +1282,12 @@ function productView(p){
     </div>
   </section>
 
+  ${rvHTML(p.id)}
   <section class="s" style="padding-top:10px">
     <div class="wrap">
-      <div class="head"><span class="tagline">ممكن يعجبوك</span><h2 class="h2">منتجات <span class="g">أخرى</span></h2></div>
+      <div class="head"><span class="tagline">${ic("star")}كيكمّلو مع بعضياتهم</span><h2 class="h2">الناس اللي شافو هادا <span class="g">شافو حتى هادو</span></h2></div>
       <div class="grid">${others.map(pcard).join("")}</div>
+      <div class="cta-row" style="margin-top:22px"><a class="btn btn-white" href="#c-${p.cat==="packs"?"packs":p.cat}">${ic("cart")}شوف كاع ${esc(catName(p.cat)||"المنتجات")}</a></div>
     </div>
   </section>`;
 
@@ -1154,7 +1304,14 @@ function productView(p){
   view.addEventListener("pointermove",e=>{const pr=document.getElementById("prod");if(!pr||e.pointerType!=="mouse")return;const r=view.getBoundingClientRect();pr.style.setProperty("--gx",(((e.clientX-r.left)/r.width-.5)*24)+"deg");pr.style.setProperty("--gy",(-((e.clientY-r.top)/r.height-.5)*14)+"deg")});
 
   let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
-  app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));qo.textContent=qty;tot.textContent=money(qty*p.price+shipFee(qty*p.price));document.getElementById("f-ship").textContent=freeShip(qty*p.price)?"مجاني":"30 درهم"});
+  const addSel=()=>[...app.querySelectorAll('.ao input:checked')].map(i=>P.find(x=>x.id===i.value)).filter(Boolean);
+  const calc=()=>{const ad=addSel();const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0);return {ad,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
+  const recalc=()=>{const c=calc();qo.textContent=qty;tot.textContent=money(c.total);document.getElementById("f-ship").textContent=freeShip(c.sub)?"مجاني":SHIP+" درهم";
+    const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}زيد غير <b class="num">${money(left)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`;
+    const dp=needDep(c.total);document.getElementById("f-pay").textContent=dp?"تسبيق "+depOf(c.total)+" درهم + الباقي عند الاستلام":"عند الاستلام";document.getElementById("f-depv").textContent=depOf(c.total)||100;document.getElementById("f-dep").hidden=!dp;};
+  app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));recalc()});
+  app.querySelectorAll(".ao input").forEach(i=>i.onchange=()=>{i.closest(".ao").classList.toggle("on",i.checked);recalc();try{if(i.checked&&window.fbq)fbq("track","AddToCart",pxd(P.find(x=>x.id===i.value),P.find(x=>x.id===i.value).price))}catch(_){}});
+  recalc();
   let icSent=false;document.getElementById("orderForm").addEventListener("focusin",()=>{if(icSent)return;icSent=true;try{if(window.fbq)fbq("track","InitiateCheckout",pxd(p,p.price))}catch(_){}});
   document.getElementById("orderForm").addEventListener("submit",e=>{
     e.preventDefault();
@@ -1163,37 +1320,20 @@ function productView(p){
     if(name.length<3){err.textContent="كتب الاسم الكامل ديالك.";$("f-name").focus();return}
     if(!/^(\+?212|00212|0)[5-7]\d{8}$/.test(phone)){err.textContent="كتب رقم هاتف مغربي صحيح، مثال: 0612345678";$("f-phone").focus();return}
     if(city.length<2){err.textContent="كتب المدينة ديالك.";$("f-city").focus();return}
+    const email=($("f-email").value||"").trim();
+    if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){err.textContent="الإيميل ماشي صحيح، صححو ولا خليه خاوي.";$("f-email").focus();return}
     err.textContent="";
-    const RLM="‏",tel=phone.replace(/^(\+212|00212)/,"0");
-    const clean=t=>t.replace(/\u200f/g,"");
-    const n=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,"."),d=new Date(),LINE="━━━━━━━━━━━━━━";
+    const tel=phone.replace(/^(\+212|00212)/,"0");
+    const clean=t=>t.replace(/\u200f/g,""),d=new Date();
     const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
-    const msg=[
-      "🧾 *طلب جديد من أطلس*",
-      "رقم الطلب: "+ref,
-      LINE,
-      "📦 *المنتج*",
-      clean(p.name),
-      ...(p.items?["المحتوى: "+p.items.map(id=>clean(P.find(x=>x.id===id).name)).join(" + ")]:[]),
-      "الكمية: "+qty+(qty>1?" × "+n(p.price)+" درهم":""),
-      LINE,
-      ...(freeShip(qty*p.price)?["💰 المجموع: *"+n(qty*p.price)+" درهم*","🚚 التوصيل: مجاني"]:["🛒 ثمن المنتج: "+n(qty*p.price)+" درهم","🚚 التوصيل: 30 درهم","💰 المجموع: *"+n(qty*p.price+SHIP)+" درهم*"]),
-      "💵 الدفع: عند الاستلام",
-      LINE,
-      "👤 *معلومات الزبون*",
-      "الاسم: "+name,
-      "الهاتف: "+tel,
-      "المدينة: "+city,
-      LINE,
-      "المرجو تأكيد الطلب، شكراً 🙏"
-    ].map(l=>RLM+l).join("\n");
-    const url="https://api.whatsapp.com/send?phone="+WA+"&text="+encodeURIComponent(msg);
-    const total=qty*p.price+shipFee(qty*p.price), btn=e.target.querySelector('button[type=submit]');
-    const order={ref,name,phone:tel,city,product:clean(p.name),qty,price:p.price,ship:shipFee(qty*p.price),total,source:orderSource()+" | "+p.id,pid:p.id,fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+    const c=calc(),total=c.total,btn=e.target.querySelector('button[type=submit]'),dep=needDep(total);
+    const pname=clean(p.name)+(qty>1?" ×"+qty:"")+c.ad.map(x=>" + "+clean(x.name)).join("");
+    const order={ref,name,phone:tel,email,city,product:pname,qty,price:p.price,ship:c.ship,total,source:orderSource()+" | "+p.id,pid:[p.id].concat(c.ad.map(x=>x.id)).join(","),
+      note:(dep?"تسبيق "+depOf(total)+" درهم قبل الإرسال":"")+(c.ad.length?(dep?" · ":"")+"زاد: "+c.ad.map(x=>clean(x.name)+" ("+x.price+")").join(" + "):""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const done=ok=>{
       if(!ok){btn.disabled=false;btn.textContent=btnTxt;let er=e.target.querySelector(".senderr");if(!er){er=document.createElement("p");er.className="note senderr";er.style.color="#c0392b";btn.after(er)}er.textContent="ما قدرناش نصيفطو الطلب، تأكد من الأنترنيت وعاود كليكي مرة أخرى.";return;}
-      $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false;
-      try{if(window.fbq)fbq("track","Lead",Object.assign(pxd(p,total),{num_items:qty}))}catch(_){}
+      $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false; $("doneDep").hidden=!dep;$("doneDepv").textContent=depOf(total)||100;
+      try{if(window.fbq)fbq("track","Lead",Object.assign(pxd(p,total),{num_items:qty+c.ad.length,content_ids:[p.id].concat(c.ad.map(x=>x.id))}))}catch(_){}
       $("orderDone").scrollIntoView({behavior:"smooth",block:"center"});
     };
     const btnTxt=btn.textContent;
@@ -1235,6 +1375,7 @@ let view="";
 function route(){
   const h=decodeURIComponent(location.hash.slice(1));
   if(h==="order")return;
+  if(h==="cart"){cancelAnimationFrame(ringRAF);setSticky(null);cartView();view="cart";document.title="السلة | أطلس";scrollTo(0,0);return}
   if(h.startsWith("p-")){const p=P.find(x=>x.id===h.slice(2));if(p){cancelAnimationFrame(ringRAF);productView(p);setSticky(p);view=h;document.title=p.name+" | أطلس";scrollTo(0,0);return}}
   document.title="أطلس للمعدات الفلاحية";setSticky(null);
   if(view!=="home"){homeView();view="home"}
@@ -1247,6 +1388,8 @@ function route(){
 document.querySelectorAll("footer .fi").forEach(e=>{e.innerHTML=ic({ICTRUCK:"truck",ICCARD:"card",ICSHIELD:"shield",ICCHAT:"chat"}[e.textContent.trim()])});
 document.getElementById("footCats").innerHTML=CATS.map(c=>`<a href="#c-${c.id}">${c.name}</a>`).join("");
 addEventListener("hashchange",route);
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-add]");if(!b)return;e.preventDefault();e.stopPropagation();cartAdd(b.dataset.add);document.querySelectorAll(".cartn2").forEach(x=>x.textContent=cartCount());if(view==="cart")cartView()},true);
+cartBadge();
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"]');if(a&&a.id!=="waLink"){try{if(window.fbq)fbq("track","Contact")}catch(_){}}});
 route();
 </script>
