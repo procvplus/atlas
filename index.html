@@ -477,7 +477,7 @@ body.on-product footer{padding-bottom:84px}
 .vars{margin-top:16px;display:grid;gap:8px}.vh{display:flex;align-items:center;gap:6px;font-weight:800}.vh svg{width:20px;height:20px;color:var(--green)}
 .vrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .vopt{position:relative;display:grid;gap:2px;padding:12px 14px 12px 40px;border-radius:16px;border:2px solid var(--line);background:#fff;text-decoration:none;color:var(--ink);box-shadow:0 3px 0 #E3EBE1}
-.vopt b{font-size:1rem}.vopt span{color:var(--leaf);font-weight:800}.vopt.on{border-color:var(--green);background:var(--mint);box-shadow:0 3px 0 var(--green)}
+.vopt b{font-size:1.05rem}.vopt small{color:var(--muted);font-weight:700;font-size:.82rem}.pinfo .vars{margin:6px 0 14px}.vtop{display:none}@media(max-width:920px){.vtop{display:grid;margin:0 0 12px}.vside{display:none}.vtop .vopt{padding:9px 12px 9px 38px}}.vopt span{color:var(--leaf);font-weight:800}.vopt.on{border-color:var(--green);background:var(--mint);box-shadow:0 3px 0 var(--green)}
 .vopt .vr{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;border:2px solid #9BCB91;display:grid;place-items:center;background:#fff}
 .vopt.on .vr{background:var(--green);border-color:var(--green)}.vopt .vr svg{width:13px;height:13px;color:#fff}
 .ao-h{align-items:flex-start}.ao-gift{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#FFC52E,#F4A300);display:grid;place-items:center;flex:none}.ao-gift svg{width:22px!important;height:22px!important;color:#fff!important}
@@ -660,7 +660,7 @@ const P=[
    bens:[["12V","كتخدم بالبطارية","bolt"],["50 ل/د","صبيب مزيان","drop"],["خفيفة","سهلة فالحمل","hand"]],
    specs:[["الجهد","12V DC · 5.4A"],["الصبيب","50 لتر فالدقيقة"],["قطر المخرج","25 مم (1 بوصة)"],["الموديل","BL2512 · My Mill Motor"]],
    uses:["السقي الصغير","القوارب","الخزانات والبراميل"]},
-  {id:"carbu",cat:"parts",price:300,vars:[["carbu","6.5 حتى 8 خيل"],["carbu15","13 حتى 15 خيل"]],badge:"6.5 حتى 8 خيل",name:"كاربيراتور الغاز (6.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
+  {id:"carbu",cat:"parts",price:300,vars:[["carbu","الحجم الصغير"],["carbu15","الحجم الكبير"]],badge:"6.5 حتى 8 خيل",name:"كاربيراتور الغاز الصغير (6.5 حتى 8 خيل)",hook:"وفّر فالبنزين وخدم بالغاز",
    lead:"كاربيراتور مزدوج (بنزين + غاز) للمحركات من 6.5 حتى 8 خيل (بحال 6.5 و7 خيل): نفس المحرك، مصاريف أقل.",
    imgs:["carbu-1","carbu-2","carbu-3","carbu-4","carbu-5"],
    bens:[["مزدوج","بنزين ولا غاز","fuel"],["6.5 → 8 خيل","للمحركات الشائعة","bolt"],["توفير","مصاريف أقل","coin"]],
@@ -891,7 +891,7 @@ P.push({id:"sprayer16",cat:"tools",price:350,badge:"16 لتر",name:"رشاشة 
 const money=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
 /* Packs: two products that go together, sold for less than the two apart */
 const VX=[
-  {id:"carbu15",cat:"parts",of:"carbu",vars:[["carbu","6.5 حتى 8 خيل"],["carbu15","13 حتى 15 خيل"]],price:350,badge:"13 حتى 15 خيل",name:"كاربيراتور الغاز الكبير (13 حتى 15 خيل)",hook:"للمحركات الكبار: خدم بالغاز ووفّر",
+  {id:"carbu15",cat:"parts",of:"carbu",vars:[["carbu","الحجم الصغير"],["carbu15","الحجم الكبير"]],price:350,badge:"13 حتى 15 خيل",name:"كاربيراتور الغاز الكبير (13 حتى 15 خيل)",hook:"للمحركات الكبار: خدم بالغاز ووفّر",
    lead:"كاربيراتور مزدوج (بنزين + غاز) كبير شوية، مخصّص للمحركات ديال 13 حتى 15 خيل: نفس المحرك، مصاريف أقل.",
    imgs:["carbu-vs"],nocut:1,
    bens:[["مزدوج","بنزين ولا غاز","fuel"],["13 → 15 خيل","للمحركات الكبار","bolt"],["توفير","مصاريف أقل","coin"]],
@@ -1252,17 +1252,18 @@ function productView(p){
       <div class="crumb"><a href="#home">الرئيسية</a><span>/</span><a href="#c-${p.cat}">${catName(p.cat)}</a><span>/</span><span>${esc(p.name)}</span></div>
       <div class="pgrid">
         <div class="stage">
+          ${p.vars?`<div class="vars vtop"><span class="vh">${ic("bolt")}اختار الحجم اللي كيناسب المحرك ديالك:</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <div class="view" id="view"></div>
           <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
         </div>
         <div class="pinfo">
           <span class="hook">${esc(p.hook)}</span>
           <h1>${esc(p.name)}</h1>
+          ${p.vars?`<div class="vars vside"><span class="vh">${ic("bolt")}اختار الحجم اللي كيناسب المحرك ديالك:</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <p class="lead">${esc(p.lead)}</p>
           <div class="prow"><span class="tagp">${p.old?`<s class="was"><span class="num">${money(p.old)}</span></s>`:""}<span class="num">${money(p.price)}</span><small>درهم</small></span>
             <div class="dl"><span>${ic("truck")}${freeShip(p.price)?"التوصيل مجاني لجميع المدن":"التوصيل 30 درهم لجميع المدن"}</span><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("chat")}كنعيطو ليك للتأكيد</span></div>${needDep(p.price)?`<div class="depline">${ic("shield")}<span><b>احجزها بـ ${depOf(p.price)} درهم فقط</b> · كتنقص من الثمن، والباقي كتخلصو ملي توصلك</span></div>`:""}</div>
           ${(()=>{const pks=P.filter(x=>x.cat==="packs"&&x.items&&x.items.includes(p.id));if(!pks.length)return "";return `<div class="packoffers"><div class="po-h">${ic("gift")}<b>عروض فيها هاد المنتج</b><span>وفّر كثر ملي تشري مجموعين</span></div>${pks.map(pk=>{const it=pk.items.map(i=>PF(x=>x.id===i));return `<a class="pkcard" href="#p-${pk.id}"><span class="pk-imgs">${it.map(x=>`<img src="${src(x.id+"-cut")}" alt="" loading="lazy">`).join('<i>+</i>')}</span><span class="pk-t"><b>${esc(pk.name.split(":")[0])}</b><small>${it.map(x=>esc(x.name)).join(" + ")}</small><span class="pk-p"><bdi class="num">${money(pk.price)}</bdi> درهم <s><bdi class="num">${money(pk.old)}</bdi></s><em>وفّر <bdi class="num">${money(pk.old-pk.price)}</bdi></em></span></span><span class="pk-go">شوف العرض${ic("prev",2.6)}</span></a>`}).join("")}</div>`})()}
-          ${p.vars?`<div class="vars"><span class="vh">${ic("bolt")}اختار الحجم على حساب الخيل ديال المحرك ديالك:</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <div class="cartrow"><button type="button" class="btn btn-green" data-add="${p.id}">${ic("cart")}زيد للسلة</button><a class="btn btn-white" href="#cart">شوف السلة<b class="num cartn2">${cartCount()}</b></a><small>زيد بزاف ديال المنتجات وطلبهم كاملين مرة وحدة</small></div>
           <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
 
