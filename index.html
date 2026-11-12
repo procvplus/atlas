@@ -1201,7 +1201,7 @@ function cartView(){
           <div class="rl"><span>${ic("truck")}التوصيل</span><b>${ship?ship+" درهم":"مجاني"}</b></div>
           <div class="rl"><span>${ic("card")}الدفع</span><b>${dep?"حجز "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
         </div>
-        ${FREE-sub>0?`<div class="fsbar"><span>${ic("truck")}<span>التوصيل كيكون <b>فابور</b> ملي يوصل الطلب <b class="num">${FREE}</b> درهم. باقي ليك <b class="num">${money(FREE-sub)}</b> درهم.</span></span><i style="--w:${Math.round(sub/FREE*100)}%"></i></div>`:""}
+        ${FREE-sub>0?`<div class="fsbar"><span>${ic("truck")}<span>زيد غير <b class="num">${money(FREE-sub)}</b> درهم، و<b>التوصيل علينا</b> 🎁</span></span><i style="--w:${Math.round(sub/FREE*100)}%"></i></div>`:""}
         ${dep?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${dep} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${dep} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:""}
         <div class="total"><span>المجموع</span><b><span class="num">${money(total)}</span> <small style="font-size:.55em">درهم</small></b></div>
         <form class="f" id="cartForm" novalidate>
@@ -1349,7 +1349,7 @@ function productView(p){
   const addSel=()=>[...app.querySelectorAll('.ao input:checked')].map(i=>PF(x=>x.id===i.value)).filter(Boolean);
   const calc=()=>{const ad=addSel();const off=ad.reduce((a,x)=>a+pairOff(p.id,x),0);const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0)-off;return {ad,off,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
   const recalc=()=>{const c=calc();qo.textContent=qty;tot.textContent=money(c.total);document.getElementById("f-ship").textContent=freeShip(c.sub)?"مجاني":SHIP+" درهم";
-    const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}<span>التوصيل كيكون <b>فابور</b> ملي يوصل الطلب <b class="num">${FREE}</b> درهم. باقي ليك <b class="num">${money(left)}</b> درهم.</span></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`;
+    const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}<span>زيد غير <b class="num">${money(left)}</b> درهم، و<b>التوصيل علينا</b> 🎁</span></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل علينا</b>، فابور</span>`;
     const dp=needDep(c.total);document.getElementById("f-pay").textContent=dp?"حجز "+depOf(c.total)+" درهم + الباقي عند الاستلام":"عند الاستلام";const fd=document.getElementById("f-dep");fd.hidden=!dp;fd.innerHTML=dp?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${depOf(c.total)} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${depOf(c.total)} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:"";};
   app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));recalc()});
   app.querySelectorAll(".ao input").forEach(i=>i.onchange=()=>{i.closest(".ao").classList.toggle("on",i.checked);recalc();try{if(i.checked&&window.fbq)fbq("track","AddToCart",pxd(PF(x=>x.id===i.value),PF(x=>x.id===i.value).price))}catch(_){}});
