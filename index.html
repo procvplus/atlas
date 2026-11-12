@@ -429,7 +429,7 @@ body.on-product footer{padding-bottom:84px}
 .fsbar span{display:flex;align-items:center;gap:6px}.fsbar svg{width:18px;height:18px;color:var(--green)}
 .fsbar i{position:absolute;left:0;right:0;bottom:0;height:5px;background:#D7EBD2}.fsbar i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--green);border-radius:0 4px 4px 0}
 [dir=rtl] .fsbar i::after,.fsbar i::after{inset:0 0 0 auto;border-radius:4px 0 0 4px}
-.fsbar .ok{color:var(--leaf)}
+.fsbar .ok{color:var(--leaf)}.fsbar span span{display:inline;line-height:1.6}
 
 .rvrow{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
 .rvc{flex:0 0 150px;scroll-snap-align:start;display:grid;gap:4px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
@@ -464,13 +464,13 @@ body.on-product footer{padding-bottom:84px}
 .cgrid{grid-template-areas:"items order" "sug order"}
 .c-items{grid-area:items}.c-order{grid-area:order;position:sticky;top:90px}.c-sug{grid-area:sug}
 @media(max-width:860px){.cgrid{grid-template-areas:"items" "order" "sug"}.c-order{position:static}}
-.bundlebar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:linear-gradient(135deg,#FFF8DD,#FFEFB5);border:2px solid #F4C542;font-weight:700;margin-bottom:16px}
-.bundlebar.soft{background:var(--mint);border-color:#BFE3B8}.bundlebar svg{width:24px;height:24px;color:#B07A00;flex:none}.bundlebar.soft svg{color:var(--green)}
+.bundlebar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:16px;background:#EAF6E7;border:2px solid #9BCB91;font-weight:700;margin-bottom:16px;color:var(--ink)}
+.bundlebar.soft{background:#F7FAF6;border-color:var(--line)}.bundlebar svg{width:22px;height:22px;color:var(--green);flex:none}.bundlebar.soft svg{color:var(--green)}
 .recap{display:grid;gap:2px;margin:6px 0 10px;border-radius:14px;background:#F7FAF6;padding:8px 12px}
 .recap .rl{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem}.recap .rl:last-child{border-bottom:0}
 .recap .rl span{display:flex;align-items:center;gap:6px;min-width:0}.recap .rl svg{width:17px;height:17px;color:var(--green);flex:none}.recap .rl b{white-space:nowrap}
-.recap .save{color:#B23A3A}.recap .save svg{color:#D99A00}
-.offt{font-style:normal;background:#D64545;color:#fff;border-radius:999px;padding:0 8px;font-size:.75rem;margin-inline-start:4px}
+.recap .save{color:#1F7A2E}.recap .save svg{color:var(--green)}
+.offt{font-style:normal;background:#D64545;color:#fff;border-radius:999px;padding:1px 8px;font-size:.75rem;margin-inline-start:4px;white-space:nowrap}
 .ci-t s{color:var(--muted);font-weight:600;font-size:.82rem}
 .addmore{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border:2px dashed var(--line);border-radius:14px;color:var(--leaf);font-weight:800;text-decoration:none}.addmore svg{width:18px;height:18px}
 .sg s{color:var(--muted);font-size:.78rem;font-weight:600}
@@ -483,8 +483,8 @@ body.on-product footer{padding-bottom:84px}
 .ao-h{align-items:flex-start}.ao-gift{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#FFC52E,#F4A300);display:grid;place-items:center;flex:none}.ao-gift svg{width:22px!important;height:22px!important;color:#fff!important}
 .ao-h b{display:block;font-size:1.02rem}.ao-h small{display:block}
 .addons{background:linear-gradient(180deg,#FFFBEA,#FFF6D6);border:2px solid #F4C542;border-style:solid}
-.ao{grid-template-columns:auto auto 1fr auto}.ao-p{color:var(--leaf);font-weight:800;font-size:.9rem}.ao-p s{color:var(--muted);font-weight:600;font-size:.78rem}
-.ao-off{font-style:normal;background:#D64545;color:#fff;border-radius:10px;padding:4px 8px;font-weight:900;font-size:.85rem;white-space:nowrap}
+.ao{grid-template-columns:auto auto 1fr}.ao-t{display:grid;gap:3px;justify-items:start}.ao-p{color:var(--leaf);font-weight:800;font-size:.9rem}.ao-p s{color:var(--muted);font-weight:600;font-size:.78rem}
+.ao-off{justify-self:start;font-style:normal;background:#D64545;color:#fff;border-radius:10px;padding:4px 8px;font-weight:900;font-size:.85rem;white-space:nowrap}
 .upsell{display:flex;align-items:center;gap:12px;margin-top:16px;padding:10px 14px;border-radius:16px;background:#FFF8DD;border:2px dashed #F4C542;text-decoration:none;color:var(--ink);transition:background .2s}
 .upsell:hover{background:#FFF1BF}
 .upsell img{width:74px;height:56px;object-fit:contain;flex:none}
@@ -955,6 +955,11 @@ const cartAdd=(id,q=1)=>{const a=cartGet();const x=a.find(i=>i.id===id);if(x)x.q
   try{if(window.fbq)fbq("track","AddToCart",pxd(p,p.price*q))}catch(_){}
   toast(`<span>${ic("check",3)}<b>تزاد للسلة:</b> ${esc(p.name)}</span><a href="#cart">كمّل الطلب (${cartCount()})</a>`)};
 const OFF=v=>v>=1000?100:Math.max(20,Math.round(v*0.1/10)*10);
+const PK2=()=>PACKS.map(k=>({k,ids:k.items,save:k.items.reduce((a,id)=>a+PF(x=>x.id===id).price,0)-k.price}));
+const pairOff=(mainId,x)=>{const k=PK2().find(z=>z.ids.length===2&&z.ids.includes(mainId)&&z.ids.includes(x.id));return k?Math.max(k.save,OFF(x.price)):OFF(x.price)};
+const cartOffs=items=>{const ids=items.map(x=>x.p.id),used=new Set();items.forEach(x=>{x.off=0;x.why=""});
+  PK2().sort((a,b)=>b.save-a.save).forEach(z=>{if(z.ids.every(id=>ids.includes(id)&&!used.has(id))){z.ids.forEach(id=>used.add(id));const t=items.filter(x=>z.ids.includes(x.p.id)).sort((a,b)=>a.p.price-b.p.price)[0];t.off=Math.max(z.save,OFF(t.p.price));t.why="pack"}});
+  items.forEach((x,i)=>{if(i>0&&!x.why){x.off=OFF(x.p.price);x.why="combo"}});return items};
 const comps=p=>{const ids=(COMP[p.id]||[]).concat(p.items?[]:PR().filter(x=>x.cat===p.cat&&x.id!==p.id).sort((a,b)=>a.price-b.price).map(x=>x.id));const out=[];ids.forEach(id=>{const x=PF(y=>y.id===id);if(x&&x.id!==p.id&&!out.includes(x)&&!(p.items||[]).includes(x.id)&&!(p.vars||[]).some(v=>v[0]===x.id))out.push(x)});return out};
 
 const ic=(n,sw=2.2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${({
@@ -1178,25 +1183,25 @@ function startRing(){
 function cartView(){
   const a=cartGet();
   const items=a.map(x=>({p:PF(y=>y.id===x.id),qty:x.qty})).sort((x,y)=>y.p.price-x.p.price);
-  items.forEach((x,i)=>x.off=i>0?OFF(x.p.price):0);
+  cartOffs(items);
   const gross=items.reduce((s,x)=>s+x.p.price*x.qty,0),off=items.reduce((s,x)=>s+x.off,0),sub=gross-off,ship=items.length?shipFee(sub):0,total=sub+ship,dep=depOf(total);
-  const sug=[];items.forEach(x=>comps(x.p).forEach(c=>{if(!a.find(i=>i.id===c.id)&&!sug.includes(c))sug.push(c)}));
+  const sug=[];items.forEach(x=>comps(x.p).forEach(c=>{if(!a.find(i=>i.id===c.id)&&!sug.includes(c))sug.push(c)}));const sOff=c=>Math.max(...items.map(x=>pairOff(x.p.id,c)));
   app.innerHTML=`<section class="ptop cartpage"><div class="wrap">
     <div class="crumb"><a href="#home">الرئيسية</a><span>/</span><span>السلة</span></div>
     <h1 class="h2" style="margin:6px 0 18px">${ic("cart")} السلة ديالك ${items.length?`<small class="num">(${cartCount()})</small>`:""}</h1>
     ${!items.length?`<div class="box emptycart"><p>السلة خاوية. زيد المنتجات اللي بغيتي وطلبهم كاملين مرة وحدة.</p><a class="btn btn-sun" href="#products">${ic("cart")}شوف المنتجات</a></div>`:`
-    ${items.length>1?`<div class="bundlebar">${ic("gift")}<span><b>عرض الطلب المجموع:</b> كل منتج زايد على الأول كينقص من الثمن ديالو. وفّرتي <b class="num">${money(off)}</b> درهم</span></div>`:`<div class="bundlebar soft">${ic("gift")}<span>زيد منتج آخر للسلة وخود <b>تخفيض</b> على الثمن ديالو</span></div>`}
+    ${items.length>1?`<div class="bundlebar">${ic("check",3)}<span>حيت طلبتي <b>${items.length===2?"جوج":items.length===3?"تلاتة":items.length}</b> منتجات مع بعض، نقصنا ليك <b class="num">${money(off)}</b> درهم من الثمن.</span></div>`:`<div class="bundlebar soft">${ic("cart")}<span>إلا زدتي منتوج آخر فنفس الطلب، كينقص من الثمن ديالو.</span></div>`}
     <div class="cgrid">
-      <div class="box citems c-items">${items.map(x=>`<div class="ci" data-id="${x.p.id}"><a href="#p-${x.p.id}"><img src="${src(x.p.id+"-cut")}" alt=""></a><div class="ci-t"><a href="#p-${x.p.id}"><b>${esc(x.p.name)}</b></a><span><bdi class="num">${money(x.p.price-x.off)}</bdi> درهم${x.off?` <s><bdi class="num">${money(x.p.price)}</bdi></s> <em class="offt">−${x.off}</em>`:""}${x.qty>1?` <small class="num">× ${x.qty}</small>`:""}</span></div><div class="qty sm"><button type="button" data-q="1" aria-label="زيد">+</button><output class="num">${x.qty}</output><button type="button" data-q="-1" aria-label="نقّص">−</button></div><button type="button" class="rm" data-rm="${x.p.id}" aria-label="حيد">${ic("x")}</button></div>`).join("")}
+      <div class="box citems c-items">${items.map(x=>`<div class="ci" data-id="${x.p.id}"><a href="#p-${x.p.id}"><img src="${src(x.p.id+"-cut")}" alt=""></a><div class="ci-t"><a href="#p-${x.p.id}"><b>${esc(x.p.name)}</b></a><span><bdi class="num">${money(x.p.price-x.off)}</bdi> درهم${x.off?` <s><bdi class="num">${money(x.p.price)}</bdi></s> <em class="offt">نقص ${x.off} درهم</em>`:""}${x.qty>1?` <small class="num">× ${x.qty}</small>`:""}</span></div><div class="qty sm"><button type="button" data-q="1" aria-label="زيد">+</button><output class="num">${x.qty}</output><button type="button" data-q="-1" aria-label="نقّص">−</button></div><button type="button" class="rm" data-rm="${x.p.id}" aria-label="حيد">${ic("x")}</button></div>`).join("")}
         <a class="addmore" href="#products">${ic("cart")}زيد منتجات أخرى</a></div>
       <div class="order c-order" id="order"><span class="rib">كمّل الطلب</span>
         <h2>الطلب ديالك</h2>
         <div class="recap">${items.map(x=>`<div class="rl"><span>${esc(x.p.name)}${x.qty>1?` <small class="num">×${x.qty}</small>`:""}</span><b><bdi class="num">${money(x.p.price*x.qty)}</bdi> درهم</b></div>`).join("")}
-          ${off?`<div class="rl save"><span>${ic("gift")}تخفيض الطلب المجموع</span><b>−<bdi class="num">${money(off)}</bdi> درهم</b></div>`:""}
+          ${items.filter(x=>x.off).map(x=>`<div class="rl save"><span>${ic("check",3)}تخفيض على ${esc(x.p.name.split(" (")[0])}${x.why==="pack"?" (ثمن العرض)":""}</span><b>نقص <bdi class="num">${money(x.off)}</bdi> درهم</b></div>`).join("")}
           <div class="rl"><span>${ic("truck")}التوصيل</span><b>${ship?ship+" درهم":"مجاني"}</b></div>
           <div class="rl"><span>${ic("card")}الدفع</span><b>${dep?"حجز "+dep+" درهم + الباقي عند الاستلام":"عند الاستلام"}</b></div>
         </div>
-        ${FREE-sub>0?`<div class="fsbar"><span>${ic("truck")}زيد غير <b class="num">${money(FREE-sub)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(sub/FREE*100)}%"></i></div>`:""}
+        ${FREE-sub>0?`<div class="fsbar"><span>${ic("truck")}<span>التوصيل كيكون <b>فابور</b> ملي يوصل الطلب <b class="num">${FREE}</b> درهم. باقي ليك <b class="num">${money(FREE-sub)}</b> درهم.</span></span><i style="--w:${Math.round(sub/FREE*100)}%"></i></div>`:""}
         ${dep?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${dep} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${dep} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:""}
         <div class="total"><span>المجموع</span><b><span class="num">${money(total)}</span> <small style="font-size:.55em">درهم</small></b></div>
         <form class="f" id="cartForm" novalidate>
@@ -1210,7 +1215,7 @@ function cartView(){
         </form>
         <div class="done" id="orderDone" hidden><div class="ok">${ic("check",3)}</div><h2>توصلنا بالطلب ديالك!</h2><p>شكراً على الثقة ديالك. غادي نعيطو ليك فأقرب وقت باش نأكدو معاك الطلب والتوصيل.</p>${dep?`<p class="depnote">${ic("shield")}<span>باش نحجزو ليك السلعة باسمك، غادي نعيطو ليك ونعطيوك طريقة دفع <b>${dep} درهم ديال الحجز</b>. كتنقص من الثمن، والباقي عند الاستلام.</span></p>`:""}<div class="refbox">رقم الطلب: <b id="refNo" class="num"></b></div><p class="note">ولا عيط لينا مباشرة: <span class="num" dir="ltr">06 31 31 21 55</span></p></div>
       </div>
-      ${sug.length?`<div class="box c-sug"><h2 style="font-size:1.15rem">${ic("star")} ممكن تحتاجهم معاهم <small class="sm">(كينقصو من الثمن إلا زدتيهم)</small></h2><div class="sugrow">${sug.slice(0,6).map(c=>`<div class="sg"><a href="#p-${c.id}"><img src="${src(c.id+"-cut")}" alt="" loading="lazy"><b>${esc(c.name)}</b></a><span><bdi class="num">${money(c.price-OFF(c.price))}</bdi> درهم <s><bdi class="num">${money(c.price)}</bdi></s></span><button type="button" class="btn btn-green" data-add="${c.id}">${ic("cart")}زيد</button></div>`).join("")}</div></div>`:""}
+      ${sug.length?`<div class="box c-sug"><h2 style="font-size:1.15rem">${ic("star")} ممكن تحتاجهم معاهم <small class="sm">(كينقصو من الثمن إلا زدتيهم)</small></h2><div class="sugrow">${sug.slice(0,6).map(c=>`<div class="sg"><a href="#p-${c.id}"><img src="${src(c.id+"-cut")}" alt="" loading="lazy"><b>${esc(c.name)}</b></a><span><bdi class="num">${money(c.price-sOff(c))}</bdi> درهم <s><bdi class="num">${money(c.price)}</bdi></s></span><button type="button" class="btn btn-green" data-add="${c.id}">${ic("cart")}زيد</button></div>`).join("")}</div></div>`:""}
     </div>`}
   </div></section>`;
   app.querySelectorAll(".ci").forEach(r=>{const id=r.dataset.id;r.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const a=cartGet();const x=a.find(i=>i.id===id);x.qty=Math.min(50,Math.max(1,x.qty+ +b.dataset.q));cartSet(a);cartView()});});
@@ -1274,7 +1279,7 @@ function productView(p){
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
                 <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
               </div>
-              ${(()=>{const c=comps(p).slice(0,3);if(!c.length)return "";return `<div class="addons"><div class="ao-h"><span class="ao-gift">${ic("gift")}</span><div><b>عرض خاص على هاد الطلب</b><small>زيد معاه ونقّصو ليك من الثمن، وكيوصلو مجموعين</small></div></div>${c.map(x=>`<label class="ao"><input type="checkbox" value="${x.id}"><span class="ao-box">${ic("check",3)}</span><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><span class="ao-t"><b>${esc(x.name)}</b><span class="ao-p"><bdi class="num">${money(x.price-OFF(x.price))}</bdi> درهم <s><bdi class="num">${money(x.price)}</bdi></s></span></span><em class="ao-off">−<bdi class="num">${OFF(x.price)}</bdi></em></label>`).join("")}</div>`})()}
+              ${(()=>{const c=comps(p).slice(0,3);if(!c.length)return "";return `<div class="addons"><div class="ao-h"><span class="ao-gift">${ic("tag")}</span><div><b>عرض خاص إلا طلبتيهم مع بعض</b><small>زيد واحد من هادو مع ${esc(p.name.split(" (")[0])} فنفس الطلب، وكينقص من الثمن ديالو.</small></div></div>${c.map(x=>`<label class="ao"><input type="checkbox" value="${x.id}"><span class="ao-box">${ic("check",3)}</span><img src="${src(x.id+"-cut")}" alt="" loading="lazy"><span class="ao-t"><b>${esc(x.name)}</b><span class="ao-p"><bdi class="num">${money(x.price-pairOff(p.id,x))}</bdi> درهم بلاصة <s><bdi class="num">${money(x.price)}</bdi></s></span><em class="ao-off">نقص <bdi class="num">${pairOff(p.id,x)}</bdi> درهم</em></span></label>`).join("")}</div>`})()}
               <div class="fsbar" id="fsbar"></div>
               <div class="shipline"><span>${ic("truck")}التوصيل</span><b id="f-ship">${freeShip(p.price)?"مجاني":"30 درهم"}</b></div>
               <div class="shipline"><span>${ic("card")}الدفع</span><b id="f-pay">عند الاستلام</b></div>
@@ -1342,9 +1347,9 @@ function productView(p){
 
   let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
   const addSel=()=>[...app.querySelectorAll('.ao input:checked')].map(i=>PF(x=>x.id===i.value)).filter(Boolean);
-  const calc=()=>{const ad=addSel();const off=ad.reduce((a,x)=>a+OFF(x.price),0);const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0)-off;return {ad,off,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
+  const calc=()=>{const ad=addSel();const off=ad.reduce((a,x)=>a+pairOff(p.id,x),0);const sub=qty*p.price+ad.reduce((a,x)=>a+x.price,0)-off;return {ad,off,sub,ship:shipFee(sub),total:sub+shipFee(sub)}};
   const recalc=()=>{const c=calc();qo.textContent=qty;tot.textContent=money(c.total);document.getElementById("f-ship").textContent=freeShip(c.sub)?"مجاني":SHIP+" درهم";
-    const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}زيد غير <b class="num">${money(left)}</b> درهم وخود <b>التوصيل فابور</b></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`;
+    const fb=document.getElementById("fsbar");const left=FREE-c.sub;fb.innerHTML=left>0?`<span>${ic("truck")}<span>التوصيل كيكون <b>فابور</b> ملي يوصل الطلب <b class="num">${FREE}</b> درهم. باقي ليك <b class="num">${money(left)}</b> درهم.</span></span><i style="--w:${Math.round(c.sub/FREE*100)}%"></i>`:`<span class="ok">${ic("check",3)}مبروك! <b>التوصيل فابور</b></span>`;
     const dp=needDep(c.total);document.getElementById("f-pay").textContent=dp?"حجز "+depOf(c.total)+" درهم + الباقي عند الاستلام":"عند الاستلام";const fd=document.getElementById("f-dep");fd.hidden=!dp;fd.innerHTML=dp?`<div class="depbox"><b class="dh">${ic("shield")}احجز الطلب ديالك بـ ${depOf(c.total)} درهم فقط</b><ul><li>${ic("check",3)}السلعة كتبقى محجوزة باسمك</li><li>${ic("check",3)}الـ ${depOf(c.total)} درهم كتنقص من الثمن، ماشي زيادة</li><li>${ic("check",3)}الباقي كتخلصو ملي توصلك السلعة</li></ul></div>`:"";};
   app.querySelectorAll(".qty button").forEach(b=>b.onclick=()=>{qty=Math.min(50,Math.max(1,qty+ +b.dataset.d));recalc()});
   app.querySelectorAll(".ao input").forEach(i=>i.onchange=()=>{i.closest(".ao").classList.toggle("on",i.checked);recalc();try{if(i.checked&&window.fbq)fbq("track","AddToCart",pxd(PF(x=>x.id===i.value),PF(x=>x.id===i.value).price))}catch(_){}});
@@ -1364,9 +1369,9 @@ function productView(p){
     const clean=t=>t.replace(/\u200f/g,""),d=new Date();
     const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
     const c=calc(),total=c.total,btn=e.target.querySelector('button[type=submit]'),dep=needDep(total);
-    const pname=clean(p.name)+(qty>1?" ×"+qty:"")+c.ad.map(x=>" + "+clean(x.name)+" (-"+OFF(x.price)+")").join("");
+    const pname=clean(p.name)+(qty>1?" ×"+qty:"")+c.ad.map(x=>" + "+clean(x.name)+" (-"+pairOff(p.id,x)+")").join("");
     const order={ref,name,phone:tel,email,city,product:pname,qty,price:p.price,ship:c.ship,total,source:orderSource()+" | "+p.id,pid:[p.id].concat(c.ad.map(x=>x.id)).join(","),
-      note:(dep?"تسبيق "+depOf(total)+" درهم قبل الإرسال":"")+(c.ad.length?(dep?" · ":"")+"زاد: "+c.ad.map(x=>clean(x.name)+" ("+(x.price-OFF(x.price))+" بلاصة "+x.price+")").join(" + ")+" · خصم "+c.off+" درهم":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+      note:(dep?"تسبيق "+depOf(total)+" درهم قبل الإرسال":"")+(c.ad.length?(dep?" · ":"")+"زاد: "+c.ad.map(x=>clean(x.name)+" ("+(x.price-pairOff(p.id,x))+" بلاصة "+x.price+")").join(" + ")+" · خصم "+c.off+" درهم":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const done=ok=>{
       if(!ok){btn.disabled=false;btn.textContent=btnTxt;let er=e.target.querySelector(".senderr");if(!er){er=document.createElement("p");er.className="note senderr";er.style.color="#c0392b";btn.after(er)}er.textContent="ما قدرناش نصيفطو الطلب، تأكد من الأنترنيت وعاود كليكي مرة أخرى.";return;}
       $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false; $("doneDep").hidden=!dep;$("doneDepv").textContent=depOf(total)||100;
