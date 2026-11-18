@@ -259,6 +259,17 @@ section.s{padding-block:76px}
 @keyframes gin{0%{opacity:0;transform:perspective(900px) rotateY(-28deg) translateX(-30px) scale(.9)}100%{opacity:1;transform:none}}
 .view .gin{animation:gin .7s cubic-bezier(.2,.8,.2,1) both}
 .gdots{display:flex;gap:6px;justify-content:center;margin-top:8px}.gdots i{width:8px;height:8px;border-radius:9px;background:#cfd9d0;transition:.3s}.gdots i.on{width:22px;background:var(--green)}
+.vwrap{position:relative}
+.garr{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:var(--green);box-shadow:0 6px 16px rgba(0,0,0,.18);display:grid;place-items:center;cursor:pointer}
+.garr svg{width:24px;height:24px}.garr.gnx{left:6px}.garr.gpv{right:6px}
+.gcnt{position:absolute;bottom:10px;left:10px;z-index:6;background:rgba(16,32,42,.82);color:#fff;font-weight:800;font-size:.85rem;border-radius:999px;padding:3px 12px}
+.ghint{position:absolute;bottom:10px;right:10px;z-index:6;background:var(--sun);color:var(--sun-ink);font-weight:800;font-size:.8rem;border-radius:999px;padding:3px 12px;animation:ghint 1.2s ease-in-out 4;opacity:0;animation-fill-mode:forwards}
+@keyframes ghint{0%{opacity:0;transform:translateX(0)}20%{opacity:1}50%{opacity:1;transform:translateX(-8px)}80%{opacity:1}100%{opacity:1;transform:translateX(0)}}
+.ghint.off{display:none}
+.stage.hasqf .thumbs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:8px;margin-top:8px;padding:2px 2px 10px;scrollbar-width:none}
+.stage.hasqf .thumbs::-webkit-scrollbar{display:none}
+@media (max-width:520px){.stage.hasqf .thumbs button{width:60px;height:60px;flex:0 0 60px;border-radius:12px;box-shadow:0 3px 0 var(--line)}}
+.thumbs button[aria-current=true]{border-color:var(--green);box-shadow:0 3px 0 var(--green-2)}
 .qfp .packoffers{order:-1}
 .qf .qv{display:flex;gap:8px;margin-bottom:8px}.qf .qv a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;border:2px solid var(--line);border-radius:14px;padding:6px 4px;font-size:.85rem;color:var(--ink);text-decoration:none;position:relative}.qf .qv a b{font-size:.92rem}.qf .qv a span{color:var(--green);font-weight:800}.qf .qv a.on{border-color:var(--green);background:#eef8ef}.qf .qv a svg{position:absolute;top:6px;right:6px;width:14px;height:14px;color:var(--green)}
 @media (max-width:920px){.stage.hasqf .vtop{display:none}}
@@ -1334,14 +1345,14 @@ function productView(p){
       <div class="pgrid">
         <div class="stage${QF.includes(p.id)?" hasqf":""}">
           ${p.vars?`<div class="vars vtop"><span class="vh">${ic("bolt")}${p.varq||"اختار الحجم اللي كيناسب المحرك ديالك:"}</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
-          <div class="view" id="view"></div>
-          ${media.length>1?`<div class="gdots" id="gdots">${media.map(()=>"<i></i>").join("")}</div>`:""}
+          <div class="vwrap"><div class="view" id="view"></div>
+            ${media.length>1?`<button type="button" class="garr gnx" id="gnx" aria-label="التصويرة الجاية">${ic("prev",2.8)}</button><button type="button" class="garr gpv" id="gpv" aria-label="التصويرة اللي قبل">${ic("next",2.8)}</button><span class="gcnt" id="gcnt">📷 <bdi class="num">1/${media.length}</bdi></span><span class="ghint" id="ghint">👆 سيكي ولا كليكي على التصاور</span>`:""}</div>
+          <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
           ${QF.includes(p.id)?`<div class="qf" id="qf"><div class="qh"><b>${esc(p.name)}</b><span class="qp"><bdi class="num">${money(p.price)}</bdi> درهم</span></div>
             <div class="qt"><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("truck")}${freeShip(p.price)?"التوصيل فابور":"التوصيل 30 درهم"}</span></div>
             ${p.vars?`<div class="qv">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="${k===p.id?"on":""}" href="#p-${k}">${k===p.id?ic("check",3):""}<b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div>`:""}
             <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف: 06 12 34 56 78" dir="ltr" style="text-align:right"><input id="q-city" autocomplete="address-level2" placeholder="المدينة"><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب دابا</button>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
             <div class="qok" id="qfDone" hidden><b>${ic("check",3)} توصلنا بالطلب ديالك!</b>غادي نعيطو ليك قريب باش نأكدو. رقم الطلب: <b class="num" id="qfRef" style="display:inline;font-size:1rem"></b></div></div>`:""}
-          <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
         </div>
         <div class="pinfo${QF.includes(p.id)?" qfp":""}">
           <span class="hook">${esc(p.hook)}</span>
@@ -1430,10 +1441,13 @@ function productView(p){
     app.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
   }
   let gi=0,gt=null,gstop=false;const dots=document.getElementById("gdots");
-  const gshow=i=>{gi=(i+media.length)%media.length;show(gi);const el=view.querySelector(".prod,.photo");if(el){el.classList.add("gin")}if(dots)dots.querySelectorAll("i").forEach((d,j)=>d.className=j===gi?"on":"")};
+  const gshow=i=>{gi=(i+media.length)%media.length;show(gi);const el=view.querySelector(".prod,.photo");if(el){el.classList.add("gin")}if(dots)dots.querySelectorAll("i").forEach((d,j)=>d.className=j===gi?"on":"");
+    const gc=document.getElementById("gcnt");if(gc)gc.innerHTML="📷 <bdi class=num>"+(gi+1)+"/"+media.length+"</bdi>";
+    const tb=app.querySelectorAll(".thumbs button")[gi];if(tb&&tb.parentElement.scrollWidth>tb.parentElement.clientWidth)tb.parentElement.scrollTo({left:tb.offsetLeft-tb.parentElement.clientWidth/2+30,behavior:"smooth"})};
   const gnext=()=>{if(gstop||media.length<2)return;clearTimeout(gt);gt=setTimeout(()=>{if(!document.body.contains(view)||gstop)return;gshow(gi+1);gnext()},media[gi].t==="v"?7000:3200)};
   gshow(0);gnext();
-  const gpause=()=>{gstop=true;clearTimeout(gt)};
+  const gpause=()=>{gstop=true;clearTimeout(gt);const h=document.getElementById("ghint");if(h)h.classList.add("off")};
+  const gn=document.getElementById("gnx"),gp=document.getElementById("gpv");if(gn)gn.onclick=()=>{gpause();gshow(gi+1)};if(gp)gp.onclick=()=>{gpause();gshow(gi-1)};
   app.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{gpause();gshow(+b.dataset.i)});
   let tx0=null;view.addEventListener("touchstart",e=>{tx0=e.touches[0].clientX},{passive:true});
   view.addEventListener("touchend",e=>{if(tx0===null)return;const dx=e.changedTouches[0].clientX-tx0;tx0=null;if(Math.abs(dx)>40){gpause();gshow(gi+(dx<0?1:-1))}},{passive:true});
