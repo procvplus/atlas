@@ -296,7 +296,8 @@ section.s{padding-block:76px}
 .qf .qerr{color:#c0392b;font-weight:700;font-size:.9rem;min-height:0}
 .qf .btn{font-size:1.15rem;padding-block:14px}
 .qf .qdep{font-size:.82rem;color:var(--muted);font-weight:700;text-align:center}
-.order.qfhide{display:none!important}
+.order.qfhide,.qfp .cartrow{display:none!important}
+@media (max-width:920px){.qfp .hook,.qfp h1,.qfp .prow{display:none!important}.qfp{gap:12px}}
 .qf .qok svg{width:22px;height:22px;vertical-align:-4px}
 @media (max-width:520px){.stage.hasqf .view{height:235px}.stage.hasqf .prod{max-height:175px;margin-bottom:56px}.stage.hasqf .podium{transform:translateX(-50%) scale(.85);transform-origin:50% 100%}.ptop .crumb.qfc{display:none!important}.qf{margin-top:8px}}
 .qf .qok{text-align:center;padding:10px 4px}.qf .qok b{display:block;font-size:1.2rem;color:var(--green);margin-bottom:6px}
@@ -1334,7 +1335,7 @@ function productView(p){
             <div class="qok" id="qfDone" hidden><b>${ic("check",3)} توصلنا بالطلب ديالك!</b>غادي نعيطو ليك قريب باش نأكدو. رقم الطلب: <b class="num" id="qfRef" style="display:inline;font-size:1rem"></b></div></div>`:""}
           <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
         </div>
-        <div class="pinfo">
+        <div class="pinfo${QF.includes(p.id)?" qfp":""}">
           <span class="hook">${esc(p.hook)}</span>
           <h1>${esc(p.name)}</h1>
           ${p.vars?`<div class="vars vside"><span class="vh">${ic("bolt")}${p.varq||"اختار الحجم اللي كيناسب المحرك ديالك:"}</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
