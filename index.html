@@ -315,6 +315,7 @@ section.s{padding-block:76px}
 .qf .qdep{font-size:.82rem;color:var(--muted);font-weight:700;text-align:center}
 .order.qfhide,.qfp .cartrow{display:none!important}
 @media (max-width:920px){.qfp .hook,.qfp h1,.qfp .prow{display:none!important}.qfp{gap:12px}}
+.qf .qwa{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.86rem;font-weight:700;color:var(--leaf);text-decoration:none;padding:4px 0}.qf .qwa svg{width:18px;height:18px;color:#25A55A}.qf .qwa b{color:#1f8f4d;text-decoration:underline}
 .qf .qok svg{width:22px;height:22px;vertical-align:-4px}
 @media (max-width:520px){.stage.hasqf .view{height:235px}.stage.hasqf .prod{max-height:175px;margin-bottom:56px}.stage.hasqf .podium{transform:translateX(-50%) scale(.85);transform-origin:50% 100%}.ptop .crumb.qfc{display:none!important}.qf{margin-top:8px}}
 .qf .qok{text-align:center;padding:10px 4px}.qf .qok b{display:block;font-size:1.2rem;color:var(--green);margin-bottom:6px}
@@ -568,7 +569,7 @@ body.on-product footer{padding-bottom:84px}
   <div class="wrap"><div class="rot" id="rot" aria-live="polite">
     <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>التوصيل <b>مجاني</b> لجميع المدن ابتداءً من <b class="num">500</b> درهم</span>
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19M6.5 15h4"/></svg>الدفع <b>عند الاستلام</b> فجميع المدن</span>
-    <span><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال؟ واتساب: <b class="num">+212 6 31 31 21 55</b></span>
+    <span>📞 كنعيطو ليك نأكدو الطلب قبل الإرسال</span>
   </div></div>
 </div>
 
@@ -585,7 +586,7 @@ body.on-product footer{padding-bottom:84px}
 
 <main id="app"></main>
 
-<a class="wafloat" href="https://wa.me/212631312155" target="_blank" rel="noopener" aria-label="تواصل معنا فالواتساب"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
+
 <div class="toast" id="toast" hidden></div>
 <div class="sticky" id="sticky" hidden><span class="p" id="stickyPrice"></span><a class="btn btn-sun" href="#order" id="stickyBtn">اطلب الآن</a></div>
 
@@ -594,7 +595,7 @@ body.on-product footer{padding-bottom:84px}
     <div><span class="fi">ICTRUCK</span><b>التوصيل مجاني</b><small>ابتداءً من 500 درهم</small></div>
     <div><span class="fi y">ICCARD</span><b>الدفع عند الاستلام</b><small>فجميع مدن المغرب</small></div>
     <div><span class="fi">ICSHIELD</span><b>جودة مضمونة</b><small>معدات مجرّبة ومختارة</small></div>
-    <div><span class="fi y">ICCHAT</span><b>نصيحة قبل الشراء</b><small>جواب سريع فالواتساب</small></div>
+    <div><span class="fi y">ICCHAT</span><b>نصيحة قبل الشراء</b><small>كنعيطو ليك ونعاونوك تختار</small></div>
   </div>
   <div class="wrap fmain">
     <div class="fbrand">
@@ -606,7 +607,6 @@ body.on-product footer{padding-bottom:84px}
       <div class="soc">
         <a class="fb" href="https://www.facebook.com/share/1EWZoo4RHN/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22Z"/></svg></a>
         <a class="ig" href="https://www.instagram.com/atlas_proo/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-        <a class="wa" href="https://wa.me/212631312155" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg></a>
       </div>
     </div>
   </div>
@@ -1106,8 +1106,8 @@ const FAQ=[
   ["واش نخلّص قبل ما توصلني السلعة؟","لا، الدفع عند الاستلام: كتخلّص ملي توصلك السلعة لعندك."],
   ["شنو هوما العروض؟","جوج منتجات كيتشراو مع بعض (بحال الكومبريسور والكريك، ولا المولّد ومضخة البير) بثمن أقل من الثمن ديالهم بوحدهم."],
   ["واش الثمن اللي فالسيت هو الثمن النهائي؟","إيه، الثمن المكتوب على كل منتج هو الثمن اللي غادي تخلّص، بلا مصاريف مخبّية."],
-  ["ما عرفتش شنو يناسبني، شنو ندير؟","صيفط لنا فالواتساب شنو الخدمة اللي بغيتي دير (مساحة الأرض، عمق البير، نوع الإنتاج...) ونعاونوك تختار المنتج المناسب قبل ما تشري."],
-  ["واش نقدر نطلب أكثر من وحدة؟","إيه، بدّل الكمية فالفورمولير والمجموع كيتحسب بوحدو. للتعاونيات والطلبات الكبيرة تواصل معنا مباشرة فالواتساب."]
+  ["ما عرفتش شنو يناسبني، شنو ندير؟","عيط لينا ولا طلب المنتج اللي قريب ليك، وملي نعيطو ليك كنسولوك على الخدمة اللي بغيتي دير (مساحة الأرض، عمق البير، نوع الإنتاج...) ونعاونوك تختار المناسب."],
+  ["واش نقدر نطلب أكثر من وحدة؟","إيه، بدّل الكمية فالفورمولير والمجموع كيتحسب بوحدو. للتعاونيات والطلبات الكبيرة عيط لينا مباشرة: 06 31 31 21 55."]
 ];
 const HILLS=`<svg viewBox="0 0 1440 190" preserveAspectRatio="none"><path d="M0 90 C240 30 420 40 640 80 S1080 140 1440 60 V190 H0Z" fill="#B9E39A"/><path d="M0 130 C300 80 520 100 760 125 S1180 150 1440 105 V190 H0Z" fill="#7FCB5B"/><g stroke="#5DAE3E" stroke-width="3" opacity=".55"><path d="M0 160 C400 140 900 150 1440 135"/><path d="M0 175 C400 158 900 168 1440 152"/></g><path d="M0 165 C380 150 900 165 1440 145 V190 H0Z" fill="#5FB240"/></svg>`;
 
@@ -1123,7 +1123,7 @@ function homeView(){
         <p class="lead">كلشي اللي محتاج لأرضك، لتعاونيتك ولورشتك فبلاصة وحدة: معدات مختارة بعناية، مجرّبة ومضمونة، <b>بثمن مناسب</b>.</p>
         <div class="cta-row">
           <a class="btn btn-sun" href="#products">${ic("cart")}شوف المنتجات والأثمنة</a>
-          <a class="btn btn-white" href="https://wa.me/${WA}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#25A55A"><use href="#i-wa"/></svg>نصيحة مجانية</a>
+          <a class="btn btn-white" href="#packs">${ic("gift")}شوف العروض</a>
         </div>
         <div class="proof"><span><i>${ic("truck")}</i><b>توصيل مجاني<small>ابتداءً من 500 درهم</small></b></span><span><i class="y">${ic("card")}</i><b>الدفع عند الاستلام<small>فجميع مدن المغرب</small></b></span></div>
       </div>
@@ -1213,8 +1213,8 @@ function homeView(){
   </section>
 
   <section class="wrap"><div class="band">
-    <div><h2>ما لقيتيش اللي كتقلب عليه؟</h2><p>عندنا منتجات أخرى ما كاينينش فالسيت. صيفط لنا ونجاوبوك دغيا.</p></div>
-    <div class="cta-row"><a class="btn btn-sun" href="https://wa.me/${WA}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>سولنا فالواتساب</a></div>
+    <div><h2>ما لقيتيش اللي كتقلب عليه؟</h2><p>عندنا منتجات أخرى ما كاينينش فالسيت. عيط لينا ونجاوبوك دغيا.</p></div>
+    <div class="cta-row"><a class="btn btn-sun" href="tel:+212631312155">📞 <span class="num" dir="ltr">06 31 31 21 55</span></a></div>
   </div></section>`;
   document.querySelectorAll(".chip[data-c]").forEach(b=>b.onclick=()=>filter(b.dataset.c));
   bindTilt(); startRing(); lazyVideo(); reels();
@@ -1351,7 +1351,7 @@ function productView(p){
           ${QF.includes(p.id)?`<div class="qf" id="qf"><div class="qh"><b>${esc(p.name)}</b><span class="qp"><bdi class="num">${money(p.price)}</bdi> درهم</span></div>
             <div class="qt"><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("truck")}${freeShip(p.price)?"التوصيل فابور":"التوصيل 30 درهم"}</span></div>
             ${p.vars?`<div class="qv">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="${k===p.id?"on":""}" href="#p-${k}">${k===p.id?ic("check",3):""}<b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div>`:""}
-            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف: 06 12 34 56 78" dir="ltr" style="text-align:right"><input id="q-city" autocomplete="address-level2" placeholder="المدينة"><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب دابا</button>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
+            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف: 06 12 34 56 78" dir="ltr" style="text-align:right"><input id="q-city" autocomplete="address-level2" placeholder="المدينة"><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب دابا</button><a class="qwa" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام، عندي سؤال على "+p.name+" ("+money(p.price)+" درهم) - atlasma.online")}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال على هاد الماكينة؟ <b>سولنا فالواتساب</b></a>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
             <div class="qok" id="qfDone" hidden><b>${ic("check",3)} توصلنا بالطلب ديالك!</b>غادي نعيطو ليك قريب باش نأكدو. رقم الطلب: <b class="num" id="qfRef" style="display:inline;font-size:1rem"></b></div></div>`:""}
         </div>
         <div class="pinfo${QF.includes(p.id)?" qfp":""}">
