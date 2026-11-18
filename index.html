@@ -288,6 +288,17 @@ section.s{padding-block:76px}
 .ben span{color:var(--muted);font-size:.84rem;line-height:1.35;display:block;font-weight:600}
 
 /* order form */
+.qf{background:#fff;border-radius:22px;padding:16px 16px 14px;border:3px solid var(--green);box-shadow:0 6px 0 var(--green-2),var(--shadow-lg);margin-top:14px;position:relative}
+.qf .qh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.qf .qh b{font-size:1.05rem;line-height:1.3}.qf .qh .qp{background:var(--sun);color:var(--sun-ink);font-weight:800;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.qf .qt{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.85rem;font-weight:700;color:var(--leaf);margin-bottom:10px}.qf .qt span{display:inline-flex;align-items:center;gap:4px}.qf .qt svg{width:16px;height:16px}
+.qf .f{display:grid;gap:8px}.qf .f input{padding:11px 12px}
+.qf .qerr{color:#c0392b;font-weight:700;font-size:.9rem;min-height:0}
+.qf .btn{font-size:1.15rem;padding-block:14px}
+.qf .qdep{font-size:.82rem;color:var(--muted);font-weight:700;text-align:center}
+.qf .qok svg{width:22px;height:22px;vertical-align:-4px}
+@media (max-width:520px){.stage.hasqf .view{height:270px}.stage.hasqf .prod{max-height:200px;margin-bottom:62px}.ptop .crumb.qfc{display:none!important}.qf{margin-top:8px}}
+.qf .qok{text-align:center;padding:10px 4px}.qf .qok b{display:block;font-size:1.2rem;color:var(--green);margin-bottom:6px}
 .order{background:#fff;border-radius:26px;padding:24px;border:3px solid var(--green);box-shadow:0 8px 0 var(--green-2),var(--shadow-lg);position:relative}
 .order .rib{position:absolute;top:-18px;right:20px;background:var(--sun);color:var(--sun-ink);font-weight:800;padding:4px 16px;border-radius:999px;box-shadow:0 4px 0 #D99A00}
 .order h2{font-size:1.45rem;margin-bottom:4px}
@@ -1311,11 +1322,15 @@ function productView(p){
   app.innerHTML=`
   <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
     <div class="wrap" style="position:relative;z-index:1">
-      <div class="crumb"><a href="#home">الرئيسية</a><span>/</span><a href="#c-${p.cat}">${catName(p.cat)}</a><span>/</span><span>${esc(p.name)}</span></div>
+      <div class="crumb${QF.includes(p.id)?" qfc":""}"><a href="#home">الرئيسية</a><span>/</span><a href="#c-${p.cat}">${catName(p.cat)}</a><span>/</span><span>${esc(p.name)}</span></div>
       <div class="pgrid">
-        <div class="stage">
+        <div class="stage${QF.includes(p.id)?" hasqf":""}">
           ${p.vars?`<div class="vars vtop"><span class="vh">${ic("bolt")}${p.varq||"اختار الحجم اللي كيناسب المحرك ديالك:"}</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <div class="view" id="view"></div>
+          ${QF.includes(p.id)?`<div class="qf" id="qf"><div class="qh"><b>${esc(p.name)}</b><span class="qp"><bdi class="num">${money(p.price)}</bdi> درهم</span></div>
+            <div class="qt"><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("truck")}${freeShip(p.price)?"التوصيل فابور":"التوصيل 30 درهم"}</span><span>${ic("chat")}كنعيطو ليك نأكدو</span></div>
+            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف: 06 12 34 56 78" dir="ltr" style="text-align:right"><input id="q-city" autocomplete="address-level2" placeholder="المدينة"><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب دابا</button>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
+            <div class="qok" id="qfDone" hidden><b>${ic("check",3)} توصلنا بالطلب ديالك!</b>غادي نعيطو ليك قريب باش نأكدو. رقم الطلب: <b class="num" id="qfRef" style="display:inline;font-size:1rem"></b></div></div>`:""}
           <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
         </div>
         <div class="pinfo">
@@ -1439,15 +1454,25 @@ function productView(p){
       if(!ok){btn.disabled=false;btn.textContent=btnTxt;let er=e.target.querySelector(".senderr");if(!er){er=document.createElement("p");er.className="note senderr";er.style.color="#c0392b";btn.after(er)}er.textContent="ما قدرناش نصيفطو الطلب، تأكد من الأنترنيت وعاود كليكي مرة أخرى.";return;}
       $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false; $("doneDep").hidden=!dep;$("doneDepv").textContent=depOf(total)||100;
       try{if(window.fbq)fbq("track","Lead",Object.assign(pxd(p,total),{num_items:qty+c.ad.length,content_ids:[p.id].concat(c.ad.map(x=>x.id))}))}catch(_){}
-      $("orderDone").scrollIntoView({behavior:"smooth",block:"center"});
+      if(!window.__qfS)$("orderDone").scrollIntoView({behavior:"smooth",block:"center"});
     };
     const btnTxt=btn.textContent;
     btn.disabled=true; btn.textContent="كنصيفطو الطلب...";
     sendOrder(order).then(()=>done(true),()=>done(false));
   });
   app.querySelectorAll("[data-scroll]").forEach(a=>a.addEventListener("click",goOrder));
+  const qf=document.getElementById("qfForm");
+  if(qf){let qic=false;qf.addEventListener("focusin",()=>{if(qic)return;qic=true;try{if(window.fbq)fbq("track","InitiateCheckout",pxd(p,p.price))}catch(_){}});
+    qf.addEventListener("submit",e=>{e.preventDefault();const g=id=>document.getElementById(id);
+      g("f-name").value=g("q-name").value;g("f-phone").value=g("q-phone").value;g("f-city").value=g("q-city").value;
+      const mf=g("orderForm");window.__qfS=true;mf.requestSubmit();const er=g("f-err").textContent;g("q-err").textContent=er;
+      if(er){const m={"f-name":"q-name","f-phone":"q-phone","f-city":"q-city"}[document.activeElement&&document.activeElement.id];if(m)g(m).focus();return}
+      const b=qf.querySelector("button");b.disabled=true;b.textContent="كنصيفطو الطلب...";
+      const t=setInterval(()=>{if(!g("orderDone").hidden){clearInterval(t);qf.hidden=true;g("qfRef").textContent=g("refNo").textContent;g("qfDone").hidden=false;g("qf").scrollIntoView({behavior:"smooth",block:"center"})}
+        else if(!mf.querySelector("button[type=submit]").disabled&&mf.querySelector(".senderr")){clearInterval(t);b.disabled=false;b.textContent="أكد الطلب دابا";g("q-err").textContent=mf.querySelector(".senderr").textContent}},300)});}
   bindTilt();
 }
+const QF=["hafara25"];
 const ORDER_URL="https://script.google.com/macros/s/AKfycbyccOLqdqZBBMxa30dZX7qz6ECnj7OvZmAw_ulYDeqZaSVZvyOpaKCZcbg8c0L-CV29xg/exec";
 function fbIds(){const ck=n=>(document.cookie.match("(?:^|; )"+n+"=([^;]*)")||[])[1]||"";let f=ck("_fbc");try{f=f||localStorage.getItem("atlas_fbc")||""}catch(_){}return{fbc:f,fbp:ck("_fbp")}}
 function orderSource(){try{return sessionStorage.getItem("atlas_src")||"site"}catch(_){return "site"}}
@@ -1462,7 +1487,7 @@ function sendOrder(o){
     throw new Error("send failed");
   });
 }
-function goOrder(e){e.preventDefault();const o=document.getElementById("order");if(o){o.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>document.getElementById("f-name")?.focus({preventScroll:true}),500)}}
+function goOrder(e){e.preventDefault();const q=document.getElementById("qf");if(q&&!document.getElementById("qfForm").hidden){q.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(()=>document.getElementById("q-name")?.focus({preventScroll:true}),500);return}const o=document.getElementById("order");if(o){o.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>document.getElementById("f-name")?.focus({preventScroll:true}),500)}}
 document.getElementById("stickyBtn").addEventListener("click",goOrder);
 
 function bindTilt(){
