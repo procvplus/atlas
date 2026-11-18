@@ -296,6 +296,7 @@ section.s{padding-block:76px}
 .qf .qerr{color:#c0392b;font-weight:700;font-size:.9rem;min-height:0}
 .qf .btn{font-size:1.15rem;padding-block:14px}
 .qf .qdep{font-size:.82rem;color:var(--muted);font-weight:700;text-align:center}
+.order.qfhide{display:none!important}
 .qf .qok svg{width:22px;height:22px;vertical-align:-4px}
 @media (max-width:520px){.stage.hasqf .view{height:235px}.stage.hasqf .prod{max-height:175px;margin-bottom:56px}.stage.hasqf .podium{transform:translateX(-50%) scale(.85);transform-origin:50% 100%}.ptop .crumb.qfc{display:none!important}.qf{margin-top:8px}}
 .qf .qok{text-align:center;padding:10px 4px}.qf .qok b{display:block;font-size:1.2rem;color:var(--green);margin-bottom:6px}
@@ -1344,7 +1345,7 @@ function productView(p){
           <div class="cartrow"><button type="button" class="btn btn-green" data-add="${p.id}">${ic("cart")}زيد للسلة</button><a class="btn btn-white" href="#cart">شوف السلة<b class="num cartn2">${cartCount()}</b></a><small>زيد بزاف ديال المنتجات وطلبهم كاملين مرة وحدة</small></div>
           <div class="bens">${p.bens.map((b,i)=>`<div class="ben"><span class="ico3d ${i===1?"sun":""}">${ic(b[2])}</span><div><b>${esc(b[0])}</b><span>${esc(b[1])}</span></div></div>`).join("")}</div>
 
-          <div class="order" id="order">
+          <div class="order${QF.includes(p.id)?" qfhide":""}" id="order">
             <span class="rib">اطلب دابا</span>
             <h2>عمّر المعلومات ديالك</h2>
             <p class="sm">كنعيطو ليك باش نأكدو الطلب والتوصيل.</p>
