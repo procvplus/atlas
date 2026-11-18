@@ -256,6 +256,12 @@ section.s{padding-block:76px}
 .stage .podium{bottom:10px}
 .stage .prod{position:relative;z-index:3;max-height:380px;max-width:86%;object-fit:contain;margin-bottom:96px;filter:drop-shadow(0 26px 20px rgba(30,50,20,.35));animation:float 5s ease-in-out infinite;transform:rotateY(var(--gx,0deg)) rotateX(var(--gy,0deg))}
 @media (max-width:520px){.stage .prod{max-height:250px;margin-bottom:76px}}
+@keyframes gin{0%{opacity:0;transform:perspective(900px) rotateY(-28deg) translateX(-30px) scale(.9)}100%{opacity:1;transform:none}}
+.view .gin{animation:gin .7s cubic-bezier(.2,.8,.2,1) both}
+.gdots{display:flex;gap:6px;justify-content:center;margin-top:8px}.gdots i{width:8px;height:8px;border-radius:9px;background:#cfd9d0;transition:.3s}.gdots i.on{width:22px;background:var(--green)}
+.qfp .packoffers{order:-1}
+.qf .qv{display:flex;gap:8px;margin-bottom:8px}.qf .qv a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;border:2px solid var(--line);border-radius:14px;padding:6px 4px;font-size:.85rem;color:var(--ink);text-decoration:none;position:relative}.qf .qv a b{font-size:.92rem}.qf .qv a span{color:var(--green);font-weight:800}.qf .qv a.on{border-color:var(--green);background:#eef8ef}.qf .qv a svg{position:absolute;top:6px;right:6px;width:14px;height:14px;color:var(--green)}
+@media (max-width:920px){.stage.hasqf .vtop{display:none}}
 @keyframes float{50%{translate:0 -10px}}
 .stage .photo{position:relative;z-index:3;width:100%;height:100%;object-fit:contain;border-radius:22px;background:#fff;box-shadow:var(--shadow-lg)}
 .stage video.photo{object-fit:contain;background:#000}
@@ -1329,8 +1335,10 @@ function productView(p){
         <div class="stage${QF.includes(p.id)?" hasqf":""}">
           ${p.vars?`<div class="vars vtop"><span class="vh">${ic("bolt")}${p.varq||"اختار الحجم اللي كيناسب المحرك ديالك:"}</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <div class="view" id="view"></div>
+          ${media.length>1?`<div class="gdots" id="gdots">${media.map(()=>"<i></i>").join("")}</div>`:""}
           ${QF.includes(p.id)?`<div class="qf" id="qf"><div class="qh"><b>${esc(p.name)}</b><span class="qp"><bdi class="num">${money(p.price)}</bdi> درهم</span></div>
             <div class="qt"><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("truck")}${freeShip(p.price)?"التوصيل فابور":"التوصيل 30 درهم"}</span></div>
+            ${p.vars?`<div class="qv">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="${k===p.id?"on":""}" href="#p-${k}">${k===p.id?ic("check",3):""}<b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div>`:""}
             <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف: 06 12 34 56 78" dir="ltr" style="text-align:right"><input id="q-city" autocomplete="address-level2" placeholder="المدينة"><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب دابا</button>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
             <div class="qok" id="qfDone" hidden><b>${ic("check",3)} توصلنا بالطلب ديالك!</b>غادي نعيطو ليك قريب باش نأكدو. رقم الطلب: <b class="num" id="qfRef" style="display:inline;font-size:1rem"></b></div></div>`:""}
           <div class="thumbs">${media.map((m,i)=>`<button type="button" data-i="${i}" aria-current="${i===0}" aria-label="${m.t==="v"?"الفيديو":"صورة "+(i+1)}"><img src="${src(m.k)}" alt="">${m.t==="v"?`<span class="play">${ic("play")}</span><span class="lbl vl">فيديو</span>`:""}${m.t==="c"?`<span class="lbl">3D</span>`:""}</button>`).join("")}</div>
@@ -1421,8 +1429,14 @@ function productView(p){
     else view.innerHTML=`<img class="photo" src="${src(m.k)}" alt="${esc(p.name)}">`;
     app.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
   }
-  show(0);
-  app.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>show(+b.dataset.i));
+  let gi=0,gt=null,gstop=false;const dots=document.getElementById("gdots");
+  const gshow=i=>{gi=(i+media.length)%media.length;show(gi);const el=view.querySelector(".prod,.photo");if(el){el.classList.add("gin")}if(dots)dots.querySelectorAll("i").forEach((d,j)=>d.className=j===gi?"on":"")};
+  const gnext=()=>{if(gstop||media.length<2)return;clearTimeout(gt);gt=setTimeout(()=>{if(!document.body.contains(view)||gstop)return;gshow(gi+1);gnext()},media[gi].t==="v"?7000:3200)};
+  gshow(0);gnext();
+  const gpause=()=>{gstop=true;clearTimeout(gt)};
+  app.querySelectorAll(".thumbs button").forEach(b=>b.onclick=()=>{gpause();gshow(+b.dataset.i)});
+  let tx0=null;view.addEventListener("touchstart",e=>{tx0=e.touches[0].clientX},{passive:true});
+  view.addEventListener("touchend",e=>{if(tx0===null)return;const dx=e.changedTouches[0].clientX-tx0;tx0=null;if(Math.abs(dx)>40){gpause();gshow(gi+(dx<0?1:-1))}},{passive:true});
   view.addEventListener("pointermove",e=>{const pr=document.getElementById("prod");if(!pr||e.pointerType!=="mouse")return;const r=view.getBoundingClientRect();pr.style.setProperty("--gx",(((e.clientX-r.left)/r.width-.5)*24)+"deg");pr.style.setProperty("--gy",(-((e.clientY-r.top)/r.height-.5)*14)+"deg")});
 
   let qty=1; const qo=document.getElementById("f-qty"),tot=document.getElementById("f-total");
@@ -1474,7 +1488,7 @@ function productView(p){
         else if(!mf.querySelector("button[type=submit]").disabled&&mf.querySelector(".senderr")){clearInterval(t);b.disabled=false;b.textContent="أكد الطلب دابا";g("q-err").textContent=mf.querySelector(".senderr").textContent}},300)});}
   bindTilt();
 }
-const QF=["hafara25"];
+const QF={includes:()=>true};
 const ORDER_URL="https://script.google.com/macros/s/AKfycbyccOLqdqZBBMxa30dZX7qz6ECnj7OvZmAw_ulYDeqZaSVZvyOpaKCZcbg8c0L-CV29xg/exec";
 function fbIds(){const ck=n=>(document.cookie.match("(?:^|; )"+n+"=([^;]*)")||[])[1]||"";let f=ck("_fbc");try{f=f||localStorage.getItem("atlas_fbc")||""}catch(_){}return{fbc:f,fbp:ck("_fbp")}}
 function orderSource(){try{return sessionStorage.getItem("atlas_src")||"site"}catch(_){return "site"}}
