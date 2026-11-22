@@ -599,6 +599,15 @@ body.on-product footer{padding-bottom:84px}
 .ups .upb small{display:block;color:var(--muted);font-size:.76rem}
 .ups .btn{font-size:1rem;padding-block:11px}
 .ups .upok{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--green);font-weight:800;font-size:.9rem;padding:8px 0}.ups .upok svg{width:18px;height:18px}
+
+/* ===== فيديو الإعلان أول حاجة فالصفحة ===== */
+.advid{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:#0d1626;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;z-index:3}
+.advid .adbg{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(22px) brightness(.55) saturate(1.2);transform:scale(1.1)}
+.advid video{position:relative;height:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.advid .adsnd{position:absolute;top:10px;left:10px;z-index:2;display:flex;align-items:center;gap:6px;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:var(--leaf);font:inherit;font-weight:800;font-size:.8rem;padding:6px 12px 6px 10px;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer}
+.advid .adsnd svg{width:14px;height:14px}.advid .adsnd.on{background:var(--sun);color:var(--sun-ink)}
+.stage.hasad .view{padding:0}.stage.hasad .ghint{display:none}
+@media (max-width:520px){.stage.hasqf.hasad .view{height:300px}.stage.hasqf.hasad .advid video{border-radius:12px}}
 </style>
 </head>
 <body>
@@ -720,7 +729,7 @@ const P=[
    bens:[["63cc","محرك Top Star","bolt"],["عمق 80 سم","للأشجار والأعمدة","gauge"],["جوج ميشات","20 سم و30 سم","tools"]],
    specs:[["المحرك","63cc · Top Star ED630"],["الوقود","بنزين مخلوط مع الزيت (Mélange 2 temps)"],["طول الميشة","80 سم"],["عرض الميشات","20 سم و30 سم"],["المقبض","مزدوج مع زر التشغيل"]],
    uses:["غرس الأشجار","تركيب الأعمدة","السياجات","أشغال الحفر"]},
-  {id:"hafara25",cat:"hfr",price:1350,badge:"2.5 خيل · ميشة 20 سم",name:"مثقاب الأرض 2.5 خيل · ميلونج",hook:"بغيتي تغرس وتحفر بلا فاس وبثمن مناسب؟",
+  {id:"hafara25",adv:"ad-hafara25",cat:"hfr",price:1350,badge:"2.5 خيل · ميشة 20 سم",name:"مثقاب الأرض 2.5 خيل · ميلونج",hook:"بغيتي تغرس وتحفر بلا فاس وبثمن مناسب؟",
    lead:"مثقاب الأرض (Tarière) بمحرك 2.5 خيل كيخدم بالميلونج (بنزين مخلوط مع الزيت)، وكيجي مع ميشة عرضها 20 سم وطولها 80 سم: حفرة ورا حفرة للغراسة والسياجات بلا تعب.",
    imgs:["hafara25-1","hafara25-2"],
    bens:[["2.5 خيل","محرك بنزين جوج أشواط","bolt"],["ميشة 20 سم","طول 80 سم","tools"],["ثمن مناسب","1350 درهم","shield"]],
@@ -735,7 +744,7 @@ const P=[
    bens:[["متعددة","ديسكات + كاج الفصة","tools"],["مريحة","حزام ومقبض مزدوج","hand"],["52cc","للأعشاب الكثيفة","bolt"]],
    specs:[["المحرك","52cc · جوج أشواط"],["الوقود","ميلونج: بنزين مخلوط مع الزيت (Mélange)"],["الشفرات","ديسك مثلث + ديسك بالأسنان"],["الإكسسوارات","كاج الفصة، واقي، حزام الكتف، قرعة الخلط"],["المقبض","مزدوج"]],
    uses:["تنظيف الأراضي","الحدائق","حواف الطرق","حصاد الفصة"]},
-  {id:"hachach4t",cat:"cut",price:1200,badge:"إيصانص صيك · روليطة الخيط",name:"آلة قطع الأعشاب · إيصانص صيك",hook:"الربيع والشوك غلبوك؟ الحل عندنا",
+  {adv:"ad-hachach4t",id:"hachach4t",cat:"cut",price:1200,badge:"إيصانص صيك · روليطة الخيط",name:"آلة قطع الأعشاب · إيصانص صيك",hook:"الربيع والشوك غلبوك؟ الحل عندنا",
    lead:"آلة قطع الأعشاب (Débroussailleuse) بمحرك 4 أشواط كيخدم بالإيصانص صيك: بنزين بوحدو بلا ما تخلط الزيت. اقتصادية، وكتجي مع روليطة الخيط (Tête nylon) والديسكات.",
    imgs:["hachach4t-1","hachach4t-2","hachach4t-3"],
    bens:[["إيصانص صيك","بلا خلطة الزيت","drop"],["روليطة الخيط","للكازون والحواف","tools"],["اقتصادية","2 لتر لـ 8 سوايع","bolt"]],
@@ -1378,13 +1387,13 @@ function productView(p){
   rvAdd(p.id);
   try{if(window.fbq)fbq("track","ViewContent",pxd(p,p.price))}catch(_){}
   const others=[...new Set((p.items?P.filter(x=>p.items.includes(x.id)).concat(P.filter(x=>x.cat==="packs"&&x.id!==p.id)):comps(p).concat(P.filter(x=>x.cat==="packs"&&x.items.includes(p.id))).concat(P.filter(x=>x.cat===p.cat&&x.id!==p.id)).concat(PR().filter(x=>x.cat!==p.cat))))].filter(x=>x.id!==p.id).slice(0,8);
-  const media=(p.nocut?[]:[{t:"c",k:p.id+"-cut"}]).concat((p.vids||[]).map(k=>({t:"v",k}))).concat(p.imgs.map(k=>({t:"i",k})));
+  const media=(p.adv?[{t:"a",k:p.adv}]:[]).concat(p.nocut?[]:[{t:"c",k:p.id+"-cut"}]).concat((p.vids||[]).map(k=>({t:"v",k}))).concat(p.imgs.map(k=>({t:"i",k})));
   app.innerHTML=`
   <section class="ptop"><div class="hills" style="height:120px;opacity:.7;position:absolute;inset:auto 0 0 0;z-index:0">${HILLS}</div>
     <div class="wrap" style="position:relative;z-index:1">
       <div class="crumb${QF.includes(p.id)?" qfc":""}"><a href="#home">الرئيسية</a><span>/</span><a href="#c-${p.cat}">${catName(p.cat)}</a><span>/</span><span>${esc(p.name)}</span></div>
       <div class="pgrid">
-        <div class="stage${QF.includes(p.id)?" hasqf":""}">
+        <div class="stage${QF.includes(p.id)?" hasqf":""}${p.adv?" hasad":""}">
           ${p.vars?`<div class="vars vtop"><span class="vh">${ic("bolt")}${p.varq||"اختار الحجم اللي كيناسب المحرك ديالك:"}</span><div class="vrow">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="vopt${k===p.id?" on":""}" href="#p-${k}" data-var="${k}"><span class="vr">${k===p.id?ic("check",3):""}</span><b>${l}</b><small>${esc(v.badge)}</small><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div></div>`:""}
           <div class="vwrap"><div class="view" id="view"></div>
             ${media.length>1?`<button type="button" class="garr gnx" id="gnx" aria-label="التصويرة الجاية">${ic("prev",2.8)}</button><button type="button" class="garr gpv" id="gpv" aria-label="التصويرة اللي قبل">${ic("next",2.8)}</button><span class="gcnt" id="gcnt">📷 <bdi class="num">1/${media.length}</bdi></span><span class="ghint" id="ghint">👆 سيكي ولا كليكي على التصاور</span>`:""}</div>
@@ -1477,6 +1486,9 @@ function productView(p){
   function show(i){
     const m=media[i];
     if(m.t==="c") view.innerHTML=`<span class="sticker"><span>${p.vars?'<small>من</small>':''}<b class="num">${money(p.price)}</b><small>درهم</small></span></span><img class="prod" id="prod" src="${src(m.k)}" alt="${esc(p.name)}"><div class="podium"><div class="top"></div><div class="side"></div><div class="shadow"></div></div>`;
+    else if(m.t==="a"){view.innerHTML=`<div class="advid"><div class="adbg" style="background-image:url('${src(m.k)}')"></div><video src="${vsrc(m.k)}" poster="${src(m.k)}" autoplay muted loop playsinline preload="auto"></video><button type="button" class="adsnd" aria-label="الصوت">${ic("play")}<span>شغّل الصوت</span></button></div>`;
+      const v=view.querySelector("video"),b=view.querySelector(".adsnd");try{v.play().catch(()=>{})}catch(_){}
+      b.onclick=e=>{e.stopPropagation();gpause&&gpause();v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play().catch(()=>{})}b.querySelector("span").textContent=v.muted?"شغّل الصوت":"سكّت الصوت";b.classList.toggle("on",!v.muted)};}
     else if(m.t==="v") view.innerHTML=`<video class="photo" src="${vsrc(m.k)}" poster="${src(m.k)}" autoplay muted loop playsinline controls></video><span class="vlive">${ic("play")}فيديو حقيقي</span>`;
     else view.innerHTML=`<img class="photo" src="${src(m.k)}" alt="${esc(p.name)}">`;
     app.querySelectorAll(".thumbs button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
@@ -1485,7 +1497,7 @@ function productView(p){
   const gshow=i=>{gi=(i+media.length)%media.length;show(gi);const el=view.querySelector(".prod,.photo");if(el){el.classList.add("gin")}if(dots)dots.querySelectorAll("i").forEach((d,j)=>d.className=j===gi?"on":"");
     const gc=document.getElementById("gcnt");if(gc)gc.innerHTML="📷 <bdi class=num>"+(gi+1)+"/"+media.length+"</bdi>";
     const tb=app.querySelectorAll(".thumbs button")[gi];if(tb&&tb.parentElement.scrollWidth>tb.parentElement.clientWidth)tb.parentElement.scrollTo({left:tb.offsetLeft-tb.parentElement.clientWidth/2+30,behavior:"smooth"})};
-  const gnext=()=>{if(gstop||media.length<2)return;clearTimeout(gt);gt=setTimeout(()=>{if(!document.body.contains(view)||gstop)return;gshow(gi+1);gnext()},media[gi].t==="v"?7000:3200)};
+  const gnext=()=>{if(gstop||media.length<2)return;clearTimeout(gt);gt=setTimeout(()=>{if(!document.body.contains(view)||gstop)return;gshow(gi+1);gnext()},media[gi].t==="a"?16500:media[gi].t==="v"?7000:3200)};
   gshow(0);gnext();
   const gpause=()=>{gstop=true;clearTimeout(gt);const h=document.getElementById("ghint");if(h)h.classList.add("off")};
   const gn=document.getElementById("gnx"),gp=document.getElementById("gpv");if(gn)gn.onclick=()=>{gpause();gshow(gi+1)};if(gp)gp.onclick=()=>{gpause();gshow(gi-1)};
