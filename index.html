@@ -613,6 +613,7 @@ body.on-product footer{padding-bottom:84px}
 .advid .adsnd svg{width:14px;height:14px}.advid .adsnd.on{background:var(--sun);color:var(--sun-ink)}
 .stage.hasad .view{padding:0}.stage.hasad .ghint{display:none}
 @media (max-width:520px){.stage.hasqf.hasad .view{height:300px}.stage.hasqf.hasad .advid video{border-radius:12px}}
+input[type=tel]:placeholder-shown{direction:rtl;text-align:right}
 </style>
 </head>
 <body>
@@ -731,7 +732,7 @@ const P=[
    uses:["البحيرة والخضرة","الجنان وبين الأشجار","تهيئة التراب للغراسة","حل السواقي"],
    about:["كربال صغير وخفيف بمحرك 4 أشواط ديال 4 خيل: كتعمّرو بالبنزين عادي بلا ما تخلط الزيت.","الفريزات كيقلبو التراب ويرطبوه، مزيان للبحيرة، الخضرة وبين الأشجار فين ما كيدخلش التراكتور.","كيجي مع جوج عجلات ديال الحديد، محراث (شاروي) لحل السواقي، وصاك فيه العدة."],
    box:["الكربال مع المحرك 4 أشواط","جوج عجلات حديد","محراث (شاروي) للسواقي","صاك العدة"],
-   faq:[["شنو البنزين اللي كيخدم بيه؟","بنزين عادي بوحدو بلا زيت (Essence sec)، حيت المحرك 4 أشواط، والزيت ديال المحرك كيتحط بوحدو فالكارتير."],["فين نقدر نخدم بيه؟","البحيرة، الخضرة، الجنان وبين الأشجار، والأراضي الصغيرة والمتوسطة."],["واش كيحل السواقي؟","إيه، بالمحراث (الشاروي) اللي كيجي معاه."],["واش خاص العربون؟","الثمن 3500 درهم، كنطلبو عربون 100 درهم والباقي ملي توصلك."]]},
+   faq:[["شنو البنزين اللي كيخدم بيه؟","بنزين عادي بوحدو بلا زيت (Essence sec)، حيت المحرك 4 أشواط، والزيت ديال المحرك كيتحط بوحدو فالكارتير."],["فين نقدر نخدم بيه؟","البحيرة، الخضرة، الجنان وبين الأشجار، والأراضي الصغيرة والمتوسطة."],["واش كيحل السواقي؟","إيه، بالمحراث (الشاروي) اللي كيجي معاه."],["واش خاص العربون؟","لا، ما كاين حتى عربون: الدفع كامل عند الاستلام."]]},
   {id:"hafara",cat:"hfr",price:2200,badge:"بالعجلة",name:"حفّارة التربة بالعجلة",hook:"بغيتي تحفر وتغرس بلا مجهود كبير؟",
    lead:"مع حفّارة التربة بالعجلة، سهّل على راسك أشغال الحفر وخدم أرضك بطريقة عملية. العجلة كتشيل عليك الثقل، ونتا غير وجّه.",
    imgs:["hafara-2","hafara-1"],vids:["v-hafara-1","v-hafara-2"],
@@ -1145,7 +1146,7 @@ PACKS.forEach(k=>{
 });
 CATS.push({id:"packs",name:"العروض",cover:"pack-garage",c:"#FFF3C4"});
 const FREE=0, SHIP=0, freeShip=v=>v>=FREE, shipFee=v=>freeShip(v)?0:SHIP, PR=()=>P.filter(p=>p.cat!=="packs");
-const DEP_MIN=2500, depOf=v=>v>=5000?200:v>=DEP_MIN?100:0, needDep=v=>depOf(v)>0;
+const DEP_MIN=2500, depOf=v=>0, needDep=v=>depOf(v)>0;
 const COMP={engine7:["carbu","motopompe","qgd"],carbu:["engine7","motopompe","gen-dmax"],carbu15:["carbu","generator","motopompe"],motopompe:["carbu","sprayer16","pompe12v"],
  qgd:["generator","pompe12v","qb60"],qb60:["pompe12v","qgd","generator"],surfpump:["generator","qb60","pompe12v"],wqd:["generator","vidange075","pompe12v"],vidange15:["generator","pompe12v","wqd"],vidange075:["generator","pompe12v","wqd"],pompe12v:["qb60","qgd","sprayer16"],
  generator:["qgd","welder","washer"],"gen-dmax":["carbu","qgd","welder"],welder:["grinder","socket","generator"],grinder:["welder","socket","chainsaw"],socket:["jack32","grinder","jack3t"],
@@ -1419,9 +1420,9 @@ function cartView(){
         <form class="f" id="cartForm" novalidate>
           <p class="sm" style="margin:4px 0 0">عمّر المعلومات ديالك، وكنعيطو ليك باش نأكدو.</p>
           <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
-          <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
+          <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0612345678" dir="ltr" style="text-align:right"></label>
           <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
-          <label for="f-email">الإيميل <small class="opt">(اختياري، باش توصلك رسالة التأكيد)</small><input id="f-email" type="email" inputmode="email" autocomplete="email" placeholder="exemple@gmail.com" dir="ltr" style="text-align:right"></label>
+          <input id="f-email" type="hidden" value="">
           <div class="err" id="f-err" role="alert"></div>
           <button class="btn btn-sun btn-block" type="submit" style="font-size:1.15rem">${ic("cart")}تأكيد الطلب · <span class="num">${money(total)}</span> درهم</button>
         </form>
@@ -1471,7 +1472,7 @@ function productView(p){
           ${p.oos?oosHTML(p):QF.includes(p.id)?`<div class="qf" id="qf"><div class="qh"><b>${esc(p.name)}</b><span class="qp"><bdi class="num">${money(p.price)}</bdi> درهم</span></div>
             <div class="qt"><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("truck")}${freeShip(p.price)?"التوصيل فابور":"التوصيل 30 درهم"}</span></div>
             ${p.vars?`<div class="qv">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="${k===p.id?"on":""}" href="#p-${k}">${k===p.id?ic("check",3):""}<b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div>`:""}
-            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><div class="pwrap"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف: 06 12 34 56 78" dir="ltr" style="text-align:right"><span class="pok" aria-hidden="true">${ic("check",3)}</span></div><div class="cwrap"><input id="q-city" autocomplete="off" placeholder="المدينة (كتب وختار)"><div class="csug" id="q-csug" hidden></div></div><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب دابا</button><div class="qsafe">${ic("shield")}<span>ما كتخلص والو دابا · كنعيطو ليك نأكدو قبل ما نصيفطو</span></div><a class="qwa" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام، عندي سؤال على "+p.name+" ("+money(p.price)+" درهم) - atlasma.online")}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال على هاد الماكينة؟ <b>سولنا فالواتساب</b></a>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
+            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><div class="pwrap"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف (مثال: 0612345678)" dir="ltr" style="text-align:right"><span class="pok" aria-hidden="true">${ic("check",3)}</span></div><div class="cwrap"><input id="q-city" autocomplete="off" placeholder="المدينة (كتب وختار)"><div class="csug" id="q-csug" hidden></div></div><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب · <bdi class="num">${money(p.price)}</bdi> درهم</button><div class="qsafe">${ic("shield")}<span>ما كتخلص والو دابا · كنعيطو ليك نأكدو قبل ما نصيفطو</span></div><a class="qwa" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام، عندي سؤال على "+p.name+" ("+money(p.price)+" درهم) - atlasma.online")}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال على هاد الماكينة؟ <b>سولنا فالواتساب</b></a>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
             <div class="ty" id="qfDone" hidden>${tyHTML(p)}</div></div>`:""}
         </div>
         <div class="pinfo${QF.includes(p.id)?" qfp":""}${p.oos?" isoos":""}">
@@ -1492,8 +1493,8 @@ function productView(p){
             ${cartCount()?`<a class="cartnote" href="#cart">${ic("cart")}<span>عندك <b class="num">${cartCount()}</b> منتجات فالسلة. بغيتي تطلبهم كاملين مرة وحدة؟</span><b>السلة</b></a>`:""}
             <form class="f" id="orderForm" novalidate>
               <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
-              <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
-              <label for="f-email">الإيميل <small class="opt">(اختياري، باش توصلك رسالة التأكيد)</small><input id="f-email" type="email" inputmode="email" autocomplete="email" placeholder="exemple@gmail.com" dir="ltr" style="text-align:right"></label>
+              <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0612345678" dir="ltr" style="text-align:right"></label>
+              <input id="f-email" type="hidden" value="">
               <div class="two">
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
                 <label>الكمية<div class="qty"><button type="button" data-d="1" aria-label="زيد">+</button><output id="f-qty" class="num">1</output><button type="button" data-d="-1" aria-label="نقّص">−</button></div></label>
@@ -1662,7 +1663,7 @@ const oosHTML=p=>{const alt=PR().filter(x=>!x.oos&&!x.items&&x.cat===p.cat&&x.id
 const upsOf=p=>p.items?null:comps(p).filter(x=>!x.items&&x.price<=Math.min(600,Math.max(400,p.price*.5))&&x.price<p.price)[0]||null;
 function tyHTML(p){const dep=needDep(p.price),ux=upsOf(p),off=ux?pairOff(p.id,ux):0;
   return `<div class="tyc">${ic("check",3)}</div><h3 id="tyH">توصلنا بالطلب ديالك!</h3><div class="tyref">رقم الطلب <b class="num" id="qfRef"></b></div>
-  <ol class="tl"><li><i>1</i><div><b>كنعيطو ليك باش نأكدو</b><small>من النمرة <bdi class="num" dir="ltr">06 31 31 21 55</bdi> · خلي التيليفون ديالك مشعول</small></div></li>
+  <ol class="tl"><li><i>1</i><div><b>كنعيطو ليك باش نأكدو</b><small>فأقل من 24 ساعة من النمرة <bdi class="num" dir="ltr">06 31 31 21 55</bdi> · جاوب باش نصيفطو ليك الطلبية</small></div></li>
   ${dep?`<li><i>2</i><div><b>كنحجزو ليك السلعة باسمك</b><small>الحجز <bdi class="num">${depOf(p.price)}</bdi> درهم كينقص من الثمن، ماشي زيادة</small></div></li><li><i>3</i><div><b>كنصيفطوها ليك</b><small>والباقي كتخلصو ملي توصلك</small></div></li>`
   :`<li><i>2</i><div><b>كنصيفطو ليك السلعة</b><small>${freeShip(p.price)?"التوصيل فابور لجميع المدن":"التوصيل 30 درهم"}</small></div></li><li><i>3</i><div><b>كتخلص ملي توصلك</b><small>الدفع عند الاستلام</small></div></li>`}</ol>
   <a class="vcf" href="${VCF}" download="Atlas.vcf">${ic("phone")}<span><b>سجل النمرة ديالنا</b><small>باش تعرفنا ملي نعيطو ليك</small></span></a>
