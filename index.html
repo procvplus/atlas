@@ -1446,7 +1446,7 @@ function cartView(){
     const tel=phone.replace(/^(\+212|00212)/,"0"),clean=t=>t.replace(/\u200f/g,""),d=new Date();
     const ref="AT-"+String(d.getDate()).padStart(2,"0")+String(d.getMonth()+1).padStart(2,"0")+"-"+String(Math.floor(1000+Math.random()*9000));
     const order={ref,name,phone:tel,email,city,product:items.map(x=>clean(x.p.name)+(x.qty>1?" ×"+x.qty:"")+(x.off?" (-"+x.off+")":"")).join(" + "),qty:cartCount(),price:sub,ship,total,source:orderSource()+" | cart",pid:items.map(x=>x.p.id).join(","),
-      note:"سلة: "+items.length+" منتجات"+(off?" · خصم "+off+" درهم":"")+(dep?" · تسبيق "+dep+" درهم قبل الإرسال":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+      note:"",fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const btn=f.querySelector('button[type=submit]'),bt=btn.textContent;btn.disabled=true;btn.textContent="كنصيفطو الطلب...";
     sendOrder(order).then(()=>{$("refNo").textContent=ref;f.hidden=true;$("orderDone").hidden=false;cartSet([]);
       try{if(window.fbq)fbq("track","Lead",{value:total,currency:"MAD",content_ids:items.map(x=>x.p.id),content_type:"product",num_items:order.qty})}catch(_){}
@@ -1603,7 +1603,7 @@ function productView(p){
     const c=calc(),total=c.total,btn=e.target.querySelector('button[type=submit]'),dep=needDep(total);
     const pname=clean(p.name)+(qty>1?" ×"+qty:"")+c.ad.map(x=>" + "+clean(x.name)+" (-"+pairOff(p.id,x)+")").join("");
     const order={ref,name,phone:tel,email,city,product:pname,qty,price:p.price,ship:c.ship,total,source:orderSource()+" | "+p.id,pid:[p.id].concat(c.ad.map(x=>x.id)).join(","),
-      note:(dep?"تسبيق "+depOf(total)+" درهم قبل الإرسال":"")+(c.ad.length?(dep?" · ":"")+"زاد: "+c.ad.map(x=>clean(x.name)+" ("+(x.price-pairOff(p.id,x))+" بلاصة "+x.price+")").join(" + ")+" · خصم "+c.off+" درهم":""),fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
+      note:"",fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent};
     const done=ok=>{
       if(!ok){btn.disabled=false;btn.textContent=btnTxt;let er=e.target.querySelector(".senderr");if(!er){er=document.createElement("p");er.className="note senderr";er.style.color="#c0392b";btn.after(er)}er.textContent="ما قدرناش نصيفطو الطلب، تأكد من الأنترنيت وعاود كليكي مرة أخرى.";return;}
       $("refNo").textContent=ref; e.target.hidden=true; $("orderDone").hidden=false; $("doneDep").hidden=!dep;$("doneDepv").textContent=depOf(total)||100;
@@ -1635,7 +1635,7 @@ function productView(p){
           g("qfDone").hidden=false;g("qf").classList.add("done");g("sticky").classList.add("off");window.scrollTo({top:g("qf").getBoundingClientRect().top+scrollY-90,behavior:"smooth"});
           const ub=g("upsBtn");if(ub)ub.onclick=()=>{const u=g("ups"),x=PF(y=>y.id===u.dataset.id),off=+u.dataset.off,pr=x.price-off;ub.disabled=true;ub.textContent="كنزيدوها...";
             const nm=g("q-name").value.trim(),cl=t=>t.replace(/\u200f/g,"");
-            sendOrder({ref:ref+"-B",name:nm,phone:tel0,email:"",city:g("q-city").value.trim(),product:cl(x.name)+" (إضافة على "+ref+")",qty:1,price:pr,ship:0,total:pr,source:orderSource()+" | "+x.id+" | upsell",pid:x.id,note:"إضافة على الطلب "+ref+" · خصم "+off+" درهم (بلاصة "+x.price+")",fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent})
+            sendOrder({ref:ref+"-B",name:nm,phone:tel0,email:"",city:g("q-city").value.trim(),product:cl(x.name)+" (إضافة على "+ref+")",qty:1,price:pr,ship:0,total:pr,source:orderSource()+" | "+x.id+" | upsell",pid:x.id,note:"",fbc:fbIds().fbc,fbp:fbIds().fbp,ua:navigator.userAgent})
             .then(()=>{ub.hidden=true;g("upsOk").hidden=false;try{if(window.fbq)fbq("track","AddToCart",pxd(x,pr))}catch(_){}},()=>{ub.disabled=false;ub.textContent="ما تزادتش، عاود كليكي"})};}
         else if(!mf.querySelector("button[type=submit]").disabled&&mf.querySelector(".senderr")){clearInterval(t);b.disabled=false;b.textContent="أكد الطلب دابا";g("q-err").textContent=mf.querySelector(".senderr").textContent}},300)});}
   bindTilt();
