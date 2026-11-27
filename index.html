@@ -613,7 +613,7 @@ body.on-product footer{padding-bottom:84px}
 .advid .adsnd svg{width:14px;height:14px}.advid .adsnd.on{background:var(--sun);color:var(--sun-ink)}
 .stage.hasad .view{padding:0}.stage.hasad .ghint{display:none}
 @media (max-width:520px){.stage.hasqf.hasad .view{height:300px}.stage.hasqf.hasad .advid video{border-radius:12px}}
-input[type=tel]:placeholder-shown{direction:rtl;text-align:right}
+input[type=tel]{direction:ltr!important;text-align:right}
 </style>
 </head>
 <body>
@@ -1420,7 +1420,7 @@ function cartView(){
         <form class="f" id="cartForm" novalidate>
           <p class="sm" style="margin:4px 0 0">عمّر المعلومات ديالك، وكنعيطو ليك باش نأكدو.</p>
           <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
-          <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0612345678" dir="ltr" style="text-align:right"></label>
+          <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
           <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
           <input id="f-email" type="hidden" value="">
           <div class="err" id="f-err" role="alert"></div>
@@ -1472,7 +1472,7 @@ function productView(p){
           ${p.oos?oosHTML(p):QF.includes(p.id)?`<div class="qf" id="qf"><div class="qh"><b>${esc(p.name)}</b><span class="qp"><bdi class="num">${money(p.price)}</bdi> درهم</span></div>
             <div class="qt"><span>${ic("card")}الدفع عند الاستلام</span><span>${ic("truck")}${freeShip(p.price)?"التوصيل فابور":"التوصيل 30 درهم"}</span></div>
             ${p.vars?`<div class="qv">${p.vars.map(([k,l])=>{const v=PF(x=>x.id===k);return `<a class="${k===p.id?"on":""}" href="#p-${k}">${k===p.id?ic("check",3):""}<b>${l}</b><span><bdi class="num">${money(v.price)}</bdi> درهم</span></a>`}).join("")}</div>`:""}
-            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><div class="pwrap"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="رقم الهاتف (مثال: 0612345678)" dir="ltr" style="text-align:right"><span class="pok" aria-hidden="true">${ic("check",3)}</span></div><div class="cwrap"><input id="q-city" autocomplete="off" placeholder="المدينة (كتب وختار)"><div class="csug" id="q-csug" hidden></div></div><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب · <bdi class="num">${money(p.price)}</bdi> درهم</button><div class="qsafe">${ic("shield")}<span>ما كتخلص والو دابا · كنعيطو ليك نأكدو قبل ما نصيفطو</span></div><a class="qwa" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام، عندي سؤال على "+p.name+" ("+money(p.price)+" درهم) - atlasma.online")}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال على هاد الماكينة؟ <b>سولنا فالواتساب</b></a>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
+            <form class="f" id="qfForm" novalidate><input id="q-name" autocomplete="name" placeholder="الاسم الكامل"><div class="pwrap"><input id="q-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78 📞" dir="ltr" style="text-align:right"><span class="pok" aria-hidden="true">${ic("check",3)}</span></div><div class="cwrap"><input id="q-city" autocomplete="off" placeholder="المدينة (كتب وختار)"><div class="csug" id="q-csug" hidden></div></div><div class="qerr" id="q-err" role="alert"></div><button class="btn btn-sun btn-block" type="submit">${ic("cart")}أكد الطلب · <bdi class="num">${money(p.price)}</bdi> درهم</button><div class="qsafe">${ic("shield")}<span>ما كتخلص والو دابا · كنعيطو ليك نأكدو قبل ما نصيفطو</span></div><a class="qwa" href="https://wa.me/${WA}?text=${encodeURIComponent("السلام، عندي سؤال على "+p.name+" ("+money(p.price)+" درهم) - atlasma.online")}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>عندك سؤال على هاد الماكينة؟ <b>سولنا فالواتساب</b></a>${needDep(p.price)?`<div class="qdep">احجزها بـ ${depOf(p.price)} درهم فقط، والباقي عند الاستلام</div>`:""}</form>
             <div class="ty" id="qfDone" hidden>${tyHTML(p)}</div></div>`:""}
         </div>
         <div class="pinfo${QF.includes(p.id)?" qfp":""}${p.oos?" isoos":""}">
@@ -1493,7 +1493,7 @@ function productView(p){
             ${cartCount()?`<a class="cartnote" href="#cart">${ic("cart")}<span>عندك <b class="num">${cartCount()}</b> منتجات فالسلة. بغيتي تطلبهم كاملين مرة وحدة؟</span><b>السلة</b></a>`:""}
             <form class="f" id="orderForm" novalidate>
               <label for="f-name">الاسم الكامل<input id="f-name" autocomplete="name" placeholder="مثال: محمد العلوي"></label>
-              <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0612345678" dir="ltr" style="text-align:right"></label>
+              <label for="f-phone">رقم الهاتف<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" dir="ltr" style="text-align:right"></label>
               <input id="f-email" type="hidden" value="">
               <div class="two">
                 <label for="f-city">المدينة<input id="f-city" autocomplete="address-level2" placeholder="مثال: تارودانت"></label>
